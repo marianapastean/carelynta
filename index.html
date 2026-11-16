@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -195,7 +196,7 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
 .process-item h3{font-size:29px;color:var(--navy);margin:15px 0}
 .process-item p{color:var(--muted);font-size:17px}
 
-/* REVIEWS - INTEGRATE IN DESIGNUL CARELYNTA */
+/* EXPERIENȚA CARELYNTA */
 .reviews{
  color:white;
  overflow:hidden;
@@ -219,11 +220,18 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
 .reviews h2{color:white;margin:22px 0}
 .reviews h2 span{display:block;color:var(--gold2)}
 .reviews-intro{color:#D0DEE6;max-width:750px;font-size:18px;margin:0 auto}
-.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:50px}
+
+/* CARDURI EXPERIENȚĂ */
+.review-grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:25px;
+ margin-top:50px;
+}
 .review-card{
  position:relative;
- min-height:390px;
- padding:38px;
+ min-height:340px;
+ padding:35px 30px;
  display:flex;
  flex-direction:column;
  overflow:hidden;
@@ -233,7 +241,7 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
 }
 .review-card:hover{
- transform:translateY(-6px);
+ transform:translateY(-7px);
  box-shadow:0 25px 55px #0004;
  border-color:#D0A65C;
 }
@@ -248,8 +256,24 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
  background:radial-gradient(circle,#287D8340,transparent 70%);
  pointer-events:none;
 }
-.review-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.review-quote{font-family:var(--lora);font-size:75px;line-height:.8;color:var(--gold2);opacity:.9}
+.review-card-top{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:25px;
+}
+.review-quote{
+ width:65px;
+ height:65px;
+ display:grid;
+ place-items:center;
+ border:1px solid #F0CC8270;
+ border-radius:50%;
+ background:#C18B3515;
+ color:var(--gold2);
+ font-family:var(--lora);
+ font-size:34px;
+}
 .review-tag{
  display:inline-flex;
  align-self:flex-start;
@@ -264,58 +288,61 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
 }
 .review-text{
  flex:1;
- margin:8px 0 28px;
+ margin:8px 0 25px;
  color:#E2E9ED;
- font-size:18px;
+ font-size:17px;
  line-height:1.9;
 }
-.review-divider{height:1px;width:100%;margin-bottom:23px;background:linear-gradient(90deg,#C18B35A0,#FFFFFF12)}
-.review-author{display:flex;align-items:center;gap:16px}
+.review-divider{
+ height:1px;
+ width:100%;
+ margin-bottom:20px;
+ background:linear-gradient(90deg,#C18B35A0,#FFFFFF12);
+}
+.review-author{
+ display:flex;
+ align-items:center;
+ gap:15px;
+}
 .review-avatar{
- width:58px;
- height:58px;
+ width:52px;
+ height:52px;
  flex-shrink:0;
  display:grid;
  place-items:center;
  border:1px solid #F0CC8270;
  border-radius:50%;
  background:linear-gradient(145deg,#287D83,#155477);
- color:white;
- font-size:17px;
- font-weight:800;
-}
-.review-author-info h3{font-family:var(--lora);font-size:20px;color:white;margin-bottom:4px}
-.review-author-info p{font-size:13px;line-height:1.6;color:#C0D0D8}
-.review-footer{
- display:flex;
- align-items:center;
- justify-content:space-between;
- flex-wrap:wrap;
- gap:10px;
- margin-top:23px;
- padding-top:17px;
- border-top:1px solid #FFFFFF20;
- color:#B9CDD5;
- font-size:12px;
-}
-.review-link{
- display:inline-block;
- margin-top:16px;
  color:var(--gold2);
- font-size:13px;
- font-weight:800;
- letter-spacing:.4px;
- transition:color .25s ease;
+ font-size:23px;
 }
-.review-link:hover{color:#FFFFFF}
+.review-author-info h3{
+ font-family:var(--lora);
+ font-size:21px;
+ color:white;
+ margin-bottom:5px;
+}
+.review-author-info p{
+ font-size:13px;
+ line-height:1.7;
+ color:#C0D0D8;
+}
 .reviews-note{
- margin:38px auto 0;
+ max-width:800px;
+ margin:45px auto 0;
+ padding:25px 20px;
  text-align:center;
  color:#D0DEE6;
- font-size:15px;
+ font-size:16px;
+ line-height:1.9;
+ border-top:1px solid #D0A65C50;
+ border-bottom:1px solid #D0A65C50;
 }
-.reviews-note span{color:var(--gold2);margin-right:9px}
-.reviews-action{text-align:center;margin-top:30px}
+.reviews-note span{
+ color:var(--gold2);
+ margin-right:9px;
+}
+.reviews-action{text-align:center;margin-top:35px}
 .reviews-button{
  display:inline-flex;
  align-items:center;
@@ -330,7 +357,10 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
  letter-spacing:.5px;
  transition:transform .3s ease,box-shadow .3s ease;
 }
-.reviews-button:hover{transform:translateY(-4px);box-shadow:0 14px 35px #C18B3540}
+.reviews-button:hover{
+ transform:translateY(-4px);
+ box-shadow:0 14px 35px #C18B3540;
+}
 .reviews-button span{font-size:21px}
 
 /* CONTACT */
@@ -451,7 +481,6 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  .reviews-intro{font-size:17px}
  .review-card{padding:28px 23px;min-height:0}
  .review-author-info h3{font-size:19px}
- .review-footer{flex-direction:column;align-items:flex-start}
  .reviews-button{width:100%;font-size:13px;text-align:center}
 }
 @media(pointer:coarse){.cursor-glow{display:none}}
@@ -486,7 +515,7 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
    <a href="#servicii">Servicii</a>
    <a href="#cv-check">Analiză CV</a>
    <a href="#coaching">Career Coaching</a>
-   <a href="#reviews">Review-uri</a>
+   <a href="#reviews">Experiența CARELYNTA</a>
    <a href="#contact">Contact</a>
   </nav>
  </div>
@@ -684,96 +713,83 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  </div>
 </section>
 
-<!-- RECOMANDARI -->
+<!-- EXPERIENȚA CARELYNTA -->
 <section class="section reviews" id="reviews">
  <div class="container">
 
   <div class="reviews-heading" data-reveal>
-   <div class="eyebrow">EXPERIENȚE REALE</div>
-   <h2>Încrederea se construiește <span>prin rezultate.</span></h2>
+   <div class="eyebrow">EXPERIENȚA CARELYNTA</div>
+   <h2>O abordare construită <span>în jurul tău.</span></h2>
    <p class="reviews-intro">
-    Fiecare colaborare înseamnă atenție, implicare și respect pentru obiectivele persoanei cu care lucrez. Iată câteva dintre recomandările primite de la clienți.
+    Fiecare parcurs profesional este diferit. De aceea, colaborarea începe cu înțelegerea obiectivelor tale și continuă printr-o abordare atentă, structurată și adaptată nevoilor tale.
    </p>
    <div class="services-divider"></div>
   </div>
 
   <div class="review-grid">
 
-   <!-- RECOMANDAREA DULMA LILIANA -->
    <article class="review-card" data-reveal>
-
     <div class="review-card-top">
-     <span class="review-quote" aria-hidden="true">“</span>
+     <span class="review-quote" aria-hidden="true">✧</span>
     </div>
-
-    <div class="review-tag">EXAMINARE CV</div>
-
+    <div class="review-tag">01 · PERSONALIZARE</div>
+    <h3>Fiecare parcurs contează</h3>
     <p class="review-text">
-     Colaborarea a fost plăcută, iar rezultatele au fost pe măsura așteptărilor mele. Sunt foarte mulțumită de CV și de materialele realizate. Recomand cu încredere pentru profesionalism și pentru calitatea serviciilor oferite.
+     Începem prin a înțelege experiența, competențele și obiectivele tale. Recomandările și soluțiile sunt adaptate situației tale profesionale, nu aplicate după un șablon general.
     </p>
-
     <div class="review-divider"></div>
-
     <div class="review-author">
-     <div class="review-avatar" aria-hidden="true">DL</div>
+     <div class="review-avatar" aria-hidden="true">✦</div>
      <div class="review-author-info">
-      <h3>Dulma Liliana</h3>
-      <p>Director Financiar</p>
-      <p>HV SHIELDING SRL</p>
+      <h3>Abordare personalizată</h3>
+      <p>Nevoile și obiectivele tale sunt punctul de plecare.</p>
      </div>
     </div>
-
-    <div class="review-footer">
-     <span>Recomandare LinkedIn</span>
-     <span>12 noiembrie 2026</span>
-    </div>
-
-    <a class="review-link" href="https://www.linkedin.com/in/dulma-liliana-0479b768" target="_blank" rel="noopener noreferrer">
-     Profil LinkedIn ↗
-    </a>
-
    </article>
 
-   <!-- RECOMANDAREA OVIDIU MATEI -->
    <article class="review-card" data-reveal>
-
     <div class="review-card-top">
-     <span class="review-quote" aria-hidden="true">“</span>
+     <span class="review-quote" aria-hidden="true">◎</span>
     </div>
-
-    <div class="review-tag">COLABORARE PROFESIONALĂ</div>
-
+    <div class="review-tag">02 · PERSPECTIVĂ HR</div>
+    <h3>Experiență aplicată</h3>
     <p class="review-text">
-     O persoană serioasă, care se remarcă prin profesionalism și promptitudine. Recomand cu încredere!
+     Experiența practică în resurse umane oferă un cadru relevant pentru analiza CV-ului, pregătirea interviurilor și modul în care îți prezinți competențele în procesul de recrutare.
     </p>
-
     <div class="review-divider"></div>
-
     <div class="review-author">
-     <div class="review-avatar" aria-hidden="true">OM</div>
+     <div class="review-avatar" aria-hidden="true">✧</div>
      <div class="review-author-info">
-      <h3>Ovidiu Matei</h3>
-      <p>Mechanical Design Engineer</p>
-      <p>2D/3D CAD · Industrial Equipment</p>
+      <h3>Perspectivă profesionistă</h3>
+      <p>Analiză atentă și recomandări orientate spre carieră.</p>
      </div>
     </div>
+   </article>
 
-    <div class="review-footer">
-     <span>Recomandare LinkedIn</span>
-     <span>10 noiembrie 2026</span>
+   <article class="review-card" data-reveal>
+    <div class="review-card-top">
+     <span class="review-quote" aria-hidden="true">↗</span>
     </div>
-
-    <a class="review-link" href="https://www.linkedin.com/in/ovidiu-matei-b071b9110/" target="_blank" rel="noopener noreferrer">
-     Profil LinkedIn ↗
-    </a>
-
+    <div class="review-tag">03 · CLARITATE</div>
+    <h3>Pași cu sens</h3>
+    <p class="review-text">
+     Obiectivul este să îți înțelegi mai bine opțiunile, să îți valorifici punctele forte și să identifici pași concreți pentru următoarea etapă a parcursului profesional.
+    </p>
+    <div class="review-divider"></div>
+    <div class="review-author">
+     <div class="review-avatar" aria-hidden="true">◇</div>
+     <div class="review-author-info">
+      <h3>Direcție profesională</h3>
+      <p>Mai multă claritate în deciziile legate de carieră.</p>
+     </div>
+    </div>
    </article>
 
   </div>
 
   <div class="reviews-note" data-reveal>
    <span>✦</span>
-   Recomandări primite prin profilul meu personal LinkedIn.
+   CARELYNTA înseamnă atenție la detalii, comunicare deschisă și respect pentru obiectivele fiecărei persoane.
   </div>
 
   <div class="reviews-action" data-reveal>
