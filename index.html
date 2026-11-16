@@ -261,6 +261,108 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
 .form-status.error{color:#B42318}
 .contact-form button:disabled{opacity:.65;cursor:wait;transform:none}
 
+/* CONTACT SUCCESS */
+#contactGrid[hidden],
+#contactSuccess[hidden]{
+ display:none!important;
+}
+
+.contact-success{
+ width:min(850px,90%);
+ margin:0 auto;
+ padding:85px 35px;
+ text-align:center;
+ color:white;
+ background:
+  radial-gradient(ellipse at 15% 90%,#287D8345,transparent 45%),
+  radial-gradient(ellipse at 90% 10%,#C18B3540,transparent 45%),
+  linear-gradient(135deg,#061725,#092A46);
+ border:1px solid #C18B3560;
+ box-shadow:0 25px 65px #092A4625;
+ animation:successAppear .8s ease both;
+}
+
+.success-icon{
+ width:82px;
+ height:82px;
+ margin:0 auto 28px;
+ display:grid;
+ place-items:center;
+ border:1px solid var(--gold2);
+ border-radius:50%;
+ color:var(--gold2);
+ font-size:38px;
+ box-shadow:0 0 30px #C18B3530;
+}
+
+.contact-success .eyebrow{
+ color:var(--gold2);
+ margin-bottom:18px;
+}
+
+.contact-success h2{
+ color:white;
+ font-size:clamp(34px,5vw,55px);
+ margin-bottom:20px;
+}
+
+.contact-success h2 span{
+ color:var(--gold2);
+}
+
+.contact-success p{
+ max-width:590px;
+ margin:0 auto;
+ color:#D5E1E7;
+ font-size:15px;
+ line-height:1.9;
+}
+
+.new-request{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:18px;
+ margin-top:35px;
+ padding:17px 25px;
+ border:1px solid var(--gold);
+ background:linear-gradient(120deg,var(--gold),var(--gold2));
+ color:var(--deep);
+ font-family:var(--mont);
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ cursor:pointer;
+ transition:.4s;
+}
+
+.new-request:hover{
+ transform:translateY(-5px);
+ box-shadow:0 15px 35px #C18B3545;
+}
+
+.new-request .arrow{
+ font-size:24px;
+ line-height:1;
+ transition:.3s;
+}
+
+.new-request:hover .arrow{
+ transform:translateX(7px);
+}
+
+@keyframes successAppear{
+ from{
+  opacity:0;
+  transform:translateY(25px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
+}
+
 /* FOOTER */
 footer{background:#050E17;color:#BCC9D0;padding:45px 0}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:25px}
@@ -334,6 +436,20 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  .cv-document{width:270px;min-height:340px;padding:28px}
  .cv-doc-score{width:105px;height:105px;right:-5px;bottom:12px}
  .cv-doc-score strong{font-size:25px}
+ .contact-success{
+  width:100%;
+  padding:65px 22px;
+ }
+ .contact-success h2{
+  font-size:36px;
+ }
+ .contact-success p{
+  font-size:14px;
+ }
+ .new-request{
+  width:100%;
+  padding:17px 15px;
+ }
 }
 @media(pointer:coarse){.cursor-glow{display:none}}
 @media(prefers-reduced-motion:reduce){
@@ -632,67 +748,96 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
 
 <!-- CONTACT -->
 <section class="section" id="contact">
- <div class="container contact-grid">
-  <div data-reveal="left">
-   <div class="eyebrow">HAI SĂ DISCUTĂM</div>
-   <h2>Următorul pas începe cu tine.</h2>
-   <p>Spune-mi ce îți dorești să schimbi în parcursul tău profesional. Vom identifica împreună care este cea mai potrivită direcție.</p>
-   <p class="contact-emphasis">Cariera ta merită atenție, claritate și o strategie potrivită.</p>
-   <a class="btn btn-outline" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn CARELYNTA ↗</a>
+ <div class="container">
+
+  <div class="contact-grid" id="contactGrid">
+
+   <div data-reveal="left">
+    <div class="eyebrow">HAI SĂ DISCUTĂM</div>
+    <h2>Următorul pas începe cu tine.</h2>
+    <p>Spune-mi ce îți dorești să schimbi în parcursul tău profesional. Vom identifica împreună care este cea mai potrivită direcție.</p>
+    <p class="contact-emphasis">Cariera ta merită atenție, claritate și o strategie potrivită.</p>
+    <a class="btn btn-outline" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn CARELYNTA ↗</a>
+   </div>
+
+   <form
+    class="contact-form"
+    id="contactForm"
+    action="https://formsubmit.co/ajax/marianapastean.studio@gmail.com"
+    method="POST"
+    data-reveal="right"
+   >
+
+    <input type="hidden" name="_subject" value="Solicitare nouă de pe site-ul CARELYNTA">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_replyto" id="replyTo">
+
+    <div class="form-row">
+     <div class="field">
+      <label for="name">Nume și prenume *</label>
+      <input id="name" name="name" type="text" required placeholder="Numele tău" autocomplete="name">
+     </div>
+
+     <div class="field">
+      <label for="email">Adresa de e-mail *</label>
+      <input id="email" name="email" type="email" required placeholder="nume@email.com" autocomplete="email">
+     </div>
+    </div>
+
+    <div class="field">
+     <label for="service">Cu ce te pot ajuta?</label>
+     <select id="service" name="service">
+      <option value="">Alege un serviciu</option>
+      <option>Career Coaching</option>
+      <option>CV Review &amp; Optimization</option>
+      <option>LinkedIn Profile Optimization</option>
+      <option>Interview preparation</option>
+      <option>Career Development</option>
+      <option>Nu sunt sigur(ă) încă</option>
+     </select>
+    </div>
+
+    <div class="field">
+     <label for="message">Mesajul tău</label>
+     <textarea id="message" name="message" placeholder="Povestește-mi pe scurt ce îți dorești..."></textarea>
+    </div>
+
+    <label class="consent">
+     <input type="checkbox" id="consent" name="consent" value="Acord exprimat" required>
+     <span>Sunt de acord ca datele completate să fie folosite pentru a răspunde solicitării mele. *</span>
+    </label>
+
+    <button class="btn btn-gold" id="submitBtn" type="submit">
+     Trimite solicitarea ↗
+    </button>
+
+    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+   </form>
   </div>
 
-  <!-- FORMULAR CONECTAT LA FORMSUBMIT -->
-  <form
-   class="contact-form"
-   id="contactForm"
-   action="https://formsubmit.co/ajax/marianapastean.studio@gmail.com"
-   method="POST"
-   data-reveal="right"
-  >
-   <input type="hidden" name="_subject" value="Solicitare nouă de pe site-ul CARELYNTA">
-   <input type="hidden" name="_template" value="table">
-   <input type="hidden" name="_replyto" id="replyTo">
+  <!-- CONFIRMARE DUPĂ TRIMITERE -->
+  <div class="contact-success" id="contactSuccess" hidden aria-live="polite">
 
-   <div class="form-row">
-    <div class="field">
-     <label for="name">Nume și prenume *</label>
-     <input id="name" name="name" required placeholder="Numele tău" autocomplete="name">
-    </div>
-    <div class="field">
-     <label for="email">Adresa de e-mail *</label>
-     <input id="email" name="email" type="email" required placeholder="nume@email.com" autocomplete="email">
-    </div>
-   </div>
+   <div class="success-icon" aria-hidden="true">✓</div>
 
-   <div class="field">
-    <label for="service">Cu ce te pot ajuta?</label>
-    <select id="service" name="service">
-     <option value="">Alege un serviciu</option>
-     <option>Career Coaching</option>
-     <option>CV Review &amp; Optimization</option>
-     <option>LinkedIn Profile Optimization</option>
-     <option>Interview preparation</option>
-     <option>Career Development</option>
-     <option>Nu sunt sigur(ă) încă</option>
-    </select>
-   </div>
+   <div class="eyebrow">CARELYNTA · SOLICITARE TRANSMISĂ</div>
 
-   <div class="field">
-    <label for="message">Mesajul tău</label>
-    <textarea id="message" name="message" placeholder="Povestește-mi pe scurt ce îți dorești..."></textarea>
-   </div>
+   <h2>Mulțumesc pentru <span>mesaj!</span></h2>
 
-   <label class="consent">
-    <input type="checkbox" id="consent" name="consent" value="Acord exprimat" required>
-    <span>Sunt de acord ca datele completate să fie folosite pentru a răspunde solicitării mele. *</span>
-   </label>
+   <p>
+    Solicitarea ta a fost trimisă cu succes.
+    Îți mulțumesc pentru încredere și pentru că ai ales CARELYNTA.
+    Voi reveni către tine în cel mai scurt timp.
+   </p>
 
-   <button class="btn btn-gold" id="submitBtn" type="submit">
-    Trimite solicitarea ↗
+   <button type="button" class="new-request" id="newRequest">
+    <span>Trimite o nouă solicitare</span>
+    <span class="arrow" aria-hidden="true">→</span>
    </button>
 
-   <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-  </form>
+  </div>
+
  </div>
 </section>
 
@@ -794,59 +939,166 @@ if(window.matchMedia('(pointer:fine)').matches){
 }
 
 /* CONTACT FORM - FORMSUBMIT AJAX */
-const contactForm=document.getElementById('contactForm');
-const formStatus=document.getElementById('formStatus');
-const submitBtn=document.getElementById('submitBtn');
-const replyTo=document.getElementById('replyTo');
 
-contactForm.addEventListener('submit',async function(e){
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+const replyTo = document.getElementById('replyTo');
+
+const contactGrid = document.getElementById('contactGrid');
+const contactSuccess = document.getElementById('contactSuccess');
+const newRequestBtn = document.getElementById('newRequest');
+
+let isSending = false;
+
+contactForm.addEventListener('submit', async function(e){
+
  e.preventDefault();
 
- if(!this.reportValidity())return;
+ if(isSending)return;
 
- const emailInput=document.getElementById('email');
+ if(!contactForm.reportValidity())return;
 
- /* Setează adresa vizitatorului ca adresă pentru răspuns */
- replyTo.value=emailInput.value.trim();
+ const emailInput = document.getElementById('email');
+ const originalButtonText = 'Trimite solicitarea ↗';
 
- /* Pregătește formularul pentru trimitere */
- const formData=new FormData(this);
+ replyTo.value = emailInput.value.trim();
 
- submitBtn.disabled=true;
- submitBtn.textContent='Se trimite...';
- formStatus.textContent='Solicitarea ta este în curs de trimitere.';
- formStatus.className='form-status';
+ const formData = new FormData(contactForm);
+ const controller = new AbortController();
+
+ let timeoutId;
+
+ isSending = true;
+
+ submitBtn.disabled = true;
+ submitBtn.textContent = 'Se trimite...';
+
+ formStatus.textContent = 'Solicitarea ta este în curs de trimitere.';
+ formStatus.className = 'form-status';
 
  try{
-  const response=await fetch(this.action,{
+
+  /* Limitează așteptarea pentru a evita blocarea formularului */
+  timeoutId = setTimeout(()=>{
+   controller.abort();
+  },25000);
+
+  const response = await fetch(contactForm.action,{
    method:'POST',
    body:formData,
    headers:{
     'Accept':'application/json'
-   }
+   },
+   signal:controller.signal,
+   cache:'no-store'
   });
 
-  const result=await response.json();
+  const responseText = await response.text();
 
-  if(response.ok && result.success){
-   formStatus.textContent='Mesajul tău a fost trimis cu succes! Îți mulțumesc pentru mesaj. Voi reveni către tine în cel mai scurt timp.';
-   formStatus.className='form-status success';
+  let result;
 
-   this.reset();
+  try{
+   result = JSON.parse(responseText);
+  }catch(parseError){
+   throw new Error('Serverul a returnat un răspuns care nu poate fi interpretat.');
+  }
+
+  const successValue = String(result.success).toLowerCase();
+
+  if(
+   response.ok &&
+   (
+    result.success === true ||
+    successValue === 'true' ||
+    successValue === 'success'
+   )
+  ){
+
+   /* Resetarea formularului după confirmarea trimiterii */
+   contactForm.reset();
+
+   replyTo.value = '';
+
+   /* Ascunde întreaga secțiune inițială de contact */
+   contactGrid.hidden = true;
+
+   /* Afișează confirmarea */
+   contactSuccess.hidden = false;
+
+   /* Mută vizitatorul la mesajul de confirmare */
+   setTimeout(()=>{
+    const sectionTop = document.getElementById('contact').getBoundingClientRect().top + window.scrollY - 85;
+
+    window.scrollTo({
+     top:sectionTop,
+     behavior:'smooth'
+    });
+   },100);
+
   }else{
-   throw new Error(result.message || 'Trimiterea nu a putut fi finalizată.');
+
+   throw new Error(
+    result.message || 'Trimiterea nu a putut fi confirmată.'
+   );
+
   }
 
  }catch(error){
-  console.error('Eroare la trimiterea formularului:',error);
 
-  formStatus.textContent='Mesajul nu a putut fi trimis momentan. Te rog să încerci din nou sau să mă contactezi prin LinkedIn.';
-  formStatus.className='form-status error';
+  console.error('Eroare la trimiterea formularului CARELYNTA:',error);
+
+  if(error.name === 'AbortError'){
+
+   formStatus.textContent =
+    'Trimiterea durează prea mult. Te rog să verifici conexiunea la internet și să încerci din nou.';
+
+  }else{
+
+   formStatus.textContent =
+    'Mesajul nu a putut fi trimis momentan. Te rog să încerci din nou sau să mă contactezi prin LinkedIn.';
+
+  }
+
+  formStatus.className = 'form-status error';
 
  }finally{
-  submitBtn.disabled=false;
-  submitBtn.textContent='Trimite solicitarea ↗';
+
+  clearTimeout(timeoutId);
+
+  isSending = false;
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = originalButtonText;
+
  }
+
+});
+
+
+/* REVENIRE LA FORMULAR - O NOUĂ SOLICITARE */
+
+newRequestBtn.addEventListener('click',()=>{
+
+ contactSuccess.hidden = true;
+
+ contactGrid.hidden = false;
+
+ contactForm.reset();
+
+ replyTo.value = '';
+
+ formStatus.textContent = '';
+ formStatus.className = 'form-status';
+
+ /* Revine la începutul secțiunii de contact */
+ const sectionTop = document.getElementById('contact').getBoundingClientRect().top + window.scrollY - 85;
+
+ window.scrollTo({
+  top:sectionTop,
+  behavior:'smooth'
+ });
+
 });
 </script>
 
