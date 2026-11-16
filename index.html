@@ -256,7 +256,10 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
 .field textarea{min-height:130px;resize:vertical}
 .consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#71818B;margin-bottom:23px}
 .consent input{margin-top:5px;accent-color:var(--gold)}
-.form-status{margin-top:15px;font-size:13px}
+.form-status{margin-top:15px;font-size:13px;min-height:24px}
+.form-status.success{color:#18734B}
+.form-status.error{color:#B42318}
+.contact-form button:disabled{opacity:.65;cursor:wait;transform:none}
 
 /* FOOTER */
 footer{background:#050E17;color:#BCC9D0;padding:45px 0}
@@ -638,7 +641,18 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
    <a class="btn btn-outline" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn CARELYNTA ↗</a>
   </div>
 
-  <form class="contact-form" id="contactForm" data-reveal="right">
+  <!-- FORMULAR CONECTAT LA FORMSUBMIT -->
+  <form
+   class="contact-form"
+   id="contactForm"
+   action="https://formsubmit.co/ajax/marianapastean.studio@gmail.com"
+   method="POST"
+   data-reveal="right"
+  >
+   <input type="hidden" name="_subject" value="Solicitare nouă de pe site-ul CARELYNTA">
+   <input type="hidden" name="_template" value="table">
+   <input type="hidden" name="_replyto" id="replyTo">
+
    <div class="form-row">
     <div class="field">
      <label for="name">Nume și prenume *</label>
@@ -669,11 +683,14 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
    </div>
 
    <label class="consent">
-    <input type="checkbox" id="consent" required>
+    <input type="checkbox" id="consent" name="consent" value="Acord exprimat" required>
     <span>Sunt de acord ca datele completate să fie folosite pentru a răspunde solicitării mele. *</span>
    </label>
 
-   <button class="btn btn-gold" type="submit">Trimite solicitarea ↗</button>
+   <button class="btn btn-gold" id="submitBtn" type="submit">
+    Trimite solicitarea ↗
+   </button>
+
    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
   </form>
  </div>
@@ -776,27 +793,60 @@ if(window.matchMedia('(pointer:fine)').matches){
  });
 }
 
-/* CONTACT FORM */
-document.getElementById('contactForm').addEventListener('submit',function(e){
+/* CONTACT FORM - FORMSUBMIT AJAX */
+const contactForm=document.getElementById('contactForm');
+const formStatus=document.getElementById('formStatus');
+const submitBtn=document.getElementById('submitBtn');
+const replyTo=document.getElementById('replyTo');
+
+contactForm.addEventListener('submit',async function(e){
  e.preventDefault();
+
  if(!this.reportValidity())return;
 
- const data=new FormData(this);
- const name=data.get('name');
- const email=data.get('email');
- const service=data.get('service')||'Nespecificat';
- const message=data.get('message')||'Fără mesaj suplimentar';
+ const emailInput=document.getElementById('email');
 
- const subject=encodeURIComponent('Solicitare CARELYNTA - '+service);
- const body=encodeURIComponent(
-  'Nume: '+name+'\n'+
-  'E-mail: '+email+'\n'+
-  'Serviciu: '+service+'\n\n'+
-  'Mesaj:\n'+message
- );
+ /* Setează adresa vizitatorului ca adresă pentru răspuns */
+ replyTo.value=emailInput.value.trim();
 
- document.getElementById('formStatus').textContent='Se deschide aplicația de e-mail...';
- window.location.href='mailto:marianapastean.studio@gmail.com?subject='+subject+'&body='+body;
+ /* Pregătește formularul pentru trimitere */
+ const formData=new FormData(this);
+
+ submitBtn.disabled=true;
+ submitBtn.textContent='Se trimite...';
+ formStatus.textContent='Solicitarea ta este în curs de trimitere.';
+ formStatus.className='form-status';
+
+ try{
+  const response=await fetch(this.action,{
+   method:'POST',
+   body:formData,
+   headers:{
+    'Accept':'application/json'
+   }
+  });
+
+  const result=await response.json();
+
+  if(response.ok && result.success){
+   formStatus.textContent='Mesajul tău a fost trimis cu succes! Îți mulțumesc pentru mesaj. Voi reveni către tine în cel mai scurt timp.';
+   formStatus.className='form-status success';
+
+   this.reset();
+  }else{
+   throw new Error(result.message || 'Trimiterea nu a putut fi finalizată.');
+  }
+
+ }catch(error){
+  console.error('Eroare la trimiterea formularului:',error);
+
+  formStatus.textContent='Mesajul nu a putut fi trimis momentan. Te rog să încerci din nou sau să mă contactezi prin LinkedIn.';
+  formStatus.className='form-status error';
+
+ }finally{
+  submitBtn.disabled=false;
+  submitBtn.textContent='Trimite solicitarea ↗';
+ }
 });
 </script>
 
