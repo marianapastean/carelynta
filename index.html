@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -196,18 +195,143 @@ header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
 .process-item h3{font-size:29px;color:var(--navy);margin:15px 0}
 .process-item p{color:var(--muted);font-size:17px}
 
-/* REVIEWS */
-.reviews{background:radial-gradient(circle at 100% 0%,#155477 0%,transparent 40%),linear-gradient(130deg,#061725,#092A46);color:white}
-.reviews h2{color:white}
-.reviews-intro{color:#D0DEE6;max-width:750px;font-size:18px}
-.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px;margin-top:50px}
-.review-card{padding:35px;min-height:300px;display:flex;flex-direction:column;border:1px solid #D0A65C60;background:#FFFFFF0C;transition:.5s}
-.review-card:hover{transform:translateY(-12px) scale(1.02);background:#FFFFFF16;box-shadow:0 20px 50px #0004}
-.review-stars{color:var(--gold2);font-size:24px;letter-spacing:5px}
-.review-text{flex:1;margin:25px 0;font-size:17px;color:#E2E9ED}
-.review-author{font-weight:800;font-size:16px}
-.review-role{font-size:14px;color:#C0D0D8}
-.review-link{margin-top:18px;font-size:14px;font-weight:800;color:var(--gold2)}
+/* REVIEWS - INTEGRATE IN DESIGNUL CARELYNTA */
+.reviews{
+ color:white;
+ overflow:hidden;
+ background:
+  radial-gradient(ellipse at 100% 0%,#155477 0%,transparent 40%),
+  radial-gradient(ellipse at 0% 100%,#287D8330,transparent 40%),
+  linear-gradient(130deg,#061725,#092A46);
+}
+.reviews:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ pointer-events:none;
+ opacity:.09;
+ background-image:radial-gradient(#FFFFFF 1px,transparent 1px);
+ background-size:42px 42px;
+}
+.reviews .container{position:relative;z-index:2}
+.reviews-heading{text-align:center;max-width:850px;margin:0 auto 60px}
+.reviews-heading .eyebrow{color:var(--gold2)}
+.reviews h2{color:white;margin:22px 0}
+.reviews h2 span{display:block;color:var(--gold2)}
+.reviews-intro{color:#D0DEE6;max-width:750px;font-size:18px;margin:0 auto}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:50px}
+.review-card{
+ position:relative;
+ min-height:390px;
+ padding:38px;
+ display:flex;
+ flex-direction:column;
+ overflow:hidden;
+ border:1px solid #D0A65C60;
+ background:linear-gradient(145deg,#FFFFFF12,#FFFFFF07);
+ box-shadow:0 18px 45px #0002;
+ transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+.review-card:hover{
+ transform:translateY(-6px);
+ box-shadow:0 25px 55px #0004;
+ border-color:#D0A65C;
+}
+.review-card:before{
+ content:"";
+ position:absolute;
+ width:180px;
+ height:180px;
+ top:-120px;
+ right:-90px;
+ border-radius:50%;
+ background:radial-gradient(circle,#287D8340,transparent 70%);
+ pointer-events:none;
+}
+.review-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.review-quote{font-family:var(--lora);font-size:75px;line-height:.8;color:var(--gold2);opacity:.9}
+.review-tag{
+ display:inline-flex;
+ align-self:flex-start;
+ padding:7px 12px;
+ margin-bottom:18px;
+ border:1px solid #F0CC8260;
+ color:var(--gold2);
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:1.5px;
+ text-transform:uppercase;
+}
+.review-text{
+ flex:1;
+ margin:8px 0 28px;
+ color:#E2E9ED;
+ font-size:18px;
+ line-height:1.9;
+}
+.review-divider{height:1px;width:100%;margin-bottom:23px;background:linear-gradient(90deg,#C18B35A0,#FFFFFF12)}
+.review-author{display:flex;align-items:center;gap:16px}
+.review-avatar{
+ width:58px;
+ height:58px;
+ flex-shrink:0;
+ display:grid;
+ place-items:center;
+ border:1px solid #F0CC8270;
+ border-radius:50%;
+ background:linear-gradient(145deg,#287D83,#155477);
+ color:white;
+ font-size:17px;
+ font-weight:800;
+}
+.review-author-info h3{font-family:var(--lora);font-size:20px;color:white;margin-bottom:4px}
+.review-author-info p{font-size:13px;line-height:1.6;color:#C0D0D8}
+.review-footer{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:23px;
+ padding-top:17px;
+ border-top:1px solid #FFFFFF20;
+ color:#B9CDD5;
+ font-size:12px;
+}
+.review-link{
+ display:inline-block;
+ margin-top:16px;
+ color:var(--gold2);
+ font-size:13px;
+ font-weight:800;
+ letter-spacing:.4px;
+ transition:color .25s ease;
+}
+.review-link:hover{color:#FFFFFF}
+.reviews-note{
+ margin:38px auto 0;
+ text-align:center;
+ color:#D0DEE6;
+ font-size:15px;
+}
+.reviews-note span{color:var(--gold2);margin-right:9px}
+.reviews-action{text-align:center;margin-top:30px}
+.reviews-button{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:14px;
+ padding:17px 27px;
+ border:1px solid var(--gold);
+ background:linear-gradient(120deg,var(--gold),var(--gold2));
+ color:var(--deep);
+ font-size:14px;
+ font-weight:800;
+ letter-spacing:.5px;
+ transition:transform .3s ease,box-shadow .3s ease;
+}
+.reviews-button:hover{transform:translateY(-4px);box-shadow:0 14px 35px #C18B3540}
+.reviews-button span{font-size:21px}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
@@ -260,7 +384,7 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
 [data-reveal="zoom"]{transform:scale(.85)}
 [data-reveal].visible{opacity:1;transform:translate(0) scale(1)}
 .service-card:nth-child(2),.review-card:nth-child(2),.process-item:nth-child(2){transition-delay:.12s}
-.service-card:nth-child(3),.review-card:nth-child(3),.process-item:nth-child(3){transition-delay:.22s}
+.service-card:nth-child(3),.process-item:nth-child(3){transition-delay:.22s}
 
 /* RESPONSIVE */
 @media(max-width:1050px){
@@ -280,7 +404,8 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  .cv-check-benefits{text-align:left;display:inline-block}
  .cv-check-cta{align-items:center}
  .cv-check-visual{min-height:390px}
- .service-grid,.review-grid{grid-template-columns:repeat(2,1fr)}
+ .service-grid{grid-template-columns:repeat(2,1fr)}
+ .review-grid{grid-template-columns:1fr;max-width:680px;margin-left:auto;margin-right:auto}
  .experience-box{max-width:480px;margin:auto}
 }
 @media(max-width:580px){
@@ -299,7 +424,7 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  .orbit{width:275px}
  .orbit.two{width:220px}
  h2{font-size:40px}
- .service-grid,.review-grid,.process-grid{grid-template-columns:1fr}
+ .service-grid,.process-grid{grid-template-columns:1fr}
  .service-card{min-height:250px}
  .services h2{font-size:40px}
  .services-note{font-size:21px}
@@ -321,6 +446,13 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  .about-copy p,.coaching-copy p,.contact-grid>div:first-child p{font-size:17px}
  .check-list li{font-size:16px}
  .process-item p,.review-text,.service-card p{font-size:16px}
+ .reviews-heading{margin-bottom:40px}
+ .reviews-heading h2{font-size:39px}
+ .reviews-intro{font-size:17px}
+ .review-card{padding:28px 23px;min-height:0}
+ .review-author-info h3{font-size:19px}
+ .review-footer{flex-direction:column;align-items:flex-start}
+ .reviews-button{width:100%;font-size:13px;text-align:center}
 }
 @media(pointer:coarse){.cursor-glow{display:none}}
 @media(prefers-reduced-motion:reduce){
@@ -552,601 +684,107 @@ footer{background:#050E17;color:#BCC9D0;padding:45px 0}
  </div>
 </section>
 
-   
-<!-- SECTIUNEA RECOMANDARI CARELYNTA -->
-<section class="reviews-section" id="recomandari">
-  <div class="reviews-container">
+<!-- RECOMANDARI -->
+<section class="section reviews" id="reviews">
+ <div class="container">
 
-    <div class="reviews-heading reveal">
-      <span class="reviews-eyebrow">
-        <span class="eyebrow-line"></span>
-        EXPERIENȚE REALE
-      </span>
+  <div class="reviews-heading" data-reveal>
+   <div class="eyebrow">EXPERIENȚE REALE</div>
+   <h2>Încrederea se construiește <span>prin rezultate.</span></h2>
+   <p class="reviews-intro">
+    Fiecare colaborare înseamnă atenție, implicare și respect pentru obiectivele persoanei cu care lucrez. Iată câteva dintre recomandările primite de la clienți.
+   </p>
+   <div class="services-divider"></div>
+  </div>
 
-      <h2>
-        Încrederea se construiește
-        <span>prin rezultate.</span>
-      </h2>
+  <div class="review-grid">
 
-      <p>
-        Fiecare colaborare înseamnă atenție, implicare și
-        respect pentru obiectivele persoanei cu care lucrez.
-        Iată câteva dintre recomandările primite de la clienți.
-      </p>
+   <!-- RECOMANDAREA DULMA LILIANA -->
+   <article class="review-card" data-reveal>
+
+    <div class="review-card-top">
+     <span class="review-quote" aria-hidden="true">“</span>
     </div>
 
-    <div class="reviews-grid">
+    <div class="review-tag">EXAMINARE CV</div>
 
-      <!-- RECOMANDAREA 1 -->
-      <article class="review-card reveal">
+    <p class="review-text">
+     Colaborarea a fost plăcută, iar rezultatele au fost pe măsura așteptărilor mele. Sunt foarte mulțumită de CV și de materialele realizate. Recomand cu încredere pentru profesionalism și pentru calitatea serviciilor oferite.
+    </p>
 
-        <div class="review-card-top">
-          <span class="review-quote">“</span>
-          <span class="review-rating">★★★★★</span>
-        </div>
+    <div class="review-divider"></div>
 
-        <div class="review-tag">EXAMINARE CV</div>
-
-        <p class="review-text">
-          Colaborarea a fost plăcută, iar rezultatele au fost
-          pe măsura așteptărilor mele. Sunt foarte mulțumită
-          de CV și de materialele realizate. Recomand cu
-          încredere pentru profesionalism și pentru calitatea
-          serviciilor oferite.
-        </p>
-
-        <div class="review-divider"></div>
-
-        <div class="review-author">
-          <div class="review-avatar">DL</div>
-
-          <div class="review-author-info">
-            <h3>Dulma Liliana</h3>
-            <p>Director Financiar</p>
-            <p>HV SHIELDING SRL</p>
-          </div>
-        </div>
-
-        <div class="review-footer">
-          <span>LinkedIn · Recomandare primită</span>
-          <span>12.11.2026</span>
-        </div>
-
-        <div class="review-decoration"></div>
-      </article>
-
-      <!-- RECOMANDAREA 2 -->
-      <article class="review-card reveal">
-
-        <div class="review-card-top">
-          <span class="review-quote">“</span>
-          <span class="review-rating">★★★★★</span>
-        </div>
-
-        <div class="review-tag">COLABORARE PROFESIONALĂ</div>
-
-        <p class="review-text">
-          O persoană serioasă, care se remarcă prin
-          profesionalism și promptitudine.
-          Recomand cu încredere!
-        </p>
-
-        <div class="review-divider"></div>
-
-        <div class="review-author">
-          <div class="review-avatar">OM</div>
-
-          <div class="review-author-info">
-            <h3>Ovidiu Matei</h3>
-            <p>Mechanical Design Engineer</p>
-            <p>2D/3D CAD · Industrial Equipment</p>
-          </div>
-        </div>
-
-        <div class="review-footer">
-          <span>LinkedIn · Recomandare primită</span>
-          <span>10.11.2026</span>
-        </div>
-
-        <div class="review-decoration"></div>
-      </article>
-
+    <div class="review-author">
+     <div class="review-avatar" aria-hidden="true">DL</div>
+     <div class="review-author-info">
+      <h3>Dulma Liliana</h3>
+      <p>Director Financiar</p>
+      <p>HV SHIELDING SRL</p>
+     </div>
     </div>
 
-    <div class="reviews-note reveal">
-      <span class="note-symbol">✦</span>
-      Recomandări primite prin profilul meu personal LinkedIn.
+    <div class="review-footer">
+     <span>Recomandare LinkedIn</span>
+     <span>12 noiembrie 2026</span>
     </div>
 
-    <div class="reviews-action reveal">
-      <a href="#contact" class="reviews-button">
-        Hai să discutăm despre obiectivele tale
-        <span>→</span>
-      </a>
+    <a class="review-link" href="https://www.linkedin.com/in/dulma-liliana-0479b768" target="_blank" rel="noopener noreferrer">
+     Profil LinkedIn ↗
+    </a>
+
+   </article>
+
+   <!-- RECOMANDAREA OVIDIU MATEI -->
+   <article class="review-card" data-reveal>
+
+    <div class="review-card-top">
+     <span class="review-quote" aria-hidden="true">“</span>
     </div>
+
+    <div class="review-tag">COLABORARE PROFESIONALĂ</div>
+
+    <p class="review-text">
+     O persoană serioasă, care se remarcă prin profesionalism și promptitudine. Recomand cu încredere!
+    </p>
+
+    <div class="review-divider"></div>
+
+    <div class="review-author">
+     <div class="review-avatar" aria-hidden="true">OM</div>
+     <div class="review-author-info">
+      <h3>Ovidiu Matei</h3>
+      <p>Mechanical Design Engineer</p>
+      <p>2D/3D CAD · Industrial Equipment</p>
+     </div>
+    </div>
+
+    <div class="review-footer">
+     <span>Recomandare LinkedIn</span>
+     <span>10 noiembrie 2026</span>
+    </div>
+
+    <a class="review-link" href="https://www.linkedin.com/in/ovidiu-matei-b071b9110/" target="_blank" rel="noopener noreferrer">
+     Profil LinkedIn ↗
+    </a>
+
+   </article>
 
   </div>
+
+  <div class="reviews-note" data-reveal>
+   <span>✦</span>
+   Recomandări primite prin profilul meu personal LinkedIn.
+  </div>
+
+  <div class="reviews-action" data-reveal>
+   <a href="#contact" class="reviews-button">
+    Hai să discutăm despre obiectivele tale
+    <span aria-hidden="true">→</span>
+   </a>
+  </div>
+
+ </div>
 </section>
-
-<style>
-/* ==================================
-   CARELYNTA - RECOMANDARI
-   PALETA NAVY / PETROL / TURCOAZ
-================================== */
-
-.reviews-section {
-  --review-navy: #071B2D;
-  --review-deep: #0B2639;
-  --review-petrol: #123B4A;
-  --review-teal: #2C8990;
-  --review-light: #E9F3F3;
-  --review-gold: #C7A66A;
-  --review-white: #FFFFFF;
-  --review-muted: #6B7D87;
-
-  position: relative;
-  padding: 115px 0;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      circle at 10% 15%,
-      rgba(44,137,144,.09),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 90% 85%,
-      rgba(18,59,74,.07),
-      transparent 35%
-    ),
-    #F5F8F8;
-}
-
-.reviews-container {
-  width: min(1160px, calc(100% - 48px));
-  margin: 0 auto;
-}
-
-/* HEADING */
-
-.reviews-heading {
-  max-width: 790px;
-  margin: 0 auto 65px;
-  text-align: center;
-}
-
-.reviews-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 13px;
-  color: var(--review-teal);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  margin-bottom: 23px;
-}
-
-.eyebrow-line {
-  display: inline-block;
-  width: 35px;
-  height: 2px;
-  background: var(--review-teal);
-}
-
-.reviews-heading h2 {
-  font-family: inherit;
-  color: var(--review-navy);
-  font-size: clamp(38px, 5vw, 60px);
-  line-height: 1.16;
-  font-weight: 800;
-  margin-bottom: 24px;
-  letter-spacing: -1.5px;
-}
-
-.reviews-heading h2 span {
-  display: block;
-  color: var(--review-teal);
-}
-
-.reviews-heading > p {
-  max-width: 700px;
-  margin: 0 auto;
-  color: var(--review-muted);
-  font-size: 19px;
-  line-height: 1.8;
-}
-
-/* CARDS */
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px;
-}
-
-.review-card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 39px;
-  min-height: 490px;
-  display: flex;
-  flex-direction: column;
-
-  background: linear-gradient(
-    145deg,
-    var(--review-navy),
-    var(--review-petrol)
-  );
-
-  border: 1px solid rgba(44,137,144,.4);
-  border-radius: 10px;
-
-  box-shadow: 0 20px 55px rgba(7,27,45,.12);
-
-  transition:
-    transform .45s ease,
-    box-shadow .45s ease,
-    border-color .45s ease;
-}
-
-.review-card:hover {
-  transform: translateY(-9px);
-  box-shadow: 0 30px 65px rgba(7,27,45,.2);
-  border-color: rgba(44,137,144,.9);
-}
-
-/* LIGHT EFFECT */
-
-.review-card::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 300px;
-  height: 300px;
-  top: -180px;
-  right: -130px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(44,137,144,.23),
-    transparent 70%
-  );
-  transition: transform .7s ease;
-}
-
-.review-card:hover::before {
-  transform: scale(1.8);
-}
-
-/* TOP */
-
-.review-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 17px;
-}
-
-.review-quote {
-  color: var(--review-teal);
-  font-family: Georgia, serif;
-  font-size: 80px;
-  line-height: .75;
-}
-
-.review-rating {
-  color: var(--review-gold);
-  font-size: 20px;
-  letter-spacing: 4px;
-}
-
-/* TAG */
-
-.review-tag {
-  align-self: flex-start;
-  padding: 7px 12px;
-  margin-bottom: 20px;
-
-  color: #A8DCDD;
-  background: rgba(44,137,144,.15);
-
-  border: 1px solid rgba(44,137,144,.35);
-  border-radius: 3px;
-
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.6px;
-}
-
-/* TEXT */
-
-.review-text {
-  color: #E7F0F2;
-  font-size: 20px;
-  line-height: 1.8;
-  font-weight: 400;
-  margin-bottom: 30px;
-  flex-grow: 1;
-}
-
-/* DIVIDER */
-
-.review-divider {
-  width: 100%;
-  height: 1px;
-  margin-bottom: 25px;
-
-  background: linear-gradient(
-    90deg,
-    rgba(44,137,144,.8),
-    rgba(255,255,255,.08)
-  );
-}
-
-/* AUTHOR */
-
-.review-author {
-  display: flex;
-  align-items: center;
-  gap: 17px;
-}
-
-.review-avatar {
-  width: 60px;
-  height: 60px;
-  flex-shrink: 0;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 50%;
-  color: white;
-  background: linear-gradient(
-    145deg,
-    #2C8990,
-    #164A59
-  );
-
-  border: 1px solid rgba(168,220,221,.5);
-
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.review-author-info h3 {
-  color: white;
-  font-size: 21px;
-  font-weight: 800;
-  margin-bottom: 5px;
-}
-
-.review-author-info p {
-  color: #B9CDD2;
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-/* FOOTER */
-
-.review-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-
-  margin-top: 27px;
-  padding-top: 18px;
-
-  border-top: 1px solid rgba(255,255,255,.12);
-
-  color: #A8DCDD;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* DECORATION */
-
-.review-decoration {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  bottom: -75px;
-  right: -65px;
-
-  border: 1px solid rgba(44,137,144,.35);
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-/* NOTE */
-
-.reviews-note {
-  text-align: center;
-  color: var(--review-muted);
-  font-size: 15px;
-  margin-top: 40px;
-}
-
-.note-symbol {
-  color: var(--review-teal);
-  margin-right: 9px;
-}
-
-/* ACTION */
-
-.reviews-action {
-  text-align: center;
-  margin-top: 32px;
-}
-
-.reviews-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-
-  padding: 17px 27px;
-
-  background: var(--review-navy);
-  color: white;
-
-  border: 1px solid var(--review-teal);
-  border-radius: 4px;
-
-  font-size: 15px;
-  font-weight: 800;
-
-  transition: .3s ease;
-}
-
-.reviews-button span {
-  color: #A8DCDD;
-  font-size: 21px;
-  transition: transform .3s ease;
-}
-
-.reviews-button:hover {
-  background: var(--review-teal);
-  transform: translateY(-4px);
-}
-
-.reviews-button:hover span {
-  transform: translateX(5px);
-}
-
-/* ANIMATIONS */
-
-.reviews-section .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-
-.reviews-section .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reviews-grid .review-card:nth-child(2) {
-  transition-delay: .15s;
-}
-
-/* TABLET */
-
-@media (max-width: 850px) {
-  .reviews-section {
-    padding: 90px 0;
-  }
-
-  .reviews-grid {
-    grid-template-columns: 1fr;
-    max-width: 650px;
-    margin: 0 auto;
-  }
-
-  .review-card {
-    min-height: auto;
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 520px) {
-  .reviews-container {
-    width: calc(100% - 34px);
-  }
-
-  .reviews-section {
-    padding: 75px 0;
-  }
-
-  .reviews-heading {
-    margin-bottom: 40px;
-  }
-
-  .reviews-heading h2 {
-    font-size: 39px;
-  }
-
-  .reviews-heading > p {
-    font-size: 17px;
-  }
-
-  .review-card {
-    padding: 27px 22px;
-  }
-
-  .review-text {
-    font-size: 18px;
-  }
-
-  .review-author-info h3 {
-    font-size: 19px;
-  }
-
-  .review-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .reviews-button {
-    width: 100%;
-    font-size: 14px;
-  }
-}
-
-/* REDUCED MOTION */
-
-@media (prefers-reduced-motion: reduce) {
-  .reviews-section *,
-  .reviews-section *::before,
-  .reviews-section *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-
-  .reviews-section .reveal {
-    opacity: 1;
-    transform: none;
-  }
-}
-</style>
-
-<script>
-/* ANIMATII LA SCROLL - DOAR PENTRU RECOMANDARI */
-(function () {
-  const section = document.querySelector("#recomandari");
-  if (!section) return;
-
-  const elements = section.querySelectorAll(".reveal");
-
-  if (!("IntersectionObserver" in window)) {
-    elements.forEach(element => element.classList.add("visible"));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: "0px 0px -40px 0px"
-  });
-
-  elements.forEach(element => observer.observe(element));
-})();
-</script>
-<!-- SFARSIT SECTIUNE RECOMANDARI -->
-
 
 <!-- CONTACT -->
 <section class="section" id="contact">
