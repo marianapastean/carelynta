@@ -1,0 +1,1366 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="CARELYNTA – Transformăm CV-ul în oportunitate. Career Coaching, CV Optimization, LinkedIn Profile și Interview Preparation.">
+
+<title>CARELYNTA | Cariera ta merită o direcție</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #B98227;
+  --gold-light: #D8AD62;
+  --navy: #092A46;
+  --black: #050505;
+  --ivory: #F7F4EE;
+  --white: #FFFFFF;
+  --text: #263746;
+  --muted: #747C83;
+  --heading: 'Lora', serif;
+  --body: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: var(--body);
+  background: var(--ivory);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+section {
+  position: relative;
+}
+
+h1, h2, h3 {
+  font-family: var(--heading);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+h2 {
+  color: var(--navy);
+  font-size: clamp(32px, 5vw, 52px);
+  margin: 15px 0 25px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.section {
+  padding: 105px 0;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 25px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  transition: all .35s ease;
+  cursor: pointer;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.btn-gold:hover {
+  background: var(--gold-light);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px #0003;
+}
+
+.btn-outline {
+  color: var(--gold);
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-3px);
+}
+
+/* NAVIGATION */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(5,5,5,.96);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #B9822730;
+}
+
+.nav {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand img {
+  width: 145px;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.menu-btn {
+  display: none;
+  border: none;
+  background: none;
+  color: var(--gold);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 135px 0 85px;
+  background:
+    radial-gradient(ellipse at 85% 50%, #12344c 0%, transparent 48%),
+    var(--black);
+  color: white;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6.2vw, 78px);
+  letter-spacing: -2px;
+  margin: 25px 0;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  font-size: 11px;
+  letter-spacing: .5px;
+  color: #C4C4C4;
+}
+
+.hero-tagline {
+  font-family: var(--heading);
+  font-size: 25px;
+  margin: 30px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.hero-art {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.hero-art img {
+  width: min(100%, 420px);
+  position: relative;
+  z-index: 2;
+  animation: floatLogo 6s ease-in-out infinite;
+  filter: drop-shadow(0 15px 30px #B9822730);
+}
+
+.orbit {
+  position: absolute;
+  width: 420px;
+  max-width: 95%;
+  aspect-ratio: 1;
+  border: 1px solid #B9822740;
+  border-radius: 50%;
+  animation: rotate 35s linear infinite;
+}
+
+.orbit::after {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 25%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 20px var(--gold);
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.experience-number {
+  font-family: var(--heading);
+  font-size: clamp(90px, 12vw, 135px);
+  line-height: 1;
+  color: var(--gold);
+}
+
+.experience-label {
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.about-copy {
+  color: #52616B;
+  font-size: 13px;
+}
+
+.about-copy p {
+  margin-bottom: 18px;
+}
+
+.about-copy strong {
+  color: var(--navy);
+}
+
+/* SERVICES */
+
+.services {
+  background: var(--black);
+  color: white;
+}
+
+.services h2 {
+  color: white;
+}
+
+.services-intro {
+  max-width: 720px;
+  color: #BBBBBB;
+  font-size: 13px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 45px;
+}
+
+.service-card {
+  min-height: 225px;
+  padding: 30px 25px;
+  border: 1px solid #B9822745;
+  background: linear-gradient(145deg,#151515,#080808);
+  transition: .4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-9px);
+  border-color: var(--gold);
+  box-shadow: 0 18px 40px #0008;
+}
+
+.service-number {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.service-card h3 {
+  font-size: 21px;
+  color: white;
+  margin: 24px 0 12px;
+}
+
+.service-card p {
+  font-size: 12px;
+  color: #AAAAAA;
+}
+
+.services-note {
+  text-align: center;
+  color: var(--gold);
+  font-family: var(--heading);
+  font-size: 19px;
+  margin: 45px auto 0;
+  max-width: 760px;
+}
+
+/* CAREER COACHING */
+
+.coaching-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.coaching-subtitle {
+  font-family: var(--heading);
+  font-size: 21px;
+  color: var(--gold);
+  margin: 22px 0;
+}
+
+.coaching-copy {
+  color: #52616B;
+  font-size: 13px;
+}
+
+.check-list {
+  list-style: none;
+  margin-top: 25px;
+}
+
+.check-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #092A4615;
+  font-size: 12px;
+}
+
+.check-list li::before {
+  content: "✦";
+  color: var(--gold);
+  margin-right: 12px;
+}
+
+.coaching-card {
+  padding: 42px;
+  background: var(--navy);
+  color: white;
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 25px 60px #092A4620;
+}
+
+.coaching-card h3 {
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+.coaching-card p {
+  font-size: 13px;
+  color: #D0D8DE;
+}
+
+.goal {
+  border-top: 1px solid #FFFFFF35;
+  padding-top: 22px;
+  margin-top: 25px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* PROCESS */
+
+.process {
+  background: #EEE9DF;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.process-item {
+  border-top: 2px solid var(--gold);
+  padding-top: 20px;
+}
+
+.process-item span {
+  font-family: var(--heading);
+  font-size: 36px;
+  color: var(--gold);
+}
+
+.process-item h3 {
+  font-size: 21px;
+  margin: 12px 0;
+}
+
+.process-item p {
+  font-size: 12px;
+  color: #68737B;
+}
+
+/* LINKEDIN REVIEWS */
+
+.reviews {
+  background: var(--navy);
+  color: white;
+}
+
+.reviews h2 {
+  color: white;
+}
+
+.reviews-intro {
+  color: #C4D0D8;
+  font-size: 13px;
+  max-width: 700px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.review-card {
+  min-height: 250px;
+  padding: 27px;
+  border: 1px solid #B9822760;
+  background: #FFFFFF08;
+  display: flex;
+  flex-direction: column;
+  transition: .35s;
+}
+
+.review-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--gold);
+  background: #FFFFFF12;
+}
+
+.review-stars {
+  color: var(--gold);
+  letter-spacing: 4px;
+}
+
+.review-text {
+  flex: 1;
+  font-size: 12px;
+  color: #E0E0E0;
+  margin: 22px 0;
+}
+
+.review-author {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.review-role {
+  font-size: 10px;
+  color: #AEBEC8;
+}
+
+.review-link {
+  color: var(--gold);
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+/* CONTACT */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.contact-copy p {
+  color: #68737B;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.contact-emphasis {
+  font-family: var(--heading);
+  font-size: 22px !important;
+  color: var(--gold) !important;
+}
+
+.contact-form {
+  padding: 32px;
+  background: var(--ivory);
+  border: 1px solid #092A4620;
+  box-shadow: 0 15px 40px #092A4609;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field {
+  margin-bottom: 17px;
+}
+
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #092A4625;
+  background: white;
+  border-radius: 2px;
+  outline: none;
+  font-size: 12px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--gold);
+}
+
+.field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 10px;
+  color: #68737B;
+  margin-bottom: 20px;
+}
+
+.consent input {
+  margin-top: 5px;
+}
+
+.form-status {
+  font-size: 11px;
+  color: var(--navy);
+  margin-top: 12px;
+  min-height: 20px;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--black);
+  color: #AAAAAA;
+  padding: 30px 0;
+  font-size: 10px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-logo {
+  width: 120px;
+}
+
+/* MOTION */
+
+[data-motion] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .85s ease, transform .85s ease;
+}
+
+[data-motion].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes floatLogo {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+
+  .nav-links {
+    position: fixed;
+    top: 78px;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 78px);
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    transform: translateX(100%);
+    transition: .4s;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .coaching-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .hero-art {
+    min-height: 320px;
+  }
+
+  .hero-art img {
+    width: 280px;
+  }
+
+  .orbit {
+    width: 310px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .service-grid,
+  .review-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width:540px) {
+
+  .section {
+    padding: 75px 0;
+  }
+
+  .service-grid,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .contact-form {
+    padding: 22px;
+  }
+
+  .brand img {
+    width: 125px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-motion] {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="#home">
+      <img src="logo-carelynta.png" alt="CARELYNTA">
+    </a>
+
+    <button class="menu-btn" id="menuBtn"
+      aria-label="Deschide meniul"
+      aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#despre">Despre mine</a>
+      <a href="#servicii">Servicii</a>
+      <a href="#coaching">Career Coaching</a>
+      <a href="#reviews">Review-uri</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div data-motion>
+
+<div class="eyebrow">CARELYNTA · Career Guidance</div>
+
+<h1>
+TRANSFORMĂM CV-UL
+<span>ÎN OPORTUNITATE</span>
+</h1>
+
+<p class="hero-subtitle">
+Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation
+</p>
+
+<p class="hero-tagline">
+Cariera ta merită o direcție
+</p>
+
+<div class="hero-buttons">
+<a href="#contact" class="btn btn-gold">
+Hai să discutăm ↗
+</a>
+
+<a href="#servicii" class="btn btn-outline">
+Descoperă serviciile
+</a>
+</div>
+
+</div>
+
+<div class="hero-art" data-motion>
+<div class="orbit"></div>
+<img src="logo-carelynta.png" alt="Logo CARELYNTA">
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="section" id="despre">
+
+<div class="container about-grid">
+
+<div data-motion>
+<div class="experience-number">7+</div>
+<div class="experience-label">ANI DE EXPERIENȚĂ ÎN HR</div>
+</div>
+
+<div class="about-copy" data-motion>
+
+<div class="eyebrow">Despre mine</div>
+
+<h2>Cariera ta merită o direcție</h2>
+
+<p>
+Sunt specialist HR, cu peste 7 ani de experiență în domeniul resurselor umane,
+calificare de HR Manager, formator și diplomă de consilier în dezvoltare
+personală.
+</p>
+
+<p>
+Am creat <strong>CARELYNTA</strong> din dorința de a aduce împreună experiența practică
+din HR și instrumentele de dezvoltare personală și profesională.
+</p>
+
+<p>
+Cred că fiecare persoană are competențe, experiențe și potențial care merită
+valorificate. Uneori, diferența dintre o candidatură obișnuită și o oportunitate
+reală stă în modul în care îți prezinți experiența și în claritatea direcției pe care
+o urmezi.
+</p>
+
+<p>
+Prin serviciile <strong>CARELYNTA</strong>, îți ofer sprijin personalizat pentru a-ți construi,
+redefini sau dezvolta parcursul profesional.
+</p>
+
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="section services" id="servicii">
+
+<div class="container">
+
+<div data-motion>
+
+<div class="eyebrow">SERVICIILE MELE</div>
+
+<h2>Soluții pentru fiecare etapă a carierei.</h2>
+
+<p class="services-intro">
+Te pot ajuta să faci următorul pas profesional prin servicii adaptate
+nevoilor și obiectivelor tale:
+</p>
+
+</div>
+
+<div class="service-grid">
+
+<article class="service-card" data-motion>
+<span class="service-number">01</span>
+<h3>Career Coaching</h3>
+<p>Clarificarea obiectivelor și identificarea direcției profesionale.</p>
+</article>
+
+<article class="service-card" data-motion>
+<span class="service-number">02</span>
+<h3>CV Review &amp; Optimization</h3>
+<p>Analiza și optimizarea CV-ului din perspectiva unui specialist HR.</p>
+</article>
+
+<article class="service-card" data-motion>
+<span class="service-number">03</span>
+<h3>LinkedIn Profile Optimization</h3>
+<p>Construirea unui profil LinkedIn profesionist și relevant.</p>
+</article>
+
+<article class="service-card" data-motion>
+<span class="service-number">04</span>
+<h3>Interview preparation</h3>
+<p>Pregătire practică pentru interviuri și prezentarea experienței profesionale.</p>
+</article>
+
+<article class="service-card" data-motion>
+<span class="service-number">05</span>
+<h3>Career Development</h3>
+<p>Sprijin în schimbări profesionale, reconversie și dezvoltarea carierei.</p>
+</article>
+
+</div>
+
+<p class="services-note" data-motion>
+Fiecare serviciu pornește de la nevoile tale și urmărește un obiectiv concret.
+</p>
+
+</div>
+</section>
+
+<!-- CAREER COACHING -->
+
+<section class="section coaching" id="coaching">
+
+<div class="container coaching-grid">
+
+<div data-motion>
+
+<div class="eyebrow">CAREER COACHING</div>
+
+<h2>Claritate. Încredere. Direcție.</h2>
+
+<p class="coaching-subtitle">
+Nu trebuie să ai toate răspunsurile despre cariera ta. Dar poți începe prin a-ți
+pune întrebările potrivite.
+</p>
+
+<div class="coaching-copy">
+
+<p>
+Prin sesiunile de <strong>Career Coaching</strong>, te sprijin să îți înțelegi mai bine obiectivele,
+resursele și opțiunile profesionale.
+</p>
+
+<p><strong>Ce urmărim împreună:</strong></p>
+
+</div>
+
+<ul class="check-list">
+<li>Clarificarea obiectivelor profesionale</li>
+<li>Identificarea punctelor forte și a competențelor</li>
+<li>Explorarea oportunităților de carieră</li>
+<li>Identificarea blocajelor și a direcțiilor de dezvoltare</li>
+<li>Stabilirea unor pași concreți pentru următoarea etapă profesională</li>
+</ul>
+
+</div>
+
+<aside class="coaching-card" data-motion>
+
+<div class="eyebrow">Pentru cine este potrivit?</div>
+
+<h3>Career Coaching</h3>
+
+<p>
+Pentru persoanele aflate la început de carieră, pentru cei care își doresc o
+schimbare profesională sau pentru profesioniștii care simt că au nevoie de o
+nouă direcție.
+</p>
+
+<div class="goal">
+Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine
+conturată.
+</div>
+
+</aside>
+
+</div>
+</section>
+
+<!-- PROCESS -->
+
+<section class="section process">
+
+<div class="container">
+
+<div data-motion>
+<div class="eyebrow">Cum începem</div>
+<h2>Un pas clar, apoi următorul.</h2>
+</div>
+
+<div class="process-grid">
+
+<article class="process-item" data-motion>
+<span>01</span>
+<h3>Ne cunoaștem</h3>
+<p>Discutăm despre parcursul tău profesional și obiectivele tale.</p>
+</article>
+
+<article class="process-item" data-motion>
+<span>02</span>
+<h3>Identificăm direcția</h3>
+<p>Analizăm nevoile și alegem serviciul potrivit.</p>
+</article>
+
+<article class="process-item" data-motion>
+<span>03</span>
+<h3>Construim următorul pas</h3>
+<p>Stabilim acțiuni concrete pentru evoluția ta profesională.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- LINKEDIN REVIEWS -->
+
+<section class="section reviews" id="reviews">
+
+<div class="container">
+
+<div data-motion>
+
+<div class="eyebrow">Recomandări</div>
+
+<h2>Experiențe care construiesc încredere.</h2>
+
+<p class="reviews-intro">
+Recomandările autentice reflectă experiențele și colaborările profesionale
+care stau la baza activității CARELYNTA.
+</p>
+
+</div>
+
+<div class="review-grid">
+
+<!-- REVIEW 1: ÎNLOCUIEȘTE CU RECOMANDAREA REALĂ -->
+
+<article class="review-card" data-motion>
+
+<div class="review-stars">★★★★★</div>
+
+<p class="review-text">
+Adaugă aici textul primei recomandări autentice primite pe LinkedIn.
+</p>
+
+<div class="review-author">Numele autorului</div>
+<div class="review-role">Funcția · Compania</div>
+
+<a class="review-link"
+href="https://www.linkedin.com/company/carelynta/?viewAsMember=true"
+target="_blank" rel="noopener">
+Vezi CARELYNTA pe LinkedIn ↗
+</a>
+
+</article>
+
+<!-- REVIEW 2 -->
+
+<article class="review-card" data-motion>
+
+<div class="review-stars">★★★★★</div>
+
+<p class="review-text">
+Adaugă aici textul celei de-a doua recomandări autentice primite pe LinkedIn.
+</p>
+
+<div class="review-author">Numele autorului</div>
+<div class="review-role">Funcția · Compania</div>
+
+<a class="review-link"
+href="https://www.linkedin.com/company/carelynta/?viewAsMember=true"
+target="_blank" rel="noopener">
+Vezi CARELYNTA pe LinkedIn ↗
+</a>
+
+</article>
+
+<!-- REVIEW 3 -->
+
+<article class="review-card" data-motion>
+
+<div class="review-stars">★★★★★</div>
+
+<p class="review-text">
+Adaugă aici textul celei de-a treia recomandări autentice primite pe LinkedIn.
+</p>
+
+<div class="review-author">Numele autorului</div>
+<div class="review-role">Funcția · Compania</div>
+
+<a class="review-link"
+href="https://www.linkedin.com/company/carelynta/?viewAsMember=true"
+target="_blank" rel="noopener">
+Vezi CARELYNTA pe LinkedIn ↗
+</a>
+
+</article>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+
+<div class="container contact-grid">
+
+<div class="contact-copy" data-motion>
+
+<div class="eyebrow">Hai să discutăm</div>
+
+<h2>Următorul pas începe cu tine.</h2>
+
+<p>
+Spune-mi ce îți dorești să schimbi în parcursul tău profesional.
+Vom identifica împreună care este cea mai potrivită direcție.
+</p>
+
+<p class="contact-emphasis">
+Cariera ta merită atenție, claritate și o strategie potrivită.
+</p>
+
+<a class="btn btn-outline"
+href="https://www.linkedin.com/company/carelynta/?viewAsMember=true"
+target="_blank" rel="noopener">
+LinkedIn CARELYNTA ↗
+</a>
+
+</div>
+
+<form class="contact-form" id="contactForm" data-motion>
+
+<div class="form-row">
+
+<div class="field">
+<label for="name">Nume și prenume *</label>
+<input id="name" name="name" required
+autocomplete="name" placeholder="Numele tău">
+</div>
+
+<div class="field">
+<label for="email">Adresa de e-mail *</label>
+<input id="email" name="email" type="email"
+required autocomplete="email" placeholder="nume@email.com">
+</div>
+
+</div>
+
+<div class="field">
+
+<label for="service">Cu ce te pot ajuta?</label>
+
+<select id="service" name="service">
+
+<option value="">Alege un serviciu</option>
+<option>Career Coaching</option>
+<option>CV Review &amp; Optimization</option>
+<option>LinkedIn Profile Optimization</option>
+<option>Interview preparation</option>
+<option>Career Development</option>
+<option>Nu sunt sigur(ă) încă</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label for="message">Mesajul tău</label>
+
+<textarea id="message" name="message"
+placeholder="Povestește-mi pe scurt ce îți dorești..."></textarea>
+
+</div>
+
+<label class="consent">
+
+<input type="checkbox" id="consent" required>
+
+<span>
+Sunt de acord ca datele completate să fie folosite pentru a răspunde solicitării mele. *
+</span>
+
+</label>
+
+<button class="btn btn-gold" type="submit">
+Trimite solicitarea ↗
+</button>
+
+<p class="form-status" id="formStatus"
+role="status" aria-live="polite"></p>
+
+</form>
+
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer-inner">
+
+<img src="logo-carelynta.png" class="footer-logo" alt="CARELYNTA">
+
+<span>
+Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation
+</span>
+
+<span>
+© <span id="year"></span> CARELYNTA. Toate drepturile rezervate.
+</span>
+
+</div>
+
+</footer>
+
+<script>
+
+/* SCROLL MOTION */
+
+const motionObserver = new IntersectionObserver((entries, observer) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+
+    }
+
+  });
+
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll('[data-motion]').forEach(element => {
+  motionObserver.observe(element);
+});
+
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+function closeMenu() {
+
+  navLinks.classList.remove('open');
+  menuBtn.textContent = '☰';
+  menuBtn.setAttribute('aria-expanded', 'false');
+
+}
+
+menuBtn.addEventListener('click', () => {
+
+  const isOpen = navLinks.classList.toggle('open');
+
+  menuBtn.textContent = isOpen ? '×' : '☰';
+  menuBtn.setAttribute('aria-expanded', String(isOpen));
+
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+
+/* CURRENT YEAR */
+
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+
+/* CONTACT FORM */
+
+const CONTACT_EMAIL = 'marianapastean.studio@gmail.com';
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+
+  event.preventDefault();
+
+  const form = this;
+
+  if (!form.reportValidity()) return;
+
+  const formData = new FormData(form);
+
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const service = formData.get('service') || 'Nespecificat';
+  const message = formData.get('message') || 'Fără mesaj suplimentar';
+
+  const subject = encodeURIComponent(
+    'Solicitare CARELYNTA – ' + service
+  );
+
+  const body = encodeURIComponent(
+    'Nume: ' + name + '\n' +
+    'E-mail: ' + email + '\n' +
+    'Serviciu: ' + service + '\n\n' +
+    'Mesaj:\n' + message
+  );
+
+  document.getElementById('formStatus').textContent =
+    'Se pregătește solicitarea în aplicația ta de e-mail...';
+
+  window.location.href =
+    'mailto:' + CONTACT_EMAIL +
+    '?subject=' + subject +
+    '&body=' + body;
+
+});
+
+</script>
+
+</body>
+</html>
