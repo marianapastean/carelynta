@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071B2D">
-<meta name="description" content="CARELYNTA – Transformăm CV-ul în oportunitate. Career Coaching, CV Optimization, LinkedIn Profile și Interview Preparation.">
+<meta name="description" content="CARELYNTA – Transformăm CV-ul în oportunitate. Career Coaching, CV Optimization, LinkedIn Profile, Interview Preparation și analiză gratuită CV.">
 <title>CARELYNTA | Cariera ta merită o direcție</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,35 +13,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
- --navy:#092A46;
- --deep:#061725;
- --black:#07111C;
- --blue:#155477;
- --teal:#287D83;
- --gold:#C18B35;
- --gold2:#F0CC82;
- --champagne:#F7E4BC;
- --cream:#F8F5EF;
- --white:#FFFFFF;
- --text:#304657;
- --muted:#71818B;
- --lora:'Lora',serif;
- --mont:'Montserrat',sans-serif;
+:root{
+ --navy:#092A46;--deep:#061725;--black:#07111C;--blue:#155477;
+ --teal:#287D83;--gold:#C18B35;--gold2:#F0CC82;
+ --champagne:#F7E4BC;--cream:#F8F5EF;--white:#FFFFFF;
+ --text:#304657;--muted:#71818B;
+ --lora:'Lora',serif;--mont:'Montserrat',sans-serif;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-
-body{
- font-family:var(--mont);
- background:var(--cream);
- color:var(--text);
- overflow-x:hidden;
- line-height:1.85;
-}
-
+body{font-family:var(--mont);background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.85}
 a{text-decoration:none;color:inherit}
 button,input,textarea,select{font-family:inherit}
 img{max-width:100%}
@@ -52,944 +33,280 @@ h2{font-size:clamp(38px,5vw,64px)}
 p{font-size:16px}
 
 /* PRELOADER */
-
-.preloader{
- position:fixed;
- inset:0;
- background:var(--deep);
- z-index:5000;
- display:grid;
- place-items:center;
- transition:opacity .8s,visibility .8s;
-}
-
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:5000;display:grid;place-items:center;transition:opacity .8s,visibility .8s}
 .preloader.hide{opacity:0;visibility:hidden}
-
 .preloader-inner{text-align:center}
+.preloader-logo{width:160px;animation:logoPulse 1.5s infinite alternate}
+.loader-line{width:140px;height:2px;background:#FFFFFF25;margin:25px auto;overflow:hidden}
+.loader-line:after{content:"";display:block;width:50%;height:100%;background:var(--gold2);animation:loading 1s infinite}
+@keyframes loading{from{transform:translateX(-100%)}to{transform:translateX(300%)}}
+@keyframes logoPulse{from{opacity:.65;transform:scale(.96)}to{opacity:1;transform:scale(1.04)}}
 
-.preloader-logo{
- width:160px;
- animation:logoPulse 1.5s infinite alternate;
-}
-
-.loader-line{
- width:140px;
- height:2px;
- background:#FFFFFF25;
- margin:25px auto;
- overflow:hidden;
-}
-
-.loader-line:after{
- content:"";
- display:block;
- width:50%;
- height:100%;
- background:var(--gold2);
- animation:loading 1s infinite;
-}
-
-@keyframes loading{
- from{transform:translateX(-100%)}
- to{transform:translateX(300%)}
-}
-
-@keyframes logoPulse{
- from{opacity:.65;transform:scale(.96)}
- to{opacity:1;transform:scale(1.04)}
-}
-
-/* CURSOR GLOW */
-
-.cursor-glow{
- position:fixed;
- width:300px;
- height:300px;
- border-radius:50%;
- background:radial-gradient(circle,#D5A34812,transparent 70%);
- pointer-events:none;
- z-index:1;
- transform:translate(-50%,-50%);
-}
-
-/* PROGRESS */
-
-.progress{
- position:fixed;
- top:0;
- left:0;
- width:0;
- height:4px;
- background:linear-gradient(90deg,var(--gold),var(--gold2),var(--teal));
- z-index:3000;
-}
+/* CURSOR + PROGRESS */
+.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#D5A34812,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%)}
+.progress{position:fixed;top:0;left:0;width:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--teal));z-index:3000}
 
 /* HEADER */
-
-header{
- position:fixed;
- top:0;
- left:0;
- width:100%;
- height:88px;
- z-index:1000;
- background:#061725F5;
- backdrop-filter:blur(18px);
- border-bottom:1px solid #D3A34C35;
- transition:.4s;
-}
-
-header.scrolled{
- height:70px;
- box-shadow:0 10px 35px #0004;
-}
-
-.nav{
- height:100%;
- display:flex;
- align-items:center;
- justify-content:space-between;
-}
-
-.brand img{
- width:150px;
- transition:.5s;
-}
-
+header{position:fixed;top:0;left:0;width:100%;height:88px;z-index:1000;background:#061725F5;backdrop-filter:blur(18px);border-bottom:1px solid #D3A34C35;transition:.4s}
+header.scrolled{height:70px;box-shadow:0 10px 35px #0004}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand img{width:150px;transition:.5s}
 .brand:hover img{transform:scale(1.08)}
-
-.nav-links{
- display:flex;
- align-items:center;
- gap:28px;
-}
-
-.nav-links a{
- color:white;
- font-size:11px;
- font-weight:800;
- letter-spacing:1px;
- text-transform:uppercase;
- transition:.3s;
- position:relative;
-}
-
-.nav-links a:after{
- content:"";
- position:absolute;
- bottom:-10px;
- left:0;
- width:0;
- height:2px;
- background:var(--gold2);
- transition:.4s;
-}
-
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{color:white;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transition:.3s;position:relative}
+.nav-links a:after{content:"";position:absolute;bottom:-10px;left:0;width:0;height:2px;background:var(--gold2);transition:.4s}
 .nav-links a:hover{color:var(--gold2)}
 .nav-links a:hover:after{width:100%}
-
-.menu-btn{
- display:none;
- background:none;
- border:0;
- color:var(--gold2);
- font-size:32px;
- cursor:pointer;
-}
+.menu-btn{display:none;background:none;border:0;color:var(--gold2);font-size:32px;cursor:pointer}
 
 /* BUTTONS */
-
-.btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:10px;
- padding:17px 29px;
- border:1px solid var(--gold);
- font-size:11px;
- font-weight:800;
- letter-spacing:1.2px;
- text-transform:uppercase;
- transition:.4s;
- cursor:pointer;
- position:relative;
- overflow:hidden;
-}
-
-.btn:before{
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(110deg,transparent,#FFFFFF55,transparent);
- transform:translateX(-120%);
- transition:.7s;
-}
-
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 29px;border:1px solid var(--gold);font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;transition:.4s;cursor:pointer;position:relative;overflow:hidden}
+.btn:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent,#FFFFFF55,transparent);transform:translateX(-120%);transition:.7s}
 .btn:hover:before{transform:translateX(120%)}
-
-.btn-gold{
- background:linear-gradient(120deg,var(--gold),var(--gold2));
- color:var(--deep);
- box-shadow:0 8px 25px #C18B3540;
-}
-
-.btn-gold:hover{
- transform:translateY(-6px) scale(1.025);
- box-shadow:0 18px 40px #C18B3560;
-}
-
+.btn-gold{background:linear-gradient(120deg,var(--gold),var(--gold2));color:var(--deep);box-shadow:0 8px 25px #C18B3540}
+.btn-gold:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 18px 40px #C18B3560}
 .btn-outline{color:var(--gold2)}
-.btn-outline:hover{
- background:var(--gold);
- color:var(--deep);
- transform:translateY(-5px);
-}
+.btn-outline:hover{background:var(--gold);color:var(--deep);transform:translateY(-5px)}
 
 /* HERO */
-
-.hero{
- min-height:100vh;
- display:flex;
- align-items:center;
- padding:150px 0 100px;
- color:white;
- overflow:hidden;
- background:
- radial-gradient(ellipse at 80% 45%,#155477 0%,transparent 45%),
- radial-gradient(ellipse at 10% 90%,#C18B3530,transparent 40%),
- linear-gradient(130deg,#050F19,#092A46 65%,#071725);
-}
-
-.hero:before{
- content:"";
- position:absolute;
- inset:0;
- opacity:.2;
- background-image:radial-gradient(#FFFFFF 1px,transparent 1px);
- background-size:45px 45px;
- animation:starsMove 35s linear infinite;
-}
-
-@keyframes starsMove{
- to{background-position:180px 180px}
-}
-
-.hero-grid{
- position:relative;
- z-index:2;
- display:grid;
- grid-template-columns:1.15fr .85fr;
- gap:50px;
- align-items:center;
-}
-
-.eyebrow{
- color:var(--gold);
- font-size:12px;
- font-weight:800;
- letter-spacing:4px;
- text-transform:uppercase;
-}
-
-.hero h1{
- font-size:clamp(48px,6.4vw,88px);
- margin:28px 0;
- line-height:1.2;
- letter-spacing:-2px;
- animation:heroIn 1.2s both;
-}
-
-.hero h1 span{
- display:block;
- background:linear-gradient(90deg,#C18B35,#FFE4A8,#D6A64F,#FFF0C9);
- background-size:300% auto;
- color:transparent;
- background-clip:text;
- -webkit-background-clip:text;
- animation:goldMove 5s linear infinite;
-}
-
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 100px;color:white;overflow:hidden;background:radial-gradient(ellipse at 80% 45%,#155477 0%,transparent 45%),radial-gradient(ellipse at 10% 90%,#C18B3530,transparent 40%),linear-gradient(130deg,#050F19,#092A46 65%,#071725)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.2;background-image:radial-gradient(#FFFFFF 1px,transparent 1px);background-size:45px 45px;animation:starsMove 35s linear infinite}
+@keyframes starsMove{to{background-position:180px 180px}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
+.hero h1{font-size:clamp(48px,6.4vw,88px);margin:28px 0;line-height:1.2;letter-spacing:-2px;animation:heroIn 1.2s both}
+.hero h1 span{display:block;background:linear-gradient(90deg,#C18B35,#FFE4A8,#D6A64F,#FFF0C9);background-size:300% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:goldMove 5s linear infinite}
 @keyframes goldMove{to{background-position:300% center}}
-
-@keyframes heroIn{
- from{opacity:0;transform:translateY(45px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-.hero-subtitle{
- color:#DCE6EB;
- font-size:14px;
- letter-spacing:.5px;
-}
-
-.hero-tagline{
- font-family:var(--lora);
- font-size:29px;
- margin:30px 0;
- color:var(--champagne);
-}
-
+@keyframes heroIn{from{opacity:0;transform:translateY(45px)}to{opacity:1;transform:translateY(0)}}
+.hero-subtitle{color:#DCE6EB;font-size:14px;letter-spacing:.5px}
+.hero-tagline{font-family:var(--lora);font-size:29px;margin:30px 0;color:var(--champagne)}
 .hero-buttons{display:flex;gap:15px;flex-wrap:wrap}
-
-.hero-art{
- min-height:470px;
- display:grid;
- place-items:center;
- position:relative;
-}
-
-.hero-art img{
- width:min(100%,420px);
- position:relative;
- z-index:3;
- animation:floatLogo 6s ease-in-out infinite;
- filter:drop-shadow(0 20px 45px #C18B3570);
-}
-
-@keyframes floatLogo{
- 0%,100%{transform:translateY(0) rotate(-1deg)}
- 50%{transform:translateY(-22px) rotate(1deg)}
-}
-
-.orbit{
- position:absolute;
- width:440px;
- max-width:95%;
- aspect-ratio:1;
- border:1px solid #D5A34870;
- border-radius:50%;
- animation:rotate 30s linear infinite;
-}
-
-.orbit.two{
- width:350px;
- border-style:dashed;
- border-color:#4BA5B480;
- animation:rotate 40s linear infinite reverse;
-}
-
-.orbit:after{
- content:"";
- position:absolute;
- top:12%;
- left:18%;
- width:13px;
- height:13px;
- background:var(--gold2);
- border-radius:50%;
- box-shadow:0 0 30px var(--gold2);
-}
-
+.hero-art{min-height:470px;display:grid;place-items:center;position:relative}
+.hero-art img{width:min(100%,420px);position:relative;z-index:3;animation:floatLogo 6s ease-in-out infinite;filter:drop-shadow(0 20px 45px #C18B3570)}
+@keyframes floatLogo{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-22px) rotate(1deg)}}
+.orbit{position:absolute;width:440px;max-width:95%;aspect-ratio:1;border:1px solid #D5A34870;border-radius:50%;animation:rotate 30s linear infinite}
+.orbit.two{width:350px;border-style:dashed;border-color:#4BA5B480;animation:rotate 40s linear infinite reverse}
+.orbit:after{content:"";position:absolute;top:12%;left:18%;width:13px;height:13px;background:var(--gold2);border-radius:50%;box-shadow:0 0 30px var(--gold2)}
 @keyframes rotate{to{transform:rotate(360deg)}}
-
-.floating-dot{
- position:absolute;
- width:10px;
- height:10px;
- border-radius:50%;
- background:var(--gold2);
- box-shadow:0 0 20px var(--gold);
- animation:dotFloat 4s ease-in-out infinite alternate;
-}
-
-@keyframes dotFloat{
- to{transform:translate(20px,-25px) scale(1.5);opacity:.4}
-}
+.floating-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold2);box-shadow:0 0 20px var(--gold);animation:dotFloat 4s ease-in-out infinite alternate}
+@keyframes dotFloat{to{transform:translate(20px,-25px) scale(1.5);opacity:.4}}
 
 /* MARQUEE */
+.marquee{background:linear-gradient(90deg,#B98227,#E7C27D,#B98227);padding:16px 0;overflow:hidden;white-space:nowrap;position:relative}
+.marquee-track{display:inline-flex;animation:marquee 30s linear infinite}
+.marquee span{font-size:12px;font-weight:800;letter-spacing:3px;padding:0 30px;color:#071725}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-.marquee{
- background:linear-gradient(90deg,#B98227,#E7C27D,#B98227);
- padding:16px 0;
- overflow:hidden;
- white-space:nowrap;
- position:relative;
-}
-
-.marquee-track{
- display:inline-flex;
- animation:marquee 30s linear infinite;
-}
-
-.marquee span{
- font-size:12px;
- font-weight:800;
- letter-spacing:3px;
- padding:0 30px;
- color:#071725;
-}
-
-@keyframes marquee{
- to{transform:translateX(-50%)}
-}
-
-/* GENERAL SECTIONS */
-
+/* GENERAL */
 .section{padding:115px 0}
+.gold-line{width:75px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));margin:25px 0}
 
-.gold-line{
- width:75px;
- height:3px;
- background:linear-gradient(90deg,var(--gold),var(--gold2));
- margin:25px 0;
+/* FREE CV CHECK SECTION */
+.cv-check{
+ color:white;
+ overflow:hidden;
+ background:
+ radial-gradient(ellipse at 10% 90%,#287D8355,transparent 38%),
+ radial-gradient(ellipse at 90% 10%,#C18B3540,transparent 40%),
+ linear-gradient(125deg,#071725,#092A46 55%,#0B394D);
 }
+.cv-check:before{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:.13;
+ background-image:radial-gradient(#FFFFFF 1px,transparent 1px);
+ background-size:35px 35px;animation:starsMove 30s linear infinite;
+}
+.cv-check .container{position:relative;z-index:2}
+.cv-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.cv-check-copy .eyebrow{color:var(--gold2)}
+.cv-check h2{color:white;margin:22px 0}
+.cv-check h2 span{color:var(--gold2)}
+.cv-check-copy>p{color:#D5E1E7;margin:20px 0;font-size:16px}
+.cv-check-benefits{list-style:none;margin:28px 0}
+.cv-check-benefits li{padding:9px 0;color:#F0E9DC;font-size:14px}
+.cv-check-benefits li:before{content:"✦";color:var(--gold2);margin-right:13px}
+.cv-check-visual{position:relative;min-height:410px;display:grid;place-items:center}
+.cv-document{
+ width:min(340px,85%);min-height:390px;padding:35px;
+ background:linear-gradient(145deg,#FFFFFF,#F1EEE7);
+ color:var(--navy);border-radius:5px;
+ box-shadow:0 30px 80px #0006;
+ transform:rotate(4deg);
+ animation:documentFloat 5s ease-in-out infinite;
+ position:relative;z-index:2;
+}
+@keyframes documentFloat{0%,100%{transform:translateY(0) rotate(4deg)}50%{transform:translateY(-17px) rotate(1deg)}}
+.cv-document:before{content:"";position:absolute;inset:12px;border:1px solid #C18B3540;pointer-events:none}
+.cv-doc-brand{font-family:var(--lora);font-size:24px;font-weight:700;color:var(--navy);letter-spacing:2px}
+.cv-doc-sub{font-size:9px;letter-spacing:2px;color:var(--gold);font-weight:800;margin:3px 0 22px}
+.cv-doc-line{height:7px;background:#DCE2E3;margin:12px 0;border-radius:10px}
+.cv-doc-line.short{width:55%}
+.cv-doc-line.medium{width:78%}
+.cv-doc-heading{font-size:10px;font-weight:800;letter-spacing:1px;margin:23px 0 10px;color:var(--teal)}
+.cv-doc-score{
+ position:absolute;right:-20px;bottom:25px;z-index:3;
+ width:125px;height:125px;border-radius:50%;
+ display:grid;place-items:center;text-align:center;
+ background:linear-gradient(145deg,var(--gold2),var(--gold));
+ color:var(--deep);border:7px solid #092A46;
+ box-shadow:0 15px 35px #0005;
+ animation:scorePulse 3s ease-in-out infinite;
+}
+.cv-doc-score strong{display:block;font-family:var(--lora);font-size:30px;line-height:1.1}
+.cv-doc-score span{font-size:8px;font-weight:800;letter-spacing:1px}
+@keyframes scorePulse{50%{transform:scale(1.08);box-shadow:0 0 35px #C18B3570}}
+.cv-check-cta{
+ display:flex;flex-direction:column;align-items:flex-start;gap:13px;
+ margin-top:28px;
+}
+.cv-check-cta .btn{font-size:12px;padding:19px 28px}
+.cv-check-note{font-size:11px!important;color:#B8C9D1!important;margin:0!important}
+.cv-check-label{
+ display:inline-flex;align-items:center;gap:9px;
+ padding:9px 15px;border:1px solid #F0CC8260;
+ color:var(--gold2);font-size:10px;font-weight:800;letter-spacing:2px;
+}
+.cv-check-label:before{content:"";width:7px;height:7px;background:#70C5B0;border-radius:50%;box-shadow:0 0 12px #70C5B0}
 
 /* ABOUT */
-
-.about-grid{
- display:grid;
- grid-template-columns:.8fr 1.2fr;
- gap:75px;
- align-items:center;
-}
-
-.experience-box{
- padding:55px 30px;
- background:
- radial-gradient(circle at 90% 10%,#287D83 0%,transparent 40%),
- linear-gradient(145deg,#092A46,#061725);
- color:white;
- text-align:center;
- border-bottom:5px solid var(--gold);
- box-shadow:0 25px 55px #092A4630;
- position:relative;
- overflow:hidden;
-}
-
-.experience-number{
- font-family:var(--lora);
- font-size:125px;
- line-height:1.3;
- color:var(--gold2);
-}
-
-.experience-label{
- font-size:13px;
- letter-spacing:3px;
- font-weight:800;
-}
-
-.about-copy p{
- color:#536674;
- margin:20px 0;
- font-size:16px;
-}
-
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:75px;align-items:center}
+.experience-box{padding:55px 30px;background:radial-gradient(circle at 90% 10%,#287D83 0%,transparent 40%),linear-gradient(145deg,#092A46,#061725);color:white;text-align:center;border-bottom:5px solid var(--gold);box-shadow:0 25px 55px #092A4630;position:relative;overflow:hidden}
+.experience-number{font-family:var(--lora);font-size:125px;line-height:1.3;color:var(--gold2)}
+.experience-label{font-size:13px;letter-spacing:3px;font-weight:800}
+.about-copy p{color:#536674;margin:20px 0;font-size:16px}
 .about-copy strong{color:var(--navy)}
 
-/* SERVICES - SPECIAL DESIGN */
-
-.services{
- color:white;
- overflow:hidden;
- background:
- radial-gradient(ellipse at 0% 0%,#155477 0%,transparent 40%),
- radial-gradient(ellipse at 100% 100%,#287D8335,transparent 40%),
- linear-gradient(145deg,#061725,#092A46 65%,#071725);
-}
-
-.services:before{
- content:"";
- position:absolute;
- inset:0;
- opacity:.1;
- background-image:linear-gradient(45deg,#FFFFFF 1px,transparent 1px);
- background-size:50px 50px;
- pointer-events:none;
-}
-
+/* SERVICES */
+.services{color:white;overflow:hidden;background:radial-gradient(ellipse at 0% 0%,#155477 0%,transparent 40%),radial-gradient(ellipse at 100% 100%,#287D8335,transparent 40%),linear-gradient(145deg,#061725,#092A46 65%,#071725)}
+.services:before{content:"";position:absolute;inset:0;opacity:.1;background-image:linear-gradient(45deg,#FFFFFF 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
 .services .container{position:relative;z-index:2}
-
 .services-heading{text-align:center;max-width:900px;margin:auto}
-
 .services-heading .eyebrow{color:var(--gold2)}
-
-.services h2{
- color:white;
- margin:25px 0;
- font-size:clamp(40px,5vw,66px);
-}
-
+.services h2{color:white;margin:25px 0;font-size:clamp(40px,5vw,66px)}
 .services h2 span{color:var(--gold2)}
-
-.services-intro{
- color:#D3E0E7;
- font-size:17px;
- max-width:760px;
- margin:0 auto;
-}
-
-.services-divider{
- width:100px;
- height:3px;
- background:linear-gradient(90deg,transparent,var(--gold2),transparent);
- margin:30px auto 0;
- animation:dividerGlow 3s infinite alternate;
-}
-
-@keyframes dividerGlow{
- to{width:180px;filter:brightness(1.6)}
-}
-
-.service-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:25px;
- margin-top:65px;
-}
-
-.service-card{
- min-height:300px;
- padding:35px 30px;
- position:relative;
- overflow:hidden;
- border:1px solid #FFFFFF25;
- background:linear-gradient(145deg,#FFFFFF12,#FFFFFF04);
- backdrop-filter:blur(10px);
- transition:transform .5s,border-color .5s,box-shadow .5s;
- transform-style:preserve-3d;
-}
-
-.service-card:before{
- content:"";
- position:absolute;
- inset:-100%;
- background:linear-gradient(120deg,transparent 40%,#FFFFFF18 50%,transparent 60%);
- transform:translateX(-100%) rotate(20deg);
- transition:transform .8s;
-}
-
-.service-card:hover:before{
- transform:translateX(100%) rotate(20deg);
-}
-
-.service-card:after{
- content:"";
- position:absolute;
- width:180px;
- height:180px;
- border-radius:50%;
- right:-90px;
- bottom:-110px;
- background:var(--card-color,#C18B35);
- opacity:.2;
- filter:blur(45px);
- transition:.6s;
-}
-
-.service-card:hover{
- transform:translateY(-15px) rotateX(3deg);
- border-color:var(--card-color,var(--gold2));
- box-shadow:0 25px 60px #0005,0 0 25px #FFFFFF10;
-}
-
-.service-card:hover:after{
- transform:scale(2);
- opacity:.4;
-}
-
-.service-top{
- display:flex;
- justify-content:space-between;
- align-items:center;
-}
-
-.service-number{
- color:var(--card-color,var(--gold2));
- font-size:12px;
- font-weight:800;
- letter-spacing:3px;
-}
-
-.service-icon{
- width:58px;
- height:58px;
- display:grid;
- place-items:center;
- border:1px solid var(--card-color,var(--gold2));
- border-radius:50%;
- color:var(--card-color,var(--gold2));
- font-size:25px;
- transition:.5s;
-}
-
-.service-card:hover .service-icon{
- transform:rotate(360deg) scale(1.12);
- background:var(--card-color,var(--gold));
- color:#061725;
- box-shadow:0 0 25px var(--card-color);
-}
-
-.service-card h3{
- font-size:25px;
- color:white;
- margin:30px 0 15px;
-}
-
-.service-card p{
- font-size:14px;
- color:#D4E0E7;
- line-height:1.9;
-}
-
-.service-link{
- display:inline-block;
- margin-top:23px;
- font-size:11px;
- font-weight:800;
- letter-spacing:1px;
- color:var(--card-color,var(--gold2));
- transition:.3s;
-}
-
+.services-intro{color:#D3E0E7;font-size:17px;max-width:760px;margin:0 auto}
+.services-divider{width:100px;height:3px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);margin:30px auto 0;animation:dividerGlow 3s infinite alternate}
+@keyframes dividerGlow{to{width:180px;filter:brightness(1.6)}}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:65px}
+.service-card{min-height:300px;padding:35px 30px;position:relative;overflow:hidden;border:1px solid #FFFFFF25;background:linear-gradient(145deg,#FFFFFF12,#FFFFFF04);backdrop-filter:blur(10px);transition:transform .5s,border-color .5s,box-shadow .5s;transform-style:preserve-3d}
+.service-card:before{content:"";position:absolute;inset:-100%;background:linear-gradient(120deg,transparent 40%,#FFFFFF18 50%,transparent 60%);transform:translateX(-100%) rotate(20deg);transition:transform .8s}
+.service-card:hover:before{transform:translateX(100%) rotate(20deg)}
+.service-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-90px;bottom:-110px;background:var(--card-color,#C18B35);opacity:.2;filter:blur(45px);transition:.6s}
+.service-card:hover{transform:translateY(-15px) rotateX(3deg);border-color:var(--card-color,var(--gold2));box-shadow:0 25px 60px #0005,0 0 25px #FFFFFF10}
+.service-card:hover:after{transform:scale(2);opacity:.4}
+.service-top{display:flex;justify-content:space-between;align-items:center}
+.service-number{color:var(--card-color,var(--gold2));font-size:12px;font-weight:800;letter-spacing:3px}
+.service-icon{width:58px;height:58px;display:grid;place-items:center;border:1px solid var(--card-color,var(--gold2));border-radius:50%;color:var(--card-color,var(--gold2));font-size:25px;transition:.5s}
+.service-card:hover .service-icon{transform:rotate(360deg) scale(1.12);background:var(--card-color,var(--gold));color:#061725;box-shadow:0 0 25px var(--card-color)}
+.service-card h3{font-size:25px;color:white;margin:30px 0 15px}
+.service-card p{font-size:14px;color:#D4E0E7;line-height:1.9}
+.service-link{display:inline-block;margin-top:23px;font-size:11px;font-weight:800;letter-spacing:1px;color:var(--card-color,var(--gold2));transition:.3s}
 .service-link:hover{letter-spacing:2px}
-
 .service-card:nth-child(1){--card-color:#E4B75F}
 .service-card:nth-child(2){--card-color:#68B7D3}
 .service-card:nth-child(3){--card-color:#C49BD9}
 .service-card:nth-child(4){--card-color:#70C5B0}
 .service-card:nth-child(5){--card-color:#E7A18A}
-
-.services-note{
- max-width:850px;
- text-align:center;
- margin:65px auto 0;
- padding:30px;
- border-top:1px solid #D6AD5B60;
- border-bottom:1px solid #D6AD5B60;
- color:var(--champagne);
- font-family:var(--lora);
- font-size:24px;
-}
+.services-note{max-width:850px;text-align:center;margin:65px auto 0;padding:30px;border-top:1px solid #D6AD5B60;border-bottom:1px solid #D6AD5B60;color:var(--champagne);font-family:var(--lora);font-size:24px}
 
 /* COACHING */
-
-.coaching-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:70px;
- align-items:center;
-}
-
-.coaching-subtitle{
- color:var(--gold);
- font-family:var(--lora);
- font-size:25px;
- margin:25px 0;
-}
-
+.coaching-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.coaching-subtitle{color:var(--gold);font-family:var(--lora);font-size:25px;margin:25px 0}
 .coaching-copy p{margin:18px 0;color:#536674}
-
 .check-list{list-style:none;margin-top:25px}
-
-.check-list li{
- padding:13px 0;
- border-bottom:1px solid #092A4618;
- font-size:15px;
- transition:.3s;
-}
-
-.check-list li:hover{
- padding-left:12px;
- color:var(--gold);
-}
-
-.check-list li:before{
- content:"✦";
- color:var(--gold);
- margin-right:15px;
-}
-
-.coaching-card{
- padding:50px 40px;
- background:
- radial-gradient(circle at 100% 0%,#287D83 0%,transparent 45%),
- linear-gradient(145deg,#092A46,#061725);
- color:white;
- border-top:5px solid var(--gold);
- box-shadow:0 25px 60px #092A4630;
-}
-
+.check-list li{padding:13px 0;border-bottom:1px solid #092A4618;font-size:15px;transition:.3s}
+.check-list li:hover{padding-left:12px;color:var(--gold)}
+.check-list li:before{content:"✦";color:var(--gold);margin-right:15px}
+.coaching-card{padding:50px 40px;background:radial-gradient(circle at 100% 0%,#287D83 0%,transparent 45%),linear-gradient(145deg,#092A46,#061725);color:white;border-top:5px solid var(--gold);box-shadow:0 25px 60px #092A4630}
 .coaching-card h3{font-size:38px;margin:25px 0}
 .coaching-card p{color:#D9E2E8}
-.coaching-card .goal{
- margin-top:30px;
- padding-top:25px;
- border-top:1px solid #FFFFFF40;
- color:var(--gold2);
- font-weight:700;
-}
+.coaching-card .goal{margin-top:30px;padding-top:25px;border-top:1px solid #FFFFFF40;color:var(--gold2);font-weight:700}
 
 /* PROCESS */
-
-.process{
- background:linear-gradient(130deg,#EEE9DF,#FFFFFF,#E9F1F0);
-}
-
-.process-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:25px;
- margin-top:50px;
-}
-
-.process-item{
- padding:35px;
- background:#FFFFFFC9;
- border:1px solid #C18B3530;
- border-top:4px solid var(--gold);
- transition:.5s;
-}
-
-.process-item:hover{
- transform:translateY(-12px);
- box-shadow:0 25px 50px #092A4620;
-}
-
-.process-item span{
- font-family:var(--lora);
- font-size:65px;
- color:var(--gold);
-}
-
+.process{background:linear-gradient(130deg,#EEE9DF,#FFFFFF,#E9F1F0)}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:50px}
+.process-item{padding:35px;background:#FFFFFFC9;border:1px solid #C18B3530;border-top:4px solid var(--gold);transition:.5s}
+.process-item:hover{transform:translateY(-12px);box-shadow:0 25px 50px #092A4620}
+.process-item span{font-family:var(--lora);font-size:65px;color:var(--gold)}
 .process-item h3{font-size:27px;color:var(--navy);margin:15px 0}
 .process-item p{color:var(--muted);font-size:15px}
 
 /* REVIEWS */
-
-.reviews{
- background:
- radial-gradient(circle at 100% 0%,#155477 0%,transparent 40%),
- linear-gradient(130deg,#061725,#092A46);
- color:white;
-}
-
+.reviews{background:radial-gradient(circle at 100% 0%,#155477 0%,transparent 40%),linear-gradient(130deg,#061725,#092A46);color:white}
 .reviews h2{color:white}
 .reviews-intro{color:#D0DEE6;max-width:750px}
-
-.review-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:23px;
- margin-top:50px;
-}
-
-.review-card{
- padding:35px;
- min-height:300px;
- display:flex;
- flex-direction:column;
- border:1px solid #D0A65C60;
- background:#FFFFFF0C;
- transition:.5s;
-}
-
-.review-card:hover{
- transform:translateY(-12px) scale(1.02);
- background:#FFFFFF16;
- box-shadow:0 20px 50px #0004;
-}
-
-.review-stars{
- color:var(--gold2);
- font-size:22px;
- letter-spacing:5px;
-}
-
-.review-text{
- flex:1;
- margin:25px 0;
- font-size:14px;
- color:#E2E9ED;
-}
-
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px;margin-top:50px}
+.review-card{padding:35px;min-height:300px;display:flex;flex-direction:column;border:1px solid #D0A65C60;background:#FFFFFF0C;transition:.5s}
+.review-card:hover{transform:translateY(-12px) scale(1.02);background:#FFFFFF16;box-shadow:0 20px 50px #0004}
+.review-stars{color:var(--gold2);font-size:22px;letter-spacing:5px}
+.review-text{flex:1;margin:25px 0;font-size:14px;color:#E2E9ED}
 .review-author{font-weight:800}
 .review-role{font-size:12px;color:#C0D0D8}
-
-.review-link{
- margin-top:18px;
- font-size:12px;
- font-weight:800;
- color:var(--gold2);
-}
+.review-link{margin-top:18px;font-size:12px;font-weight:800;color:var(--gold2)}
 
 /* CONTACT */
-
-.contact-grid{
- display:grid;
- grid-template-columns:.85fr 1.15fr;
- gap:70px;
- align-items:center;
-}
-
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
 .contact-copy p{color:#586A77;margin:22px 0}
-.contact-emphasis{
- font-family:var(--lora);
- font-size:25px!important;
- color:var(--gold)!important;
-}
-
-.contact-form{
- padding:40px;
- background:white;
- border:1px solid #C18B3530;
- box-shadow:0 25px 65px #092A4615;
-}
-
+.contact-emphasis{font-family:var(--lora);font-size:25px!important;color:var(--gold)!important}
+.contact-form{padding:40px;background:white;border:1px solid #C18B3530;box-shadow:0 25px 65px #092A4615}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .field{margin-bottom:20px}
-
-.field label{
- display:block;
- font-size:12px;
- font-weight:800;
- color:var(--navy);
- margin-bottom:8px;
-}
-
-.field input,.field select,.field textarea{
- width:100%;
- padding:15px;
- border:1px solid #092A4625;
- background:#FBFAF7;
- outline:none;
- transition:.3s;
- font-size:14px;
-}
-
-.field input:focus,.field select:focus,.field textarea:focus{
- border-color:var(--gold);
- box-shadow:0 0 0 4px #C18B3518;
- background:white;
-}
-
+.field label{display:block;font-size:12px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;padding:15px;border:1px solid #092A4625;background:#FBFAF7;outline:none;transition:.3s;font-size:14px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px #C18B3518;background:white}
 .field textarea{min-height:130px;resize:vertical}
-
-.consent{
- display:flex;
- gap:12px;
- align-items:flex-start;
- font-size:12px;
- color:#71818B;
- margin-bottom:23px;
-}
-
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#71818B;margin-bottom:23px}
 .consent input{margin-top:5px;accent-color:var(--gold)}
 .form-status{margin-top:15px;font-size:13px}
 
 /* FOOTER */
-
-footer{
- background:#050E17;
- color:#BCC9D0;
- padding:45px 0;
-}
-
-.footer-inner{
- display:flex;
- align-items:center;
- justify-content:space-between;
- flex-wrap:wrap;
- gap:25px;
-}
-
+footer{background:#050E17;color:#BCC9D0;padding:45px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:25px}
 .footer-logo{width:135px}
 .footer-inner span{font-size:11px}
 .social-link{color:var(--gold2);font-weight:800}
 
 /* BACK TOP */
-
-.back-top{
- position:fixed;
- right:25px;
- bottom:25px;
- width:48px;
- height:48px;
- background:#061725;
- color:var(--gold2);
- border:1px solid var(--gold);
- font-size:22px;
- cursor:pointer;
- z-index:900;
- opacity:0;
- visibility:hidden;
- transition:.4s;
-}
-
+.back-top{position:fixed;right:25px;bottom:25px;width:48px;height:48px;background:#061725;color:var(--gold2);border:1px solid var(--gold);font-size:22px;cursor:pointer;z-index:900;opacity:0;visibility:hidden;transition:.4s}
 .back-top.show{opacity:1;visibility:visible}
 .back-top:hover{background:var(--gold);color:#061725}
 
 /* SCROLL REVEAL */
-
-[data-reveal]{
- opacity:0;
- transform:translateY(50px);
- transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);
-}
-
+[data-reveal]{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 [data-reveal="left"]{transform:translateX(-55px)}
 [data-reveal="right"]{transform:translateX(55px)}
 [data-reveal="zoom"]{transform:scale(.85)}
-
-[data-reveal].visible{
- opacity:1;
- transform:translate(0) scale(1);
-}
-
-.service-card:nth-child(2),
-.review-card:nth-child(2),
-.process-item:nth-child(2){transition-delay:.12s}
-
-.service-card:nth-child(3),
-.review-card:nth-child(3),
-.process-item:nth-child(3){transition-delay:.22s}
+[data-reveal].visible{opacity:1;transform:translate(0) scale(1)}
+.service-card:nth-child(2),.review-card:nth-child(2),.process-item:nth-child(2){transition-delay:.12s}
+.service-card:nth-child(3),.review-card:nth-child(3),.process-item:nth-child(3){transition-delay:.22s}
 
 /* RESPONSIVE */
-
+@media(max-width:1050px){
+ .nav-links{gap:14px}
+ .nav-links a{font-size:9px}
+}
 @media(max-width:900px){
-
  .menu-btn{display:block}
-
- .nav-links{
-  position:fixed;
-  top:88px;
-  right:0;
-  width:100%;
-  height:calc(100vh - 88px);
-  background:#061725;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:35px;
-  transform:translateX(100%);
-  transition:.5s;
- }
-
+ .nav-links{position:fixed;top:88px;right:0;width:100%;height:calc(100vh - 88px);background:#061725;display:flex;flex-direction:column;justify-content:center;gap:35px;transform:translateX(100%);transition:.5s}
  .nav-links.open{transform:translateX(0)}
  .nav-links a{font-size:15px}
-
- .hero-grid,.about-grid,.coaching-grid,.contact-grid{
-  grid-template-columns:1fr;
-  gap:45px;
- }
-
+ .hero-grid,.about-grid,.coaching-grid,.contact-grid,.cv-check-grid{grid-template-columns:1fr;gap:45px}
  .hero{text-align:center}
  .hero-buttons{justify-content:center}
  .hero-art{min-height:350px}
-
+ .cv-check-copy{text-align:center}
+ .cv-check-benefits{text-align:left;display:inline-block}
+ .cv-check-cta{align-items:center}
+ .cv-check-visual{min-height:390px}
  .service-grid,.review-grid{grid-template-columns:repeat(2,1fr)}
  .experience-box{max-width:480px;margin:auto}
 }
-
 @media(max-width:580px){
-
  .container{width:90%}
  .section{padding:85px 0}
  header{height:75px}
  header.scrolled{height:68px}
  .brand img{width:125px}
  .nav-links{top:75px;height:calc(100vh - 75px)}
-
  .hero{padding:130px 0 70px}
  .hero h1{font-size:clamp(38px,10vw,52px)}
  .hero-tagline{font-size:24px}
@@ -998,7 +315,6 @@ footer{
  .hero-art img{width:245px}
  .orbit{width:275px}
  .orbit.two{width:220px}
-
  h2{font-size:38px}
  .service-grid,.review-grid,.process-grid{grid-template-columns:1fr}
  .service-card{min-height:250px}
@@ -1011,18 +327,14 @@ footer{
  .btn{width:100%}
  .footer-inner{flex-direction:column;text-align:center}
  .experience-number{font-size:100px}
+ .cv-check-visual{min-height:340px}
+ .cv-document{width:270px;min-height:340px;padding:28px}
+ .cv-doc-score{width:105px;height:105px;right:-5px;bottom:12px}
+ .cv-doc-score strong{font-size:25px}
 }
-
-@media(pointer:coarse){
- .cursor-glow{display:none}
-}
-
+@media(pointer:coarse){.cursor-glow{display:none}}
 @media(prefers-reduced-motion:reduce){
- *,*:before,*:after{
-  animation:none!important;
-  transition:none!important;
-  scroll-behavior:auto!important;
- }
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
  [data-reveal]{opacity:1;transform:none}
  .preloader{display:none}
 }
@@ -1046,12 +358,11 @@ footer{
   <a class="brand" href="#home">
    <img src="Logo%20Carelynta%20(2).png" alt="CARELYNTA">
   </a>
-
   <button class="menu-btn" id="menuBtn" aria-label="Meniu" aria-expanded="false">☰</button>
-
   <nav class="nav-links" id="navLinks">
    <a href="#despre">Despre mine</a>
    <a href="#servicii">Servicii</a>
+   <a href="#cv-check">Analiză CV</a>
    <a href="#coaching">Career Coaching</a>
    <a href="#reviews">Review-uri</a>
    <a href="#contact">Contact</a>
@@ -1062,30 +373,18 @@ footer{
 <main>
 
 <!-- HERO -->
-
 <section class="hero" id="home">
  <div class="container hero-grid">
-
   <div data-reveal>
    <div class="eyebrow">CARELYNTA · CAREER GUIDANCE</div>
-
-   <h1>
-    TRANSFORMĂM CV-UL
-    <span>ÎN OPORTUNITATE</span>
-   </h1>
-
-   <p class="hero-subtitle">
-    Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation
-   </p>
-
+   <h1>TRANSFORMĂM CV-UL <span>ÎN OPORTUNITATE</span></h1>
+   <p class="hero-subtitle">Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation</p>
    <p class="hero-tagline">Cariera ta merită o direcție</p>
-
    <div class="hero-buttons">
     <a href="#contact" class="btn btn-gold">Hai să discutăm ↗</a>
     <a href="#servicii" class="btn btn-outline">Descoperă serviciile</a>
    </div>
   </div>
-
   <div class="hero-art" data-reveal="zoom">
    <div class="orbit"></div>
    <div class="orbit two"></div>
@@ -1094,22 +393,87 @@ footer{
    <div class="floating-dot" style="top:30%;right:5%;animation-delay:1s"></div>
    <img src="Logo%20Carelynta%20(2).png" alt="CARELYNTA">
   </div>
-
  </div>
 </section>
 
 <div class="marquee">
  <div class="marquee-track">
-  <span>CAREER COACHING ✦ CV OPTIMIZATION ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
-  <span>CAREER COACHING ✦ CV OPTIMIZATION ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
+  <span>CAREER COACHING ✦ CV OPTIMIZATION ✦ ANALIZĂ GRATUITĂ CV ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
+  <span>CAREER COACHING ✦ CV OPTIMIZATION ✦ ANALIZĂ GRATUITĂ CV ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
  </div>
 </div>
 
-<!-- ABOUT -->
+<!-- ANALIZA GRATUITA A CV-ULUI -->
+<section class="section cv-check" id="cv-check">
+ <div class="container cv-check-grid">
 
+  <div class="cv-check-copy" data-reveal="left">
+   <div class="cv-check-label">INSTRUMENT GRATUIT CARELYNTA</div>
+   <div class="eyebrow" style="margin-top:25px">PRIMUL PAS CĂTRE UN CV MAI BUN</div>
+
+   <h2>Descoperă ce transmite <span>CV-ul tău.</span></h2>
+
+   <p>
+    CV-ul este mai mult decât o listă de experiențe profesionale.
+    Este modul în care îți prezinți competențele, parcursul și valoarea
+    în fața unui potențial angajator.
+   </p>
+
+   <p>
+    Am creat un instrument gratuit care te ajută să obții o imagine de ansamblu
+    asupra structurii CV-ului și să identifici aspectele care merită atenție.
+   </p>
+
+   <ul class="cv-check-benefits">
+    <li>Analizează structura și organizarea CV-ului.</li>
+    <li>Identifică aspectele care pot fi îmbunătățite.</li>
+    <li>Descoperă recomandări pentru o prezentare mai clară.</li>
+    <li>Începe să îți pregătești candidatura cu mai multă încredere.</li>
+   </ul>
+
+   <div class="cv-check-cta">
+    <a class="btn btn-gold" href="https://marianapastean.github.io/carelynta-cv-check/" target="_blank" rel="noopener noreferrer">
+     Analizează CV-ul gratuit <span aria-hidden="true">↗</span>
+    </a>
+    <p class="cv-check-note">Gratuit · Online · Acces direct, fără să părăsești definitiv site-ul CARELYNTA</p>
+   </div>
+  </div>
+
+  <div class="cv-check-visual" data-reveal="zoom" aria-hidden="true">
+   <div class="orbit"></div>
+   <div class="orbit two"></div>
+
+   <div class="cv-document">
+    <div class="cv-doc-brand">CARELYNTA</div>
+    <div class="cv-doc-sub">CV CHECK · CAREER PROFILE</div>
+    <div class="cv-doc-line"></div>
+    <div class="cv-doc-line medium"></div>
+    <div class="cv-doc-heading">EXPERIENȚĂ PROFESIONALĂ</div>
+    <div class="cv-doc-line"></div>
+    <div class="cv-doc-line medium"></div>
+    <div class="cv-doc-line short"></div>
+    <div class="cv-doc-heading">COMPETENȚE</div>
+    <div class="cv-doc-line"></div>
+    <div class="cv-doc-line medium"></div>
+    <div class="cv-doc-heading">EDUCAȚIE</div>
+    <div class="cv-doc-line"></div>
+    <div class="cv-doc-line short"></div>
+   </div>
+
+   <div class="cv-doc-score">
+    <div>
+     <strong>CV</strong>
+     <span>CHECK</span>
+    </div>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- ABOUT -->
 <section class="section" id="despre">
  <div class="container about-grid">
-
   <div data-reveal="left">
    <div class="experience-box">
     <div class="experience-number">7+</div>
@@ -1122,106 +486,59 @@ footer{
   <div class="about-copy" data-reveal="right">
    <div class="eyebrow">DESPRE MINE</div>
    <h2>Cariera ta merită o direcție</h2>
-
-   <p>
-    Sunt specialist HR, cu peste 7 ani de experiență în domeniul resurselor umane,
-    calificare de HR Manager, formator și diplomă de consilier în dezvoltare personală.
-   </p>
-
-   <p>
-    Am creat <strong>CARELYNTA</strong> din dorința de a aduce împreună experiența practică
-    din HR și instrumentele de dezvoltare personală și profesională.
-   </p>
-
-   <p>
-    Cred că fiecare persoană are competențe, experiențe și potențial care merită
-    valorificate. Uneori, diferența dintre o candidatură obișnuită și o oportunitate
-    reală stă în modul în care îți prezinți experiența și în claritatea direcției pe care
-    o urmezi.
-   </p>
-
-   <p>
-    Prin serviciile <strong>CARELYNTA</strong>, îți ofer sprijin personalizat pentru a-ți construi,
-    redefini sau dezvolta parcursul profesional.
-   </p>
+   <p>Sunt specialist HR, cu peste 7 ani de experiență în domeniul resurselor umane, calificare de HR Manager, formator și diplomă de consilier în dezvoltare personală.</p>
+   <p>Am creat <strong>CARELYNTA</strong> din dorința de a aduce împreună experiența practică din HR și instrumentele de dezvoltare personală și profesională.</p>
+   <p>Cred că fiecare persoană are competențe, experiențe și potențial care merită valorificate. Uneori, diferența dintre o candidatură obișnuită și o oportunitate reală stă în modul în care îți prezinți experiența și în claritatea direcției pe care o urmezi.</p>
+   <p>Prin serviciile <strong>CARELYNTA</strong>, îți ofer sprijin personalizat pentru a-ți construi, redefini sau dezvolta parcursul profesional.</p>
   </div>
-
  </div>
 </section>
 
 <!-- SERVICES -->
-
 <section class="section services" id="servicii">
  <div class="container">
-
   <div class="services-heading" data-reveal>
    <div class="eyebrow">SERVICIILE MELE</div>
-
-   <h2>
-    Soluții pentru fiecare etapă
-    <span>a carierei.</span>
-   </h2>
-
-   <p class="services-intro">
-    Te pot ajuta să faci următorul pas profesional prin servicii adaptate
-    nevoilor și obiectivelor tale:
-   </p>
-
+   <h2>Soluții pentru fiecare etapă <span>a carierei.</span></h2>
+   <p class="services-intro">Te pot ajuta să faci următorul pas profesional prin servicii adaptate nevoilor și obiectivelor tale:</p>
    <div class="services-divider"></div>
   </div>
 
   <div class="service-grid">
-
    <article class="service-card" data-reveal>
-    <div class="service-top">
-     <span class="service-number">01 / CAREER</span>
-     <div class="service-icon">✧</div>
-    </div>
+    <div class="service-top"><span class="service-number">01 / CAREER</span><div class="service-icon">✧</div></div>
     <h3>Career Coaching</h3>
     <p>Clarificarea obiectivelor și identificarea direcției profesionale.</p>
     <a href="#coaching" class="service-link">DESCOPERĂ MAI MULT ↗</a>
    </article>
 
    <article class="service-card" data-reveal>
-    <div class="service-top">
-     <span class="service-number">02 / CV</span>
-     <div class="service-icon">▤</div>
-    </div>
+    <div class="service-top"><span class="service-number">02 / CV</span><div class="service-icon">▤</div></div>
     <h3>CV Review &amp; Optimization</h3>
     <p>Analiza și optimizarea CV-ului din perspectiva unui specialist HR.</p>
-    <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
+    <a href="https://marianapastean.github.io/carelynta-cv-check/" target="_blank" rel="noopener noreferrer" class="service-link">ANALIZEAZĂ CV-UL GRATUIT ↗</a>
    </article>
 
    <article class="service-card" data-reveal>
-    <div class="service-top">
-     <span class="service-number">03 / LINKEDIN</span>
-     <div class="service-icon">in</div>
-    </div>
+    <div class="service-top"><span class="service-number">03 / LINKEDIN</span><div class="service-icon">in</div></div>
     <h3>LinkedIn Profile Optimization</h3>
     <p>Construirea unui profil LinkedIn profesionist și relevant.</p>
     <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
    </article>
 
    <article class="service-card" data-reveal>
-    <div class="service-top">
-     <span class="service-number">04 / INTERVIEW</span>
-     <div class="service-icon">✦</div>
-    </div>
+    <div class="service-top"><span class="service-number">04 / INTERVIEW</span><div class="service-icon">✦</div></div>
     <h3>Interview preparation</h3>
     <p>Pregătire practică pentru interviuri și prezentarea experienței profesionale.</p>
     <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
    </article>
 
    <article class="service-card" data-reveal>
-    <div class="service-top">
-     <span class="service-number">05 / DEVELOPMENT</span>
-     <div class="service-icon">↗</div>
-    </div>
+    <div class="service-top"><span class="service-number">05 / DEVELOPMENT</span><div class="service-icon">↗</div></div>
     <h3>Career Development</h3>
     <p>Sprijin în schimbări profesionale, reconversie și dezvoltarea carierei.</p>
     <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
    </article>
-
   </div>
 
   <p class="services-note" data-reveal>
@@ -1229,32 +546,20 @@ footer{
    <br><br>
    Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine conturată.
   </p>
-
  </div>
 </section>
 
 <!-- COACHING -->
-
 <section class="section" id="coaching">
  <div class="container coaching-grid">
-
   <div data-reveal="left">
    <div class="eyebrow">CAREER COACHING</div>
    <h2>Claritate. Încredere. Direcție.</h2>
-
-   <p class="coaching-subtitle">
-    Nu trebuie să ai toate răspunsurile despre cariera ta. Dar poți începe prin a-ți
-    pune întrebările potrivite.
-   </p>
-
+   <p class="coaching-subtitle">Nu trebuie să ai toate răspunsurile despre cariera ta. Dar poți începe prin a-ți pune întrebările potrivite.</p>
    <div class="coaching-copy">
-    <p>
-     Prin sesiunile de <strong>Career Coaching</strong>, te sprijin să îți înțelegi mai bine obiectivele,
-     resursele și opțiunile profesionale.
-    </p>
+    <p>Prin sesiunile de <strong>Career Coaching</strong>, te sprijin să îți înțelegi mai bine obiectivele, resursele și opțiunile profesionale.</p>
     <p><strong>Ce urmărim împreună:</strong></p>
    </div>
-
    <ul class="check-list">
     <li>Clarificarea obiectivelor profesionale</li>
     <li>Identificarea punctelor forte și a competențelor</li>
@@ -1267,126 +572,78 @@ footer{
   <div class="coaching-card" data-reveal="right">
    <div class="eyebrow">PENTRU CINE ESTE POTRIVIT?</div>
    <h3>Career Coaching</h3>
-   <p>
-    Pentru persoanele aflate la început de carieră, pentru cei care își doresc o
-    schimbare profesională sau pentru profesioniștii care simt că au nevoie de o
-    nouă direcție.
-   </p>
-   <div class="goal">
-    Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine
-    conturată.
-   </div>
+   <p>Pentru persoanele aflate la început de carieră, pentru cei care își doresc o schimbare profesională sau pentru profesioniștii care simt că au nevoie de o nouă direcție.</p>
+   <div class="goal">Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine conturată.</div>
   </div>
-
  </div>
 </section>
 
 <!-- PROCESS -->
-
 <section class="section process">
  <div class="container">
   <div data-reveal>
    <div class="eyebrow">CUM ÎNCEPEM</div>
    <h2>Un pas clar, apoi următorul.</h2>
   </div>
-
   <div class="process-grid">
-   <article class="process-item" data-reveal>
-    <span>01</span>
-    <h3>Ne cunoaștem</h3>
-    <p>Discutăm despre parcursul tău profesional și obiectivele tale.</p>
-   </article>
-
-   <article class="process-item" data-reveal>
-    <span>02</span>
-    <h3>Identificăm direcția</h3>
-    <p>Analizăm nevoile și alegem serviciul potrivit.</p>
-   </article>
-
-   <article class="process-item" data-reveal>
-    <span>03</span>
-    <h3>Construim următorul pas</h3>
-    <p>Stabilim acțiuni concrete pentru evoluția ta profesională.</p>
-   </article>
+   <article class="process-item" data-reveal><span>01</span><h3>Ne cunoaștem</h3><p>Discutăm despre parcursul tău profesional și obiectivele tale.</p></article>
+   <article class="process-item" data-reveal><span>02</span><h3>Identificăm direcția</h3><p>Analizăm nevoile și alegem serviciul potrivit.</p></article>
+   <article class="process-item" data-reveal><span>03</span><h3>Construim următorul pas</h3><p>Stabilim acțiuni concrete pentru evoluția ta profesională.</p></article>
   </div>
  </div>
 </section>
 
 <!-- REVIEWS -->
-
 <section class="section reviews" id="reviews">
  <div class="container">
-
   <div data-reveal>
    <div class="eyebrow">RECOMANDĂRI</div>
    <h2>Experiențe care construiesc încredere.</h2>
-   <p class="reviews-intro">
-    Recomandările autentice reflectă experiențele și colaborările profesionale
-    care stau la baza activității CARELYNTA.
-   </p>
+   <p class="reviews-intro">Recomandările autentice reflectă experiențele și colaborările profesionale care stau la baza activității CARELYNTA.</p>
   </div>
-
   <div class="review-grid">
-
    <article class="review-card" data-reveal>
     <div class="review-stars">★★★★★</div>
     <p class="review-text">Adaugă aici textul primei recomandări autentice primite pe LinkedIn.</p>
     <div class="review-author">Numele autorului</div>
     <div class="review-role">Funcția · Compania</div>
-    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">Vezi CARELYNTA pe LinkedIn ↗</a>
+    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">Vezi CARELYNTA pe LinkedIn ↗</a>
    </article>
-
    <article class="review-card" data-reveal>
     <div class="review-stars">★★★★★</div>
     <p class="review-text">Adaugă aici textul celei de-a doua recomandări autentice primite pe LinkedIn.</p>
     <div class="review-author">Numele autorului</div>
     <div class="review-role">Funcția · Compania</div>
-    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">Vezi CARELYNTA pe LinkedIn ↗</a>
+    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">Vezi CARELYNTA pe LinkedIn ↗</a>
    </article>
-
    <article class="review-card" data-reveal>
     <div class="review-stars">★★★★★</div>
     <p class="review-text">Adaugă aici textul celei de-a treia recomandări autentice primite pe LinkedIn.</p>
     <div class="review-author">Numele autorului</div>
     <div class="review-role">Funcția · Compania</div>
-    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">Vezi CARELYNTA pe LinkedIn ↗</a>
+    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">Vezi CARELYNTA pe LinkedIn ↗</a>
    </article>
-
   </div>
  </div>
 </section>
 
 <!-- CONTACT -->
-
 <section class="section" id="contact">
  <div class="container contact-grid">
-
   <div data-reveal="left">
    <div class="eyebrow">HAI SĂ DISCUTĂM</div>
    <h2>Următorul pas începe cu tine.</h2>
-
-   <p>
-    Spune-mi ce îți dorești să schimbi în parcursul tău profesional.
-    Vom identifica împreună care este cea mai potrivită direcție.
-   </p>
-
-   <p class="contact-emphasis">
-    Cariera ta merită atenție, claritate și o strategie potrivită.
-   </p>
-
-   <a class="btn btn-outline" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">
-    LinkedIn CARELYNTA ↗
-   </a>
+   <p>Spune-mi ce îți dorești să schimbi în parcursul tău profesional. Vom identifica împreună care este cea mai potrivită direcție.</p>
+   <p class="contact-emphasis">Cariera ta merită atenție, claritate și o strategie potrivită.</p>
+   <a class="btn btn-outline" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn CARELYNTA ↗</a>
   </div>
 
   <form class="contact-form" id="contactForm" data-reveal="right">
-
    <div class="form-row">
     <div class="field">
      <label for="name">Nume și prenume *</label>
      <input id="name" name="name" required placeholder="Numele tău" autocomplete="name">
     </div>
-
     <div class="field">
      <label for="email">Adresa de e-mail *</label>
      <input id="email" name="email" type="email" required placeholder="nume@email.com" autocomplete="email">
@@ -1418,7 +675,6 @@ footer{
 
    <button class="btn btn-gold" type="submit">Trimite solicitarea ↗</button>
    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-
   </form>
  </div>
 </section>
@@ -1429,7 +685,7 @@ footer{
  <div class="container footer-inner">
   <img src="Logo%20Carelynta%20(2).png" class="footer-logo" alt="CARELYNTA">
   <span>Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation</span>
-  <a class="social-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">LinkedIn CARELYNTA ↗</a>
+  <a class="social-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn CARELYNTA ↗</a>
   <span>© <span id="year"></span> CARELYNTA. Toate drepturile rezervate.</span>
  </div>
 </footer>
@@ -1437,23 +693,18 @@ footer{
 <button class="back-top" id="backTop" aria-label="Înapoi sus">↑</button>
 
 <script>
-
 /* PRELOADER */
-
 window.addEventListener('load',()=>{
  setTimeout(()=>{
-  document.getElementById('preloader').classList.add('hide');
+  const preloader=document.getElementById('preloader');
+  if(preloader)preloader.classList.add('hide');
  },700);
 });
 
-
 /* YEAR */
-
 document.getElementById('year').textContent=new Date().getFullYear();
 
-
 /* SCROLL REVEAL */
-
 const revealObserver=new IntersectionObserver((entries,observer)=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){
@@ -1463,13 +714,9 @@ const revealObserver=new IntersectionObserver((entries,observer)=>{
  });
 },{threshold:.12,rootMargin:'0px 0px -35px 0px'});
 
-document.querySelectorAll('[data-reveal]').forEach(el=>{
- revealObserver.observe(el);
-});
-
+document.querySelectorAll('[data-reveal]').forEach(el=>revealObserver.observe(el));
 
 /* HEADER + PROGRESS */
-
 const header=document.getElementById('header');
 const backTop=document.getElementById('backTop');
 const progress=document.getElementById('progress');
@@ -1478,24 +725,18 @@ function scrollEffects(){
  const y=window.scrollY;
  header.classList.toggle('scrolled',y>50);
  backTop.classList.toggle('show',y>450);
-
  const max=document.documentElement.scrollHeight-window.innerHeight;
  progress.style.width=(max>0?(y/max)*100:0)+'%';
 }
-
 window.addEventListener('scroll',scrollEffects,{passive:true});
 scrollEffects();
 
-
 /* BACK TO TOP */
-
 backTop.addEventListener('click',()=>{
  window.scrollTo({top:0,behavior:'smooth'});
 });
 
-
 /* MOBILE MENU */
-
 const menuBtn=document.getElementById('menuBtn');
 const navLinks=document.getElementById('navLinks');
 
@@ -1504,22 +745,15 @@ function closeMenu(){
  menuBtn.textContent='☰';
  menuBtn.setAttribute('aria-expanded','false');
 }
-
 menuBtn.addEventListener('click',()=>{
  const open=navLinks.classList.toggle('open');
  menuBtn.textContent=open?'×':'☰';
  menuBtn.setAttribute('aria-expanded',String(open));
 });
-
-navLinks.querySelectorAll('a').forEach(link=>{
- link.addEventListener('click',closeMenu);
-});
-
+navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
 
 /* CURSOR LIGHT */
-
 const cursorGlow=document.getElementById('cursorGlow');
-
 if(window.matchMedia('(pointer:fine)').matches){
  window.addEventListener('mousemove',e=>{
   cursorGlow.style.left=e.clientX+'px';
@@ -1527,51 +761,33 @@ if(window.matchMedia('(pointer:fine)').matches){
  });
 }
 
-
 /* SERVICE CARD 3D EFFECT */
-
 if(window.matchMedia('(pointer:fine)').matches){
-
  document.querySelectorAll('.service-card').forEach(card=>{
-
   card.addEventListener('mousemove',e=>{
    const rect=card.getBoundingClientRect();
    const x=(e.clientX-rect.left)/rect.width;
    const y=(e.clientY-rect.top)/rect.height;
-
    const rotateY=(x-.5)*8;
    const rotateX=(.5-y)*8;
-
-   card.style.transform=
-    `translateY(-12px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+   card.style.transform=`translateY(-12px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
-
-  card.addEventListener('mouseleave',()=>{
-   card.style.transform='';
-  });
-
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
  });
-
 }
 
-
 /* CONTACT FORM */
-
 document.getElementById('contactForm').addEventListener('submit',function(e){
-
  e.preventDefault();
-
  if(!this.reportValidity())return;
 
  const data=new FormData(this);
-
  const name=data.get('name');
  const email=data.get('email');
  const service=data.get('service')||'Nespecificat';
  const message=data.get('message')||'Fără mesaj suplimentar';
 
  const subject=encodeURIComponent('Solicitare CARELYNTA - '+service);
-
  const body=encodeURIComponent(
   'Nume: '+name+'\n'+
   'E-mail: '+email+'\n'+
@@ -1579,14 +795,9 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   'Mesaj:\n'+message
  );
 
- document.getElementById('formStatus').textContent=
-  'Se deschide aplicația de e-mail...';
-
- window.location.href=
-  'mailto:marianapastean.studio@gmail.com?subject='+subject+'&body='+body;
-
+ document.getElementById('formStatus').textContent='Se deschide aplicația de e-mail...';
+ window.location.href='mailto:marianapastean.studio@gmail.com?subject='+subject+'&body='+body;
 });
-
 </script>
 
 </body>
