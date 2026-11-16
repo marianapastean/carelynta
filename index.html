@@ -3,8 +3,8 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050505">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071B2D">
 <meta name="description" content="CARELYNTA – Transformăm CV-ul în oportunitate. Career Coaching, CV Optimization, LinkedIn Profile și Interview Preparation.">
 <title>CARELYNTA | Cariera ta merită o direcție</title>
 
@@ -14,1029 +14,1049 @@
 
 <style>
 :root {
-  --gold:#B98227;
-  --gold-light:#E0B96F;
-  --navy:#092A46;
-  --black:#050505;
-  --ivory:#F7F4EE;
-  --white:#FFFFFF;
-  --text:#263746;
-  --muted:#667580;
-  --lora:'Lora',serif;
-  --mont:'Montserrat',sans-serif;
+ --navy:#092A46;
+ --deep:#061725;
+ --black:#07111C;
+ --blue:#155477;
+ --teal:#287D83;
+ --gold:#C18B35;
+ --gold2:#F0CC82;
+ --champagne:#F7E4BC;
+ --cream:#F8F5EF;
+ --white:#FFFFFF;
+ --text:#304657;
+ --muted:#71818B;
+ --lora:'Lora',serif;
+ --mont:'Montserrat',sans-serif;
 }
 
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+
+body{
+ font-family:var(--mont);
+ background:var(--cream);
+ color:var(--text);
+ overflow-x:hidden;
+ line-height:1.85;
 }
 
-html {
-  scroll-behavior:smooth;
-  scroll-padding-top:90px;
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font-family:inherit}
+img{max-width:100%}
+.container{width:min(1200px,90%);margin:auto}
+section{position:relative}
+h1,h2,h3{font-family:var(--lora);font-weight:500;line-height:1.3}
+h2{font-size:clamp(38px,5vw,64px)}
+p{font-size:16px}
+
+/* PRELOADER */
+
+.preloader{
+ position:fixed;
+ inset:0;
+ background:var(--deep);
+ z-index:5000;
+ display:grid;
+ place-items:center;
+ transition:opacity .8s,visibility .8s;
 }
 
-body {
-  font-family:var(--mont);
-  background:var(--ivory);
-  color:var(--text);
-  line-height:1.9;
-  overflow-x:hidden;
+.preloader.hide{opacity:0;visibility:hidden}
+
+.preloader-inner{text-align:center}
+
+.preloader-logo{
+ width:160px;
+ animation:logoPulse 1.5s infinite alternate;
 }
 
-a {text-decoration:none;color:inherit;}
-button,input,textarea,select {font-family:inherit;}
-.container {width:min(1200px,90%);margin:auto;}
-section {position:relative;}
-img {max-width:100%;}
-
-h1,h2,h3 {
-  font-family:var(--lora);
-  font-weight:500;
-  line-height:1.3;
+.loader-line{
+ width:140px;
+ height:2px;
+ background:#FFFFFF25;
+ margin:25px auto;
+ overflow:hidden;
 }
 
-h2 {
-  font-size:clamp(38px,5vw,62px);
-  color:var(--navy);
-  margin:18px 0 28px;
+.loader-line:after{
+ content:"";
+ display:block;
+ width:50%;
+ height:100%;
+ background:var(--gold2);
+ animation:loading 1s infinite;
 }
 
-p {font-size:16px;}
-
-.section {padding:120px 0;}
-
-.eyebrow {
-  color:var(--gold);
-  font-size:12px;
-  letter-spacing:4px;
-  font-weight:800;
-  text-transform:uppercase;
+@keyframes loading{
+ from{transform:translateX(-100%)}
+ to{transform:translateX(300%)}
 }
 
-.gold-line {
-  width:75px;
-  height:3px;
-  background:var(--gold);
-  margin:25px 0;
+@keyframes logoPulse{
+ from{opacity:.65;transform:scale(.96)}
+ to{opacity:1;transform:scale(1.04)}
 }
 
-/* NAVIGATION */
+/* CURSOR GLOW */
 
-header {
-  position:fixed;
-  inset:0 0 auto;
-  height:88px;
-  z-index:1000;
-  background:rgba(5,5,5,.96);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid #B9822735;
-  transition:height .4s,box-shadow .4s;
+.cursor-glow{
+ position:fixed;
+ width:300px;
+ height:300px;
+ border-radius:50%;
+ background:radial-gradient(circle,#D5A34812,transparent 70%);
+ pointer-events:none;
+ z-index:1;
+ transform:translate(-50%,-50%);
 }
 
-header.scrolled {
-  height:72px;
-  box-shadow:0 8px 35px #0005;
+/* PROGRESS */
+
+.progress{
+ position:fixed;
+ top:0;
+ left:0;
+ width:0;
+ height:4px;
+ background:linear-gradient(90deg,var(--gold),var(--gold2),var(--teal));
+ z-index:3000;
 }
 
-.nav {
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+/* HEADER */
+
+header{
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ height:88px;
+ z-index:1000;
+ background:#061725F5;
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid #D3A34C35;
+ transition:.4s;
 }
 
-.brand img {
-  width:155px;
-  display:block;
-  transition:transform .4s;
+header.scrolled{
+ height:70px;
+ box-shadow:0 10px 35px #0004;
 }
 
-.brand:hover img {transform:scale(1.05);}
-
-.nav-links {
-  display:flex;
-  align-items:center;
-  gap:28px;
+.nav{
+ height:100%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
 }
 
-.nav-links a {
-  color:white;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  position:relative;
-  transition:color .3s;
+.brand img{
+ width:150px;
+ transition:.5s;
 }
 
-.nav-links a::after {
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-9px;
-  width:0;
-  height:2px;
-  background:var(--gold);
-  transition:width .35s;
+.brand:hover img{transform:scale(1.08)}
+
+.nav-links{
+ display:flex;
+ align-items:center;
+ gap:28px;
 }
 
-.nav-links a:hover {color:var(--gold-light);}
-.nav-links a:hover::after {width:100%;}
+.nav-links a{
+ color:white;
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ transition:.3s;
+ position:relative;
+}
 
-.menu-btn {
-  display:none;
-  color:var(--gold);
-  background:none;
-  border:0;
-  font-size:34px;
-  cursor:pointer;
+.nav-links a:after{
+ content:"";
+ position:absolute;
+ bottom:-10px;
+ left:0;
+ width:0;
+ height:2px;
+ background:var(--gold2);
+ transition:.4s;
+}
+
+.nav-links a:hover{color:var(--gold2)}
+.nav-links a:hover:after{width:100%}
+
+.menu-btn{
+ display:none;
+ background:none;
+ border:0;
+ color:var(--gold2);
+ font-size:32px;
+ cursor:pointer;
 }
 
 /* BUTTONS */
 
-.btn {
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-  padding:18px 30px;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:1.3px;
-  text-transform:uppercase;
-  border:1px solid var(--gold);
-  transition:all .4s;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
+.btn{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:10px;
+ padding:17px 29px;
+ border:1px solid var(--gold);
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:1.2px;
+ text-transform:uppercase;
+ transition:.4s;
+ cursor:pointer;
+ position:relative;
+ overflow:hidden;
 }
 
-.btn::before {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-120%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(100deg,transparent,#FFFFFF45,transparent);
-  transition:left .65s;
+.btn:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(110deg,transparent,#FFFFFF55,transparent);
+ transform:translateX(-120%);
+ transition:.7s;
 }
 
-.btn:hover::before {left:120%;}
+.btn:hover:before{transform:translateX(120%)}
 
-.btn-gold {
-  background:var(--gold);
-  color:var(--black);
+.btn-gold{
+ background:linear-gradient(120deg,var(--gold),var(--gold2));
+ color:var(--deep);
+ box-shadow:0 8px 25px #C18B3540;
 }
 
-.btn-gold:hover {
-  background:var(--gold-light);
-  transform:translateY(-5px);
-  box-shadow:0 15px 35px #B9822745;
+.btn-gold:hover{
+ transform:translateY(-6px) scale(1.025);
+ box-shadow:0 18px 40px #C18B3560;
 }
 
-.btn-outline {color:var(--gold);}
-.btn-outline:hover {
-  background:var(--gold);
-  color:var(--black);
-  transform:translateY(-5px);
+.btn-outline{color:var(--gold2)}
+.btn-outline:hover{
+ background:var(--gold);
+ color:var(--deep);
+ transform:translateY(-5px);
 }
 
 /* HERO */
 
-.hero {
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:150px 0 100px;
-  background:
-    radial-gradient(ellipse at 80% 48%,#143B57 0%,transparent 48%),
-    radial-gradient(circle at 10% 90%,#B9822715,transparent 35%),
-    var(--black);
-  color:white;
-  overflow:hidden;
+.hero{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ padding:150px 0 100px;
+ color:white;
+ overflow:hidden;
+ background:
+ radial-gradient(ellipse at 80% 45%,#155477 0%,transparent 45%),
+ radial-gradient(ellipse at 10% 90%,#C18B3530,transparent 40%),
+ linear-gradient(130deg,#050F19,#092A46 65%,#071725);
 }
 
-.hero-grid {
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  align-items:center;
-  gap:50px;
+.hero:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ opacity:.2;
+ background-image:radial-gradient(#FFFFFF 1px,transparent 1px);
+ background-size:45px 45px;
+ animation:starsMove 35s linear infinite;
 }
 
-.hero-content {position:relative;z-index:2;}
-
-.hero h1 {
-  font-size:clamp(48px,6.3vw,88px);
-  letter-spacing:-2px;
-  line-height:1.2;
-  margin:30px 0;
-  animation:heroEnter 1.2s ease both;
+@keyframes starsMove{
+ to{background-position:180px 180px}
 }
 
-.hero h1 span {
-  display:block;
-  color:var(--gold);
-  background:linear-gradient(100deg,#B98227,#F2D18D,#B98227);
-  background-size:200% auto;
-  background-clip:text;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:goldShimmer 6s linear infinite;
+.hero-grid{
+ position:relative;
+ z-index:2;
+ display:grid;
+ grid-template-columns:1.15fr .85fr;
+ gap:50px;
+ align-items:center;
 }
 
-.hero-subtitle {
-  color:#D3D3D3;
-  font-size:14px;
-  line-height:2;
-  max-width:650px;
+.eyebrow{
+ color:var(--gold);
+ font-size:12px;
+ font-weight:800;
+ letter-spacing:4px;
+ text-transform:uppercase;
 }
 
-.hero-tagline {
-  font-family:var(--lora);
-  font-size:30px;
-  margin:32px 0;
-  color:white;
+.hero h1{
+ font-size:clamp(48px,6.4vw,88px);
+ margin:28px 0;
+ line-height:1.2;
+ letter-spacing:-2px;
+ animation:heroIn 1.2s both;
 }
 
-.hero-buttons {
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
+.hero h1 span{
+ display:block;
+ background:linear-gradient(90deg,#C18B35,#FFE4A8,#D6A64F,#FFF0C9);
+ background-size:300% auto;
+ color:transparent;
+ background-clip:text;
+ -webkit-background-clip:text;
+ animation:goldMove 5s linear infinite;
 }
 
-.hero-art {
-  min-height:480px;
-  display:grid;
-  place-items:center;
-  position:relative;
+@keyframes goldMove{to{background-position:300% center}}
+
+@keyframes heroIn{
+ from{opacity:0;transform:translateY(45px)}
+ to{opacity:1;transform:translateY(0)}
 }
 
-.hero-art img {
-  width:min(100%,430px);
-  position:relative;
-  z-index:3;
-  animation:logoFloat 6s ease-in-out infinite;
-  filter:drop-shadow(0 20px 35px #B9822750);
+.hero-subtitle{
+ color:#DCE6EB;
+ font-size:14px;
+ letter-spacing:.5px;
 }
 
-.orbit {
-  position:absolute;
-  width:440px;
-  max-width:95%;
-  aspect-ratio:1;
-  border:1px solid #B9822750;
-  border-radius:50%;
-  animation:orbitRotate 35s linear infinite;
+.hero-tagline{
+ font-family:var(--lora);
+ font-size:29px;
+ margin:30px 0;
+ color:var(--champagne);
 }
 
-.orbit-two {
-  position:absolute;
-  width:350px;
-  aspect-ratio:1;
-  border:1px dashed #B9822745;
-  border-radius:50%;
-  animation:orbitRotate 45s linear infinite reverse;
+.hero-buttons{display:flex;gap:15px;flex-wrap:wrap}
+
+.hero-art{
+ min-height:470px;
+ display:grid;
+ place-items:center;
+ position:relative;
 }
 
-.orbit::after {
-  content:"";
-  position:absolute;
-  top:8%;
-  left:25%;
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:var(--gold-light);
-  box-shadow:0 0 25px var(--gold);
+.hero-art img{
+ width:min(100%,420px);
+ position:relative;
+ z-index:3;
+ animation:floatLogo 6s ease-in-out infinite;
+ filter:drop-shadow(0 20px 45px #C18B3570);
 }
 
-.hero-decoration {
-  position:absolute;
-  width:8px;
-  height:8px;
-  background:var(--gold);
-  border-radius:50%;
-  box-shadow:0 0 20px var(--gold);
-  animation:twinkle 3s infinite alternate;
+@keyframes floatLogo{
+ 0%,100%{transform:translateY(0) rotate(-1deg)}
+ 50%{transform:translateY(-22px) rotate(1deg)}
 }
 
-/* MOVING TEXT */
-
-.marquee {
-  background:var(--gold);
-  color:var(--black);
-  padding:17px 0;
-  overflow:hidden;
-  white-space:nowrap;
+.orbit{
+ position:absolute;
+ width:440px;
+ max-width:95%;
+ aspect-ratio:1;
+ border:1px solid #D5A34870;
+ border-radius:50%;
+ animation:rotate 30s linear infinite;
 }
 
-.marquee-track {
-  display:inline-flex;
-  animation:marquee 28s linear infinite;
+.orbit.two{
+ width:350px;
+ border-style:dashed;
+ border-color:#4BA5B480;
+ animation:rotate 40s linear infinite reverse;
 }
 
-.marquee span {
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:3px;
-  padding:0 35px;
+.orbit:after{
+ content:"";
+ position:absolute;
+ top:12%;
+ left:18%;
+ width:13px;
+ height:13px;
+ background:var(--gold2);
+ border-radius:50%;
+ box-shadow:0 0 30px var(--gold2);
+}
+
+@keyframes rotate{to{transform:rotate(360deg)}}
+
+.floating-dot{
+ position:absolute;
+ width:10px;
+ height:10px;
+ border-radius:50%;
+ background:var(--gold2);
+ box-shadow:0 0 20px var(--gold);
+ animation:dotFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes dotFloat{
+ to{transform:translate(20px,-25px) scale(1.5);opacity:.4}
+}
+
+/* MARQUEE */
+
+.marquee{
+ background:linear-gradient(90deg,#B98227,#E7C27D,#B98227);
+ padding:16px 0;
+ overflow:hidden;
+ white-space:nowrap;
+ position:relative;
+}
+
+.marquee-track{
+ display:inline-flex;
+ animation:marquee 30s linear infinite;
+}
+
+.marquee span{
+ font-size:12px;
+ font-weight:800;
+ letter-spacing:3px;
+ padding:0 30px;
+ color:#071725;
+}
+
+@keyframes marquee{
+ to{transform:translateX(-50%)}
+}
+
+/* GENERAL SECTIONS */
+
+.section{padding:115px 0}
+
+.gold-line{
+ width:75px;
+ height:3px;
+ background:linear-gradient(90deg,var(--gold),var(--gold2));
+ margin:25px 0;
 }
 
 /* ABOUT */
 
-.about-grid {
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:80px;
-  align-items:center;
+.about-grid{
+ display:grid;
+ grid-template-columns:.8fr 1.2fr;
+ gap:75px;
+ align-items:center;
 }
 
-.experience-box {
-  padding:55px 35px;
-  background:var(--navy);
-  color:white;
-  text-align:center;
-  border-bottom:5px solid var(--gold);
-  position:relative;
-  overflow:hidden;
+.experience-box{
+ padding:55px 30px;
+ background:
+ radial-gradient(circle at 90% 10%,#287D83 0%,transparent 40%),
+ linear-gradient(145deg,#092A46,#061725);
+ color:white;
+ text-align:center;
+ border-bottom:5px solid var(--gold);
+ box-shadow:0 25px 55px #092A4630;
+ position:relative;
+ overflow:hidden;
 }
 
-.experience-box::before {
-  content:"";
-  position:absolute;
-  width:250px;
-  height:250px;
-  border:1px solid #B9822745;
-  border-radius:50%;
-  top:-120px;
-  right:-100px;
+.experience-number{
+ font-family:var(--lora);
+ font-size:125px;
+ line-height:1.3;
+ color:var(--gold2);
 }
 
-.experience-number {
-  font-family:var(--lora);
-  color:var(--gold-light);
-  font-size:clamp(90px,12vw,145px);
-  line-height:1.2;
+.experience-label{
+ font-size:13px;
+ letter-spacing:3px;
+ font-weight:800;
 }
 
-.experience-label {
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:3px;
+.about-copy p{
+ color:#536674;
+ margin:20px 0;
+ font-size:16px;
 }
 
-.about-copy p {
-  color:#53636D;
-  margin-bottom:20px;
-  font-size:16px;
+.about-copy strong{color:var(--navy)}
+
+/* SERVICES - SPECIAL DESIGN */
+
+.services{
+ color:white;
+ overflow:hidden;
+ background:
+ radial-gradient(ellipse at 0% 0%,#155477 0%,transparent 40%),
+ radial-gradient(ellipse at 100% 100%,#287D8335,transparent 40%),
+ linear-gradient(145deg,#061725,#092A46 65%,#071725);
 }
 
-.about-copy strong {color:var(--navy);}
-
-/* SERVICES */
-
-.services {
-  background:var(--black);
-  color:white;
-  overflow:hidden;
+.services:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ opacity:.1;
+ background-image:linear-gradient(45deg,#FFFFFF 1px,transparent 1px);
+ background-size:50px 50px;
+ pointer-events:none;
 }
 
-.services h2 {color:white;}
+.services .container{position:relative;z-index:2}
 
-.services-intro {
-  color:#C8C8C8;
-  max-width:800px;
-  font-size:17px;
+.services-heading{text-align:center;max-width:900px;margin:auto}
+
+.services-heading .eyebrow{color:var(--gold2)}
+
+.services h2{
+ color:white;
+ margin:25px 0;
+ font-size:clamp(40px,5vw,66px);
 }
 
-.service-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:23px;
-  margin-top:55px;
+.services h2 span{color:var(--gold2)}
+
+.services-intro{
+ color:#D3E0E7;
+ font-size:17px;
+ max-width:760px;
+ margin:0 auto;
 }
 
-.service-card {
-  min-height:280px;
-  padding:35px 30px;
-  background:linear-gradient(145deg,#171717,#090909);
-  border:1px solid #B9822745;
-  position:relative;
-  overflow:hidden;
-  transition:transform .5s,border-color .5s,box-shadow .5s;
+.services-divider{
+ width:100px;
+ height:3px;
+ background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+ margin:30px auto 0;
+ animation:dividerGlow 3s infinite alternate;
 }
 
-.service-card::before {
-  content:"";
-  position:absolute;
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  background:#B9822712;
-  right:-100px;
-  bottom:-120px;
-  transition:transform .6s;
+@keyframes dividerGlow{
+ to{width:180px;filter:brightness(1.6)}
 }
 
-.service-card:hover {
-  transform:translateY(-12px);
-  border-color:var(--gold);
-  box-shadow:0 25px 50px #0008;
+.service-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:25px;
+ margin-top:65px;
 }
 
-.service-card:hover::before {transform:scale(2.2);}
-
-.service-number {
-  font-size:14px;
-  color:var(--gold);
-  letter-spacing:4px;
-  font-weight:800;
+.service-card{
+ min-height:300px;
+ padding:35px 30px;
+ position:relative;
+ overflow:hidden;
+ border:1px solid #FFFFFF25;
+ background:linear-gradient(145deg,#FFFFFF12,#FFFFFF04);
+ backdrop-filter:blur(10px);
+ transition:transform .5s,border-color .5s,box-shadow .5s;
+ transform-style:preserve-3d;
 }
 
-.service-card h3 {
-  color:white;
-  font-size:25px;
-  margin:30px 0 15px;
+.service-card:before{
+ content:"";
+ position:absolute;
+ inset:-100%;
+ background:linear-gradient(120deg,transparent 40%,#FFFFFF18 50%,transparent 60%);
+ transform:translateX(-100%) rotate(20deg);
+ transition:transform .8s;
 }
 
-.service-card p {
-  color:#C0C0C0;
-  font-size:15px;
-  line-height:1.9;
+.service-card:hover:before{
+ transform:translateX(100%) rotate(20deg);
 }
 
-.services-note {
-  text-align:center;
-  font-family:var(--lora);
-  color:var(--gold-light);
-  font-size:24px;
-  max-width:850px;
-  margin:60px auto 0;
+.service-card:after{
+ content:"";
+ position:absolute;
+ width:180px;
+ height:180px;
+ border-radius:50%;
+ right:-90px;
+ bottom:-110px;
+ background:var(--card-color,#C18B35);
+ opacity:.2;
+ filter:blur(45px);
+ transition:.6s;
+}
+
+.service-card:hover{
+ transform:translateY(-15px) rotateX(3deg);
+ border-color:var(--card-color,var(--gold2));
+ box-shadow:0 25px 60px #0005,0 0 25px #FFFFFF10;
+}
+
+.service-card:hover:after{
+ transform:scale(2);
+ opacity:.4;
+}
+
+.service-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.service-number{
+ color:var(--card-color,var(--gold2));
+ font-size:12px;
+ font-weight:800;
+ letter-spacing:3px;
+}
+
+.service-icon{
+ width:58px;
+ height:58px;
+ display:grid;
+ place-items:center;
+ border:1px solid var(--card-color,var(--gold2));
+ border-radius:50%;
+ color:var(--card-color,var(--gold2));
+ font-size:25px;
+ transition:.5s;
+}
+
+.service-card:hover .service-icon{
+ transform:rotate(360deg) scale(1.12);
+ background:var(--card-color,var(--gold));
+ color:#061725;
+ box-shadow:0 0 25px var(--card-color);
+}
+
+.service-card h3{
+ font-size:25px;
+ color:white;
+ margin:30px 0 15px;
+}
+
+.service-card p{
+ font-size:14px;
+ color:#D4E0E7;
+ line-height:1.9;
+}
+
+.service-link{
+ display:inline-block;
+ margin-top:23px;
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:1px;
+ color:var(--card-color,var(--gold2));
+ transition:.3s;
+}
+
+.service-link:hover{letter-spacing:2px}
+
+.service-card:nth-child(1){--card-color:#E4B75F}
+.service-card:nth-child(2){--card-color:#68B7D3}
+.service-card:nth-child(3){--card-color:#C49BD9}
+.service-card:nth-child(4){--card-color:#70C5B0}
+.service-card:nth-child(5){--card-color:#E7A18A}
+
+.services-note{
+ max-width:850px;
+ text-align:center;
+ margin:65px auto 0;
+ padding:30px;
+ border-top:1px solid #D6AD5B60;
+ border-bottom:1px solid #D6AD5B60;
+ color:var(--champagne);
+ font-family:var(--lora);
+ font-size:24px;
 }
 
 /* COACHING */
 
-.coaching-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:75px;
-  align-items:center;
+.coaching-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:70px;
+ align-items:center;
 }
 
-.coaching-subtitle {
-  color:var(--gold);
-  font-family:var(--lora);
-  font-size:25px;
-  margin:25px 0;
+.coaching-subtitle{
+ color:var(--gold);
+ font-family:var(--lora);
+ font-size:25px;
+ margin:25px 0;
 }
 
-.coaching-copy p {
-  color:#596771;
-  margin-bottom:20px;
-  font-size:16px;
+.coaching-copy p{margin:18px 0;color:#536674}
+
+.check-list{list-style:none;margin-top:25px}
+
+.check-list li{
+ padding:13px 0;
+ border-bottom:1px solid #092A4618;
+ font-size:15px;
+ transition:.3s;
 }
 
-.check-list {
-  list-style:none;
-  margin-top:25px;
+.check-list li:hover{
+ padding-left:12px;
+ color:var(--gold);
 }
 
-.check-list li {
-  padding:13px 0;
-  border-bottom:1px solid #092A4618;
-  font-size:15px;
-  color:#344956;
-  transition:padding-left .3s;
+.check-list li:before{
+ content:"✦";
+ color:var(--gold);
+ margin-right:15px;
 }
 
-.check-list li:hover {padding-left:12px;}
-
-.check-list li::before {
-  content:"✦";
-  color:var(--gold);
-  margin-right:15px;
+.coaching-card{
+ padding:50px 40px;
+ background:
+ radial-gradient(circle at 100% 0%,#287D83 0%,transparent 45%),
+ linear-gradient(145deg,#092A46,#061725);
+ color:white;
+ border-top:5px solid var(--gold);
+ box-shadow:0 25px 60px #092A4630;
 }
 
-.coaching-card {
-  padding:55px 45px;
-  background:var(--navy);
-  color:white;
-  border-top:5px solid var(--gold);
-  box-shadow:0 25px 65px #092A4625;
-  position:relative;
-  overflow:hidden;
-}
-
-.coaching-card::after {
-  content:"";
-  position:absolute;
-  width:250px;
-  height:250px;
-  border:1px solid #B9822745;
-  border-radius:50%;
-  right:-120px;
-  bottom:-140px;
-}
-
-.coaching-card h3 {
-  font-size:38px;
-  margin:25px 0;
-}
-
-.coaching-card p {
-  color:#D4DCE1;
-  font-size:16px;
-}
-
-.goal {
-  margin-top:35px;
-  padding-top:25px;
-  border-top:1px solid #FFFFFF40;
-  color:var(--gold-light);
-  font-size:16px;
-  font-weight:700;
+.coaching-card h3{font-size:38px;margin:25px 0}
+.coaching-card p{color:#D9E2E8}
+.coaching-card .goal{
+ margin-top:30px;
+ padding-top:25px;
+ border-top:1px solid #FFFFFF40;
+ color:var(--gold2);
+ font-weight:700;
 }
 
 /* PROCESS */
 
-.process {background:#EEE9DF;}
-
-.process-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:35px;
-  margin-top:50px;
+.process{
+ background:linear-gradient(130deg,#EEE9DF,#FFFFFF,#E9F1F0);
 }
 
-.process-item {
-  padding:30px;
-  border-top:3px solid var(--gold);
-  background:#FFFFFF80;
-  transition:transform .4s,box-shadow .4s;
+.process-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:25px;
+ margin-top:50px;
 }
 
-.process-item:hover {
-  transform:translateY(-10px);
-  box-shadow:0 20px 40px #092A4615;
+.process-item{
+ padding:35px;
+ background:#FFFFFFC9;
+ border:1px solid #C18B3530;
+ border-top:4px solid var(--gold);
+ transition:.5s;
 }
 
-.process-item span {
-  font-family:var(--lora);
-  font-size:55px;
-  color:var(--gold);
+.process-item:hover{
+ transform:translateY(-12px);
+ box-shadow:0 25px 50px #092A4620;
 }
 
-.process-item h3 {
-  font-size:26px;
-  color:var(--navy);
-  margin:15px 0;
+.process-item span{
+ font-family:var(--lora);
+ font-size:65px;
+ color:var(--gold);
 }
 
-.process-item p {
-  font-size:15px;
-  color:#65737D;
-}
+.process-item h3{font-size:27px;color:var(--navy);margin:15px 0}
+.process-item p{color:var(--muted);font-size:15px}
 
 /* REVIEWS */
 
-.reviews {
-  background:var(--navy);
-  color:white;
+.reviews{
+ background:
+ radial-gradient(circle at 100% 0%,#155477 0%,transparent 40%),
+ linear-gradient(130deg,#061725,#092A46);
+ color:white;
 }
 
-.reviews h2 {color:white;}
+.reviews h2{color:white}
+.reviews-intro{color:#D0DEE6;max-width:750px}
 
-.reviews-intro {
-  color:#D0DAE0;
-  max-width:800px;
-  font-size:16px;
+.review-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:23px;
+ margin-top:50px;
 }
 
-.review-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-  margin-top:50px;
+.review-card{
+ padding:35px;
+ min-height:300px;
+ display:flex;
+ flex-direction:column;
+ border:1px solid #D0A65C60;
+ background:#FFFFFF0C;
+ transition:.5s;
 }
 
-.review-card {
-  min-height:300px;
-  display:flex;
-  flex-direction:column;
-  padding:32px;
-  border:1px solid #B9822760;
-  background:#FFFFFF08;
-  transition:transform .4s,background .4s;
+.review-card:hover{
+ transform:translateY(-12px) scale(1.02);
+ background:#FFFFFF16;
+ box-shadow:0 20px 50px #0004;
 }
 
-.review-card:hover {
-  transform:translateY(-10px);
-  background:#FFFFFF13;
+.review-stars{
+ color:var(--gold2);
+ font-size:22px;
+ letter-spacing:5px;
 }
 
-.review-stars {
-  color:var(--gold-light);
-  letter-spacing:5px;
-  font-size:20px;
+.review-text{
+ flex:1;
+ margin:25px 0;
+ font-size:14px;
+ color:#E2E9ED;
 }
 
-.review-text {
-  flex:1;
-  margin:25px 0;
-  color:#E2E8EC;
-  font-size:14px;
-}
+.review-author{font-weight:800}
+.review-role{font-size:12px;color:#C0D0D8}
 
-.review-author {
-  font-size:15px;
-  font-weight:800;
+.review-link{
+ margin-top:18px;
+ font-size:12px;
+ font-weight:800;
+ color:var(--gold2);
 }
-
-.review-role {
-  font-size:12px;
-  color:#B6C3CB;
-}
-
-.review-link {
-  display:inline-block;
-  color:var(--gold-light);
-  margin-top:18px;
-  font-size:13px;
-  font-weight:700;
-}
-
-.review-link:hover {text-decoration:underline;}
 
 /* CONTACT */
 
-.contact-grid {
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:70px;
-  align-items:center;
+.contact-grid{
+ display:grid;
+ grid-template-columns:.85fr 1.15fr;
+ gap:70px;
+ align-items:center;
 }
 
-.contact-copy p {
-  color:#5D6B75;
-  margin-bottom:22px;
-  font-size:16px;
+.contact-copy p{color:#586A77;margin:22px 0}
+.contact-emphasis{
+ font-family:var(--lora);
+ font-size:25px!important;
+ color:var(--gold)!important;
 }
 
-.contact-emphasis {
-  color:var(--gold)!important;
-  font-family:var(--lora);
-  font-size:25px!important;
+.contact-form{
+ padding:40px;
+ background:white;
+ border:1px solid #C18B3530;
+ box-shadow:0 25px 65px #092A4615;
 }
 
-.contact-form {
-  padding:42px;
-  background:#FFFFFF;
-  border:1px solid #092A4620;
-  box-shadow:0 20px 65px #092A4610;
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:20px}
+
+.field label{
+ display:block;
+ font-size:12px;
+ font-weight:800;
+ color:var(--navy);
+ margin-bottom:8px;
 }
 
-.form-row {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+.field input,.field select,.field textarea{
+ width:100%;
+ padding:15px;
+ border:1px solid #092A4625;
+ background:#FBFAF7;
+ outline:none;
+ transition:.3s;
+ font-size:14px;
 }
 
-.field {margin-bottom:22px;}
-
-.field label {
-  display:block;
-  color:var(--navy);
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:9px;
+.field input:focus,.field select:focus,.field textarea:focus{
+ border-color:var(--gold);
+ box-shadow:0 0 0 4px #C18B3518;
+ background:white;
 }
 
-.field input,.field textarea,.field select {
-  width:100%;
-  padding:16px;
-  border:1px solid #092A4625;
-  background:#FCFBF8;
-  font-size:14px;
-  outline:none;
-  transition:border .3s,box-shadow .3s;
+.field textarea{min-height:130px;resize:vertical}
+
+.consent{
+ display:flex;
+ gap:12px;
+ align-items:flex-start;
+ font-size:12px;
+ color:#71818B;
+ margin-bottom:23px;
 }
 
-.field input:focus,.field textarea:focus,.field select:focus {
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px #B9822718;
-}
-
-.field textarea {
-  min-height:135px;
-  resize:vertical;
-}
-
-.consent {
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  font-size:12px;
-  line-height:1.7;
-  color:#667580;
-  margin-bottom:25px;
-}
-
-.consent input {margin-top:5px;accent-color:var(--gold);}
-
-.form-status {
-  margin-top:15px;
-  font-size:13px;
-  color:var(--navy);
-  min-height:25px;
-}
+.consent input{margin-top:5px;accent-color:var(--gold)}
+.form-status{margin-top:15px;font-size:13px}
 
 /* FOOTER */
 
-footer {
-  background:var(--black);
-  color:#B8B8B8;
-  padding:45px 0;
+footer{
+ background:#050E17;
+ color:#BCC9D0;
+ padding:45px 0;
 }
 
-.footer-inner {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:25px;
-  flex-wrap:wrap;
+.footer-inner{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:25px;
 }
 
-.footer-logo {width:135px;}
+.footer-logo{width:135px}
+.footer-inner span{font-size:11px}
+.social-link{color:var(--gold2);font-weight:800}
 
-.footer-inner span {font-size:12px;}
+/* BACK TOP */
 
-.social-link {
-  color:var(--gold-light);
-  font-weight:700;
+.back-top{
+ position:fixed;
+ right:25px;
+ bottom:25px;
+ width:48px;
+ height:48px;
+ background:#061725;
+ color:var(--gold2);
+ border:1px solid var(--gold);
+ font-size:22px;
+ cursor:pointer;
+ z-index:900;
+ opacity:0;
+ visibility:hidden;
+ transition:.4s;
 }
 
-/* BACK TO TOP */
+.back-top.show{opacity:1;visibility:visible}
+.back-top:hover{background:var(--gold);color:#061725}
 
-.back-top {
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  width:48px;
-  height:48px;
-  border:1px solid var(--gold);
-  background:var(--black);
-  color:var(--gold);
-  font-size:22px;
-  cursor:pointer;
-  z-index:900;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(15px);
-  transition:.4s;
+/* SCROLL REVEAL */
+
+[data-reveal]{
+ opacity:0;
+ transform:translateY(50px);
+ transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);
 }
 
-.back-top.show {
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
+[data-reveal="left"]{transform:translateX(-55px)}
+[data-reveal="right"]{transform:translateX(55px)}
+[data-reveal="zoom"]{transform:scale(.85)}
+
+[data-reveal].visible{
+ opacity:1;
+ transform:translate(0) scale(1);
 }
 
-.back-top:hover {
-  background:var(--gold);
-  color:var(--black);
-}
+.service-card:nth-child(2),
+.review-card:nth-child(2),
+.process-item:nth-child(2){transition-delay:.12s}
 
-/* SCROLL PROGRESS */
-
-.progress-bar {
-  position:fixed;
-  top:0;
-  left:0;
-  height:3px;
-  width:0;
-  background:linear-gradient(90deg,var(--gold),var(--gold-light));
-  z-index:2000;
-}
-
-/* MOTION */
-
-[data-motion] {
-  opacity:0;
-  transform:translateY(45px);
-  transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);
-}
-
-[data-motion].visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-[data-motion="left"] {
-  transform:translateX(-55px);
-}
-
-[data-motion="right"] {
-  transform:translateX(55px);
-}
-
-[data-motion="scale"] {
-  transform:scale(.85);
-}
-
-[data-motion="left"].visible,
-[data-motion="right"].visible {
-  transform:translateX(0);
-}
-
-[data-motion="scale"].visible {
-  transform:scale(1);
-}
-
-@keyframes heroEnter {
-  from {opacity:0;transform:translateY(40px);}
-  to {opacity:1;transform:translateY(0);}
-}
-
-@keyframes logoFloat {
-  0%,100% {transform:translateY(0) rotate(0);}
-  50% {transform:translateY(-18px) rotate(1deg);}
-}
-
-@keyframes orbitRotate {to {transform:rotate(360deg);}}
-
-@keyframes goldShimmer {
-  to {background-position:200% center;}
-}
-
-@keyframes twinkle {
-  from {opacity:.3;transform:scale(.7);}
-  to {opacity:1;transform:scale(1.5);}
-}
-
-@keyframes marquee {
-  from {transform:translateX(0);}
-  to {transform:translateX(-50%);}
-}
+.service-card:nth-child(3),
+.review-card:nth-child(3),
+.process-item:nth-child(3){transition-delay:.22s}
 
 /* RESPONSIVE */
 
-@media(max-width:900px) {
+@media(max-width:900px){
 
-  .nav-links {
-    position:fixed;
-    top:88px;
-    right:0;
-    width:100%;
-    height:calc(100vh - 88px);
-    background:#050505;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    gap:35px;
-    transform:translateX(100%);
-    transition:transform .5s cubic-bezier(.7,0,.2,1);
-  }
+ .menu-btn{display:block}
 
-  .nav-links.open {transform:translateX(0);}
+ .nav-links{
+  position:fixed;
+  top:88px;
+  right:0;
+  width:100%;
+  height:calc(100vh - 88px);
+  background:#061725;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:35px;
+  transform:translateX(100%);
+  transition:.5s;
+ }
 
-  .nav-links a {font-size:16px;}
+ .nav-links.open{transform:translateX(0)}
+ .nav-links a{font-size:15px}
 
-  .menu-btn {display:block;}
+ .hero-grid,.about-grid,.coaching-grid,.contact-grid{
+  grid-template-columns:1fr;
+  gap:45px;
+ }
 
-  .hero-grid,.about-grid,.coaching-grid,.contact-grid {
-    grid-template-columns:1fr;
-    gap:45px;
-  }
+ .hero{text-align:center}
+ .hero-buttons{justify-content:center}
+ .hero-art{min-height:350px}
 
-  .hero {text-align:center;}
-
-  .hero-subtitle {margin:auto;}
-
-  .hero-buttons {justify-content:center;}
-
-  .hero-art {min-height:350px;}
-
-  .hero-art img {width:300px;}
-
-  .orbit {width:330px;}
-  .orbit-two {width:270px;}
-
-  .service-grid,.review-grid {
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .about-grid {gap:45px;}
-
-  .experience-box {max-width:480px;margin:auto;width:100%;}
-
-  .process-grid {gap:18px;}
+ .service-grid,.review-grid{grid-template-columns:repeat(2,1fr)}
+ .experience-box{max-width:480px;margin:auto}
 }
 
-@media(max-width:580px) {
+@media(max-width:580px){
 
-  .container {width:90%;}
+ .container{width:90%}
+ .section{padding:85px 0}
+ header{height:75px}
+ header.scrolled{height:68px}
+ .brand img{width:125px}
+ .nav-links{top:75px;height:calc(100vh - 75px)}
 
-  .section {padding:85px 0;}
+ .hero{padding:130px 0 70px}
+ .hero h1{font-size:clamp(38px,10vw,52px)}
+ .hero-tagline{font-size:24px}
+ .hero-subtitle{font-size:12px}
+ .hero-art{min-height:280px}
+ .hero-art img{width:245px}
+ .orbit{width:275px}
+ .orbit.two{width:220px}
 
-  header {height:75px;}
-  header.scrolled {height:68px;}
-
-  .brand img {width:125px;}
-
-  .nav-links {top:75px;height:calc(100vh - 75px);}
-
-  .hero {padding:130px 0 65px;}
-
-  .hero h1 {
-    font-size:clamp(39px,10vw,52px);
-    letter-spacing:-1px;
-  }
-
-  .hero-subtitle {font-size:13px;}
-
-  .hero-tagline {font-size:25px;}
-
-  .hero-art {min-height:290px;}
-
-  .hero-art img {width:245px;}
-
-  .orbit {width:275px;}
-  .orbit-two {width:220px;}
-
-  h2 {font-size:37px;}
-
-  .service-grid,.review-grid,.process-grid {
-    grid-template-columns:1fr;
-  }
-
-  .service-card {min-height:230px;}
-
-  .service-card h3 {font-size:25px;}
-
-  .coaching-card {padding:35px 27px;}
-
-  .coaching-card h3 {font-size:31px;}
-
-  .coaching-subtitle {font-size:22px;}
-
-  .form-row {grid-template-columns:1fr;}
-
-  .contact-form {padding:25px 20px;}
-
-  .btn {width:100%;padding:17px 18px;}
-
-  .footer-inner {
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .services-note {font-size:20px;}
-
-  .experience-number {font-size:100px;}
+ h2{font-size:38px}
+ .service-grid,.review-grid,.process-grid{grid-template-columns:1fr}
+ .service-card{min-height:250px}
+ .services h2{font-size:40px}
+ .services-note{font-size:20px}
+ .coaching-card{padding:35px 25px}
+ .coaching-card h3{font-size:32px}
+ .form-row{grid-template-columns:1fr}
+ .contact-form{padding:25px 20px}
+ .btn{width:100%}
+ .footer-inner{flex-direction:column;text-align:center}
+ .experience-number{font-size:100px}
 }
 
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation:none!important;
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
+@media(pointer:coarse){
+ .cursor-glow{display:none}
+}
 
-  [data-motion] {
-    opacity:1;
-    transform:none;
-  }
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{
+  animation:none!important;
+  transition:none!important;
+  scroll-behavior:auto!important;
+ }
+ [data-reveal]{opacity:1;transform:none}
+ .preloader{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
+<div class="preloader" id="preloader">
+ <div class="preloader-inner">
+  <img src="Logo%20Carelynta%20(2).png" class="preloader-logo" alt="CARELYNTA">
+  <div class="loader-line"></div>
+ </div>
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
 
 <header id="header">
-<div class="container nav">
+ <div class="container nav">
+  <a class="brand" href="#home">
+   <img src="Logo%20Carelynta%20(2).png" alt="CARELYNTA">
+  </a>
 
-<a class="brand" href="#home">
-<img src="Logo%20Carelynta%20(2).png" alt="CARELYNTA">
-</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Meniu" aria-expanded="false">☰</button>
 
-<button class="menu-btn" id="menuBtn"
-aria-label="Deschide meniul"
-aria-expanded="false">☰</button>
-
-<nav class="nav-links" id="navLinks">
-<a href="#despre">Despre mine</a>
-<a href="#servicii">Servicii</a>
-<a href="#coaching">Career Coaching</a>
-<a href="#reviews">Review-uri</a>
-<a href="#contact">Contact</a>
-</nav>
-
-</div>
+  <nav class="nav-links" id="navLinks">
+   <a href="#despre">Despre mine</a>
+   <a href="#servicii">Servicii</a>
+   <a href="#coaching">Career Coaching</a>
+   <a href="#reviews">Review-uri</a>
+   <a href="#contact">Contact</a>
+  </nav>
+ </div>
 </header>
 
 <main>
@@ -1044,551 +1064,526 @@ aria-expanded="false">☰</button>
 <!-- HERO -->
 
 <section class="hero" id="home">
+ <div class="container hero-grid">
 
-<div class="container hero-grid">
+  <div data-reveal>
+   <div class="eyebrow">CARELYNTA · CAREER GUIDANCE</div>
 
-<div class="hero-content" data-motion>
+   <h1>
+    TRANSFORMĂM CV-UL
+    <span>ÎN OPORTUNITATE</span>
+   </h1>
 
-<div class="eyebrow">CARELYNTA · Career Guidance</div>
+   <p class="hero-subtitle">
+    Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation
+   </p>
 
-<h1>
-TRANSFORMĂM CV-UL
-<span>ÎN OPORTUNITATE</span>
-</h1>
+   <p class="hero-tagline">Cariera ta merită o direcție</p>
 
-<p class="hero-subtitle">
-Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation
-</p>
+   <div class="hero-buttons">
+    <a href="#contact" class="btn btn-gold">Hai să discutăm ↗</a>
+    <a href="#servicii" class="btn btn-outline">Descoperă serviciile</a>
+   </div>
+  </div>
 
-<p class="hero-tagline">Cariera ta merită o direcție</p>
+  <div class="hero-art" data-reveal="zoom">
+   <div class="orbit"></div>
+   <div class="orbit two"></div>
+   <div class="floating-dot" style="top:12%;left:12%"></div>
+   <div class="floating-dot" style="bottom:15%;right:10%"></div>
+   <div class="floating-dot" style="top:30%;right:5%;animation-delay:1s"></div>
+   <img src="Logo%20Carelynta%20(2).png" alt="CARELYNTA">
+  </div>
 
-<div class="hero-buttons">
-<a href="#contact" class="btn btn-gold">Hai să discutăm ↗</a>
-<a href="#servicii" class="btn btn-outline">Descoperă serviciile</a>
-</div>
-
-</div>
-
-<div class="hero-art" data-motion="scale">
-
-<div class="orbit"></div>
-<div class="orbit-two"></div>
-
-<div class="hero-decoration" style="top:15%;left:15%"></div>
-<div class="hero-decoration" style="bottom:15%;right:12%"></div>
-
-<img src="Logo%20Carelynta%20(2).png" alt="Logo CARELYNTA">
-
-</div>
-
-</div>
+ </div>
 </section>
 
-<!-- MOVING TEXT -->
-
 <div class="marquee">
-<div class="marquee-track">
-<span>CAREER COACHING ✦ CV OPTIMIZATION ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
-<span>CAREER COACHING ✦ CV OPTIMIZATION ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
-</div>
+ <div class="marquee-track">
+  <span>CAREER COACHING ✦ CV OPTIMIZATION ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
+  <span>CAREER COACHING ✦ CV OPTIMIZATION ✦ LINKEDIN PROFILE ✦ INTERVIEW PREPARATION ✦ CAREER DEVELOPMENT ✦</span>
+ </div>
 </div>
 
 <!-- ABOUT -->
 
 <section class="section" id="despre">
+ <div class="container about-grid">
 
-<div class="container about-grid">
+  <div data-reveal="left">
+   <div class="experience-box">
+    <div class="experience-number">7+</div>
+    <div class="experience-label">ANI DE EXPERIENȚĂ ÎN HR</div>
+    <div class="gold-line" style="margin:25px auto"></div>
+    <p>Experiență practică. Claritate. Dezvoltare profesională.</p>
+   </div>
+  </div>
 
-<div data-motion="left">
+  <div class="about-copy" data-reveal="right">
+   <div class="eyebrow">DESPRE MINE</div>
+   <h2>Cariera ta merită o direcție</h2>
 
-<div class="experience-box">
-<div class="experience-number">7+</div>
-<div class="experience-label">ANI DE EXPERIENȚĂ ÎN HR</div>
-<div class="gold-line" style="margin:25px auto"></div>
-<p style="font-size:14px;color:#E5E5E5">
-Experiență practică. Claritate. Dezvoltare profesională.
-</p>
-</div>
+   <p>
+    Sunt specialist HR, cu peste 7 ani de experiență în domeniul resurselor umane,
+    calificare de HR Manager, formator și diplomă de consilier în dezvoltare personală.
+   </p>
 
-</div>
+   <p>
+    Am creat <strong>CARELYNTA</strong> din dorința de a aduce împreună experiența practică
+    din HR și instrumentele de dezvoltare personală și profesională.
+   </p>
 
-<div class="about-copy" data-motion="right">
+   <p>
+    Cred că fiecare persoană are competențe, experiențe și potențial care merită
+    valorificate. Uneori, diferența dintre o candidatură obișnuită și o oportunitate
+    reală stă în modul în care îți prezinți experiența și în claritatea direcției pe care
+    o urmezi.
+   </p>
 
-<div class="eyebrow">Despre mine</div>
-<h2>Cariera ta merită o direcție</h2>
+   <p>
+    Prin serviciile <strong>CARELYNTA</strong>, îți ofer sprijin personalizat pentru a-ți construi,
+    redefini sau dezvolta parcursul profesional.
+   </p>
+  </div>
 
-<p>
-Sunt specialist HR, cu peste 7 ani de experiență în domeniul resurselor umane,
-calificare de HR Manager, formator și diplomă de consilier în dezvoltare
-personală.
-</p>
-
-<p>
-Am creat <strong>CARELYNTA</strong> din dorința de a aduce împreună experiența practică
-din HR și instrumentele de dezvoltare personală și profesională.
-</p>
-
-<p>
-Cred că fiecare persoană are competențe, experiențe și potențial care merită
-valorificate. Uneori, diferența dintre o candidatură obișnuită și o oportunitate
-reală stă în modul în care îți prezinți experiența și în claritatea direcției pe care
-o urmezi.
-</p>
-
-<p>
-Prin serviciile <strong>CARELYNTA</strong>, îți ofer sprijin personalizat pentru a-ți construi,
-redefini sau dezvolta parcursul profesional.
-</p>
-
-</div>
-</div>
+ </div>
 </section>
 
 <!-- SERVICES -->
 
 <section class="section services" id="servicii">
+ <div class="container">
 
-<div class="container">
+  <div class="services-heading" data-reveal>
+   <div class="eyebrow">SERVICIILE MELE</div>
 
-<div data-motion>
+   <h2>
+    Soluții pentru fiecare etapă
+    <span>a carierei.</span>
+   </h2>
 
-<div class="eyebrow">SERVICIILE MELE</div>
+   <p class="services-intro">
+    Te pot ajuta să faci următorul pas profesional prin servicii adaptate
+    nevoilor și obiectivelor tale:
+   </p>
 
-<h2>Soluții pentru fiecare etapă a carierei.</h2>
+   <div class="services-divider"></div>
+  </div>
 
-<p class="services-intro">
-Te pot ajuta să faci următorul pas profesional prin servicii adaptate
-nevoilor și obiectivelor tale:
-</p>
+  <div class="service-grid">
 
-</div>
+   <article class="service-card" data-reveal>
+    <div class="service-top">
+     <span class="service-number">01 / CAREER</span>
+     <div class="service-icon">✧</div>
+    </div>
+    <h3>Career Coaching</h3>
+    <p>Clarificarea obiectivelor și identificarea direcției profesionale.</p>
+    <a href="#coaching" class="service-link">DESCOPERĂ MAI MULT ↗</a>
+   </article>
 
-<div class="service-grid">
+   <article class="service-card" data-reveal>
+    <div class="service-top">
+     <span class="service-number">02 / CV</span>
+     <div class="service-icon">▤</div>
+    </div>
+    <h3>CV Review &amp; Optimization</h3>
+    <p>Analiza și optimizarea CV-ului din perspectiva unui specialist HR.</p>
+    <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
+   </article>
 
-<article class="service-card" data-motion>
-<span class="service-number">01 / CAREER</span>
-<h3>Career Coaching</h3>
-<p>Clarificarea obiectivelor și identificarea direcției profesionale.</p>
-</article>
+   <article class="service-card" data-reveal>
+    <div class="service-top">
+     <span class="service-number">03 / LINKEDIN</span>
+     <div class="service-icon">in</div>
+    </div>
+    <h3>LinkedIn Profile Optimization</h3>
+    <p>Construirea unui profil LinkedIn profesionist și relevant.</p>
+    <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
+   </article>
 
-<article class="service-card" data-motion>
-<span class="service-number">02 / CV</span>
-<h3>CV Review &amp; Optimization</h3>
-<p>Analiza și optimizarea CV-ului din perspectiva unui specialist HR.</p>
-</article>
+   <article class="service-card" data-reveal>
+    <div class="service-top">
+     <span class="service-number">04 / INTERVIEW</span>
+     <div class="service-icon">✦</div>
+    </div>
+    <h3>Interview preparation</h3>
+    <p>Pregătire practică pentru interviuri și prezentarea experienței profesionale.</p>
+    <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
+   </article>
 
-<article class="service-card" data-motion>
-<span class="service-number">03 / LINKEDIN</span>
-<h3>LinkedIn Profile Optimization</h3>
-<p>Construirea unui profil LinkedIn profesionist și relevant.</p>
-</article>
+   <article class="service-card" data-reveal>
+    <div class="service-top">
+     <span class="service-number">05 / DEVELOPMENT</span>
+     <div class="service-icon">↗</div>
+    </div>
+    <h3>Career Development</h3>
+    <p>Sprijin în schimbări profesionale, reconversie și dezvoltarea carierei.</p>
+    <a href="#contact" class="service-link">SOLICITĂ DETALII ↗</a>
+   </article>
 
-<article class="service-card" data-motion>
-<span class="service-number">04 / INTERVIEW</span>
-<h3>Interview preparation</h3>
-<p>Pregătire practică pentru interviuri și prezentarea experienței profesionale.</p>
-</article>
+  </div>
 
-<article class="service-card" data-motion>
-<span class="service-number">05 / DEVELOPMENT</span>
-<h3>Career Development</h3>
-<p>Sprijin în schimbări profesionale, reconversie și dezvoltarea carierei.</p>
-</article>
+  <p class="services-note" data-reveal>
+   Fiecare serviciu pornește de la nevoile tale și urmărește un obiectiv concret.
+   <br><br>
+   Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine conturată.
+  </p>
 
-</div>
-
-<p class="services-note" data-motion>
-Fiecare serviciu pornește de la nevoile tale și urmărește un obiectiv concret.
-</p>
-
-</div>
+ </div>
 </section>
 
 <!-- COACHING -->
 
 <section class="section" id="coaching">
+ <div class="container coaching-grid">
 
-<div class="container coaching-grid">
+  <div data-reveal="left">
+   <div class="eyebrow">CAREER COACHING</div>
+   <h2>Claritate. Încredere. Direcție.</h2>
 
-<div data-motion="left">
+   <p class="coaching-subtitle">
+    Nu trebuie să ai toate răspunsurile despre cariera ta. Dar poți începe prin a-ți
+    pune întrebările potrivite.
+   </p>
 
-<div class="eyebrow">CAREER COACHING</div>
+   <div class="coaching-copy">
+    <p>
+     Prin sesiunile de <strong>Career Coaching</strong>, te sprijin să îți înțelegi mai bine obiectivele,
+     resursele și opțiunile profesionale.
+    </p>
+    <p><strong>Ce urmărim împreună:</strong></p>
+   </div>
 
-<h2>Claritate. Încredere. Direcție.</h2>
+   <ul class="check-list">
+    <li>Clarificarea obiectivelor profesionale</li>
+    <li>Identificarea punctelor forte și a competențelor</li>
+    <li>Explorarea oportunităților de carieră</li>
+    <li>Identificarea blocajelor și a direcțiilor de dezvoltare</li>
+    <li>Stabilirea unor pași concreți pentru următoarea etapă profesională</li>
+   </ul>
+  </div>
 
-<p class="coaching-subtitle">
-Nu trebuie să ai toate răspunsurile despre cariera ta. Dar poți începe prin a-ți
-pune întrebările potrivite.
-</p>
+  <div class="coaching-card" data-reveal="right">
+   <div class="eyebrow">PENTRU CINE ESTE POTRIVIT?</div>
+   <h3>Career Coaching</h3>
+   <p>
+    Pentru persoanele aflate la început de carieră, pentru cei care își doresc o
+    schimbare profesională sau pentru profesioniștii care simt că au nevoie de o
+    nouă direcție.
+   </p>
+   <div class="goal">
+    Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine
+    conturată.
+   </div>
+  </div>
 
-<div class="coaching-copy">
-<p>
-Prin sesiunile de <strong>Career Coaching</strong>, te sprijin să îți înțelegi mai bine obiectivele,
-resursele și opțiunile profesionale.
-</p>
-
-<p><strong>Ce urmărim împreună:</strong></p>
-</div>
-
-<ul class="check-list">
-<li>Clarificarea obiectivelor profesionale</li>
-<li>Identificarea punctelor forte și a competențelor</li>
-<li>Explorarea oportunităților de carieră</li>
-<li>Identificarea blocajelor și a direcțiilor de dezvoltare</li>
-<li>Stabilirea unor pași concreți pentru următoarea etapă profesională</li>
-</ul>
-
-</div>
-
-<aside class="coaching-card" data-motion="right">
-
-<div class="eyebrow">Pentru cine este potrivit?</div>
-
-<h3>Career Coaching</h3>
-
-<p>
-Pentru persoanele aflate la început de carieră, pentru cei care își doresc o
-schimbare profesională sau pentru profesioniștii care simt că au nevoie de o
-nouă direcție.
-</p>
-
-<div class="goal">
-Obiectiv: să pleci cu mai multă claritate și cu o direcție profesională mai bine
-conturată.
-</div>
-
-</aside>
-
-</div>
+ </div>
 </section>
 
 <!-- PROCESS -->
 
 <section class="section process">
+ <div class="container">
+  <div data-reveal>
+   <div class="eyebrow">CUM ÎNCEPEM</div>
+   <h2>Un pas clar, apoi următorul.</h2>
+  </div>
 
-<div class="container">
+  <div class="process-grid">
+   <article class="process-item" data-reveal>
+    <span>01</span>
+    <h3>Ne cunoaștem</h3>
+    <p>Discutăm despre parcursul tău profesional și obiectivele tale.</p>
+   </article>
 
-<div data-motion>
-<div class="eyebrow">Cum începem</div>
-<h2>Un pas clar, apoi următorul.</h2>
-</div>
+   <article class="process-item" data-reveal>
+    <span>02</span>
+    <h3>Identificăm direcția</h3>
+    <p>Analizăm nevoile și alegem serviciul potrivit.</p>
+   </article>
 
-<div class="process-grid">
-
-<article class="process-item" data-motion>
-<span>01</span>
-<h3>Ne cunoaștem</h3>
-<p>Discutăm despre parcursul tău profesional și obiectivele tale.</p>
-</article>
-
-<article class="process-item" data-motion>
-<span>02</span>
-<h3>Identificăm direcția</h3>
-<p>Analizăm nevoile și alegem serviciul potrivit.</p>
-</article>
-
-<article class="process-item" data-motion>
-<span>03</span>
-<h3>Construim următorul pas</h3>
-<p>Stabilim acțiuni concrete pentru evoluția ta profesională.</p>
-</article>
-
-</div>
-</div>
+   <article class="process-item" data-reveal>
+    <span>03</span>
+    <h3>Construim următorul pas</h3>
+    <p>Stabilim acțiuni concrete pentru evoluția ta profesională.</p>
+   </article>
+  </div>
+ </div>
 </section>
 
 <!-- REVIEWS -->
 
 <section class="section reviews" id="reviews">
+ <div class="container">
 
-<div class="container">
+  <div data-reveal>
+   <div class="eyebrow">RECOMANDĂRI</div>
+   <h2>Experiențe care construiesc încredere.</h2>
+   <p class="reviews-intro">
+    Recomandările autentice reflectă experiențele și colaborările profesionale
+    care stau la baza activității CARELYNTA.
+   </p>
+  </div>
 
-<div data-motion>
-<div class="eyebrow">Recomandări</div>
-<h2>Experiențe care construiesc încredere.</h2>
+  <div class="review-grid">
 
-<p class="reviews-intro">
-Recomandările autentice reflectă experiențele și colaborările profesionale
-care stau la baza activității CARELYNTA.
-</p>
-</div>
+   <article class="review-card" data-reveal>
+    <div class="review-stars">★★★★★</div>
+    <p class="review-text">Adaugă aici textul primei recomandări autentice primite pe LinkedIn.</p>
+    <div class="review-author">Numele autorului</div>
+    <div class="review-role">Funcția · Compania</div>
+    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">Vezi CARELYNTA pe LinkedIn ↗</a>
+   </article>
 
-<div class="review-grid">
+   <article class="review-card" data-reveal>
+    <div class="review-stars">★★★★★</div>
+    <p class="review-text">Adaugă aici textul celei de-a doua recomandări autentice primite pe LinkedIn.</p>
+    <div class="review-author">Numele autorului</div>
+    <div class="review-role">Funcția · Compania</div>
+    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">Vezi CARELYNTA pe LinkedIn ↗</a>
+   </article>
 
-<article class="review-card" data-motion>
-<div class="review-stars">★★★★★</div>
-<p class="review-text">
-Adaugă aici textul primei recomandări autentice primite pe LinkedIn.
-</p>
-<div class="review-author">Numele autorului</div>
-<div class="review-role">Funcția · Compania</div>
-<a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">
-Vezi CARELYNTA pe LinkedIn ↗
-</a>
-</article>
+   <article class="review-card" data-reveal>
+    <div class="review-stars">★★★★★</div>
+    <p class="review-text">Adaugă aici textul celei de-a treia recomandări autentice primite pe LinkedIn.</p>
+    <div class="review-author">Numele autorului</div>
+    <div class="review-role">Funcția · Compania</div>
+    <a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">Vezi CARELYNTA pe LinkedIn ↗</a>
+   </article>
 
-<article class="review-card" data-motion>
-<div class="review-stars">★★★★★</div>
-<p class="review-text">
-Adaugă aici textul celei de-a doua recomandări autentice primite pe LinkedIn.
-</p>
-<div class="review-author">Numele autorului</div>
-<div class="review-role">Funcția · Compania</div>
-<a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">
-Vezi CARELYNTA pe LinkedIn ↗
-</a>
-</article>
-
-<article class="review-card" data-motion>
-<div class="review-stars">★★★★★</div>
-<p class="review-text">
-Adaugă aici textul celei de-a treia recomandări autentice primite pe LinkedIn.
-</p>
-<div class="review-author">Numele autorului</div>
-<div class="review-role">Funcția · Compania</div>
-<a class="review-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">
-Vezi CARELYNTA pe LinkedIn ↗
-</a>
-</article>
-
-</div>
-
-</div>
+  </div>
+ </div>
 </section>
 
 <!-- CONTACT -->
 
 <section class="section" id="contact">
+ <div class="container contact-grid">
 
-<div class="container contact-grid">
+  <div data-reveal="left">
+   <div class="eyebrow">HAI SĂ DISCUTĂM</div>
+   <h2>Următorul pas începe cu tine.</h2>
 
-<div class="contact-copy" data-motion="left">
+   <p>
+    Spune-mi ce îți dorești să schimbi în parcursul tău profesional.
+    Vom identifica împreună care este cea mai potrivită direcție.
+   </p>
 
-<div class="eyebrow">Hai să discutăm</div>
+   <p class="contact-emphasis">
+    Cariera ta merită atenție, claritate și o strategie potrivită.
+   </p>
 
-<h2>Următorul pas începe cu tine.</h2>
+   <a class="btn btn-outline" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">
+    LinkedIn CARELYNTA ↗
+   </a>
+  </div>
 
-<p>
-Spune-mi ce îți dorești să schimbi în parcursul tău profesional.
-Vom identifica împreună care este cea mai potrivită direcție.
-</p>
+  <form class="contact-form" id="contactForm" data-reveal="right">
 
-<p class="contact-emphasis">
-Cariera ta merită atenție, claritate și o strategie potrivită.
-</p>
+   <div class="form-row">
+    <div class="field">
+     <label for="name">Nume și prenume *</label>
+     <input id="name" name="name" required placeholder="Numele tău" autocomplete="name">
+    </div>
 
-<a class="btn btn-outline"
-href="https://www.linkedin.com/company/carelynta/?viewAsMember=true"
-target="_blank" rel="noopener">
-LinkedIn CARELYNTA ↗
-</a>
+    <div class="field">
+     <label for="email">Adresa de e-mail *</label>
+     <input id="email" name="email" type="email" required placeholder="nume@email.com" autocomplete="email">
+    </div>
+   </div>
 
-</div>
+   <div class="field">
+    <label for="service">Cu ce te pot ajuta?</label>
+    <select id="service" name="service">
+     <option value="">Alege un serviciu</option>
+     <option>Career Coaching</option>
+     <option>CV Review &amp; Optimization</option>
+     <option>LinkedIn Profile Optimization</option>
+     <option>Interview preparation</option>
+     <option>Career Development</option>
+     <option>Nu sunt sigur(ă) încă</option>
+    </select>
+   </div>
 
-<form class="contact-form" id="contactForm" data-motion="right">
+   <div class="field">
+    <label for="message">Mesajul tău</label>
+    <textarea id="message" name="message" placeholder="Povestește-mi pe scurt ce îți dorești..."></textarea>
+   </div>
 
-<div class="form-row">
+   <label class="consent">
+    <input type="checkbox" id="consent" required>
+    <span>Sunt de acord ca datele completate să fie folosite pentru a răspunde solicitării mele. *</span>
+   </label>
 
-<div class="field">
-<label for="name">Nume și prenume *</label>
-<input id="name" name="name" required autocomplete="name" placeholder="Numele tău">
-</div>
+   <button class="btn btn-gold" type="submit">Trimite solicitarea ↗</button>
+   <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
 
-<div class="field">
-<label for="email">Adresa de e-mail *</label>
-<input id="email" name="email" type="email" required autocomplete="email" placeholder="nume@email.com">
-</div>
-
-</div>
-
-<div class="field">
-<label for="service">Cu ce te pot ajuta?</label>
-<select id="service" name="service">
-<option value="">Alege un serviciu</option>
-<option>Career Coaching</option>
-<option>CV Review &amp; Optimization</option>
-<option>LinkedIn Profile Optimization</option>
-<option>Interview preparation</option>
-<option>Career Development</option>
-<option>Nu sunt sigur(ă) încă</option>
-</select>
-</div>
-
-<div class="field">
-<label for="message">Mesajul tău</label>
-<textarea id="message" name="message" placeholder="Povestește-mi pe scurt ce îți dorești..."></textarea>
-</div>
-
-<label class="consent">
-<input type="checkbox" id="consent" required>
-<span>
-Sunt de acord ca datele completate să fie folosite pentru a răspunde solicitării mele. *
-</span>
-</label>
-
-<button class="btn btn-gold" type="submit">
-Trimite solicitarea ↗
-</button>
-
-<p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-
-</form>
-
-</div>
+  </form>
+ </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-
 <footer>
-<div class="container footer-inner">
-
-<img src="Logo%20Carelynta%20(2).png" class="footer-logo" alt="CARELYNTA">
-
-<span>
-Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation
-</span>
-
-<a class="social-link"
-href="https://www.linkedin.com/company/carelynta/?viewAsMember=true"
-target="_blank" rel="noopener">LinkedIn CARELYNTA ↗</a>
-
-<span>© <span id="year"></span> CARELYNTA. Toate drepturile rezervate.</span>
-
-</div>
+ <div class="container footer-inner">
+  <img src="Logo%20Carelynta%20(2).png" class="footer-logo" alt="CARELYNTA">
+  <span>Career Coaching | CV Optimization | LinkedIn Profile | Interview Preparation</span>
+  <a class="social-link" href="https://www.linkedin.com/company/carelynta/?viewAsMember=true" target="_blank" rel="noopener">LinkedIn CARELYNTA ↗</a>
+  <span>© <span id="year"></span> CARELYNTA. Toate drepturile rezervate.</span>
+ </div>
 </footer>
 
 <button class="back-top" id="backTop" aria-label="Înapoi sus">↑</button>
 
 <script>
 
+/* PRELOADER */
+
+window.addEventListener('load',()=>{
+ setTimeout(()=>{
+  document.getElementById('preloader').classList.add('hide');
+ },700);
+});
+
+
 /* YEAR */
 
-document.getElementById('year').textContent =
-new Date().getFullYear();
+document.getElementById('year').textContent=new Date().getFullYear();
 
 
-/* SCROLL ANIMATIONS */
+/* SCROLL REVEAL */
 
-const observer = new IntersectionObserver((entries, obs) => {
+const revealObserver=new IntersectionObserver((entries,observer)=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('visible');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12,rootMargin:'0px 0px -35px 0px'});
 
-  entries.forEach(entry => {
-
-    if(entry.isIntersecting) {
-
-      entry.target.classList.add('visible');
-      obs.unobserve(entry.target);
-
-    }
-
-  });
-
-}, {
-  threshold:0.12,
-  rootMargin:'0px 0px -40px 0px'
-});
-
-document.querySelectorAll('[data-motion]').forEach(element => {
-  observer.observe(element);
+document.querySelectorAll('[data-reveal]').forEach(el=>{
+ revealObserver.observe(el);
 });
 
 
-/* HEADER EFFECT */
+/* HEADER + PROGRESS */
 
-const header = document.getElementById('header');
-const backTop = document.getElementById('backTop');
-const progressBar = document.getElementById('progressBar');
+const header=document.getElementById('header');
+const backTop=document.getElementById('backTop');
+const progress=document.getElementById('progress');
 
-function updateScroll() {
+function scrollEffects(){
+ const y=window.scrollY;
+ header.classList.toggle('scrolled',y>50);
+ backTop.classList.toggle('show',y>450);
 
-  const scrollY = window.scrollY;
-
-  header.classList.toggle('scrolled',scrollY > 50);
-  backTop.classList.toggle('show',scrollY > 450);
-
-  const maxScroll =
-    document.documentElement.scrollHeight - window.innerHeight;
-
-  const progress = maxScroll > 0 ? (scrollY / maxScroll) * 100 : 0;
-
-  progressBar.style.width = progress + '%';
-
+ const max=document.documentElement.scrollHeight-window.innerHeight;
+ progress.style.width=(max>0?(y/max)*100:0)+'%';
 }
 
-window.addEventListener('scroll',updateScroll,{passive:true});
-updateScroll();
+window.addEventListener('scroll',scrollEffects,{passive:true});
+scrollEffects();
 
 
 /* BACK TO TOP */
 
-backTop.addEventListener('click',() => {
-  window.scrollTo({top:0,behavior:'smooth'});
+backTop.addEventListener('click',()=>{
+ window.scrollTo({top:0,behavior:'smooth'});
 });
 
 
 /* MOBILE MENU */
 
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
 
-function closeMenu() {
-  navLinks.classList.remove('open');
-  menuBtn.textContent = '☰';
-  menuBtn.setAttribute('aria-expanded','false');
+function closeMenu(){
+ navLinks.classList.remove('open');
+ menuBtn.textContent='☰';
+ menuBtn.setAttribute('aria-expanded','false');
 }
 
-menuBtn.addEventListener('click',() => {
-
-  const open = navLinks.classList.toggle('open');
-
-  menuBtn.textContent = open ? '×' : '☰';
-  menuBtn.setAttribute('aria-expanded',String(open));
-
+menuBtn.addEventListener('click',()=>{
+ const open=navLinks.classList.toggle('open');
+ menuBtn.textContent=open?'×':'☰';
+ menuBtn.setAttribute('aria-expanded',String(open));
 });
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click',closeMenu);
+navLinks.querySelectorAll('a').forEach(link=>{
+ link.addEventListener('click',closeMenu);
 });
+
+
+/* CURSOR LIGHT */
+
+const cursorGlow=document.getElementById('cursorGlow');
+
+if(window.matchMedia('(pointer:fine)').matches){
+ window.addEventListener('mousemove',e=>{
+  cursorGlow.style.left=e.clientX+'px';
+  cursorGlow.style.top=e.clientY+'px';
+ });
+}
+
+
+/* SERVICE CARD 3D EFFECT */
+
+if(window.matchMedia('(pointer:fine)').matches){
+
+ document.querySelectorAll('.service-card').forEach(card=>{
+
+  card.addEventListener('mousemove',e=>{
+   const rect=card.getBoundingClientRect();
+   const x=(e.clientX-rect.left)/rect.width;
+   const y=(e.clientY-rect.top)/rect.height;
+
+   const rotateY=(x-.5)*8;
+   const rotateX=(.5-y)*8;
+
+   card.style.transform=
+    `translateY(-12px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener('mouseleave',()=>{
+   card.style.transform='';
+  });
+
+ });
+
+}
 
 
 /* CONTACT FORM */
 
-const CONTACT_EMAIL = 'marianapastean.studio@gmail.com';
+document.getElementById('contactForm').addEventListener('submit',function(e){
 
-document.getElementById('contactForm').addEventListener('submit',function(event) {
+ e.preventDefault();
 
-  event.preventDefault();
+ if(!this.reportValidity())return;
 
-  const form = this;
+ const data=new FormData(this);
 
-  if(!form.reportValidity()) return;
+ const name=data.get('name');
+ const email=data.get('email');
+ const service=data.get('service')||'Nespecificat';
+ const message=data.get('message')||'Fără mesaj suplimentar';
 
-  const data = new FormData(form);
+ const subject=encodeURIComponent('Solicitare CARELYNTA - '+service);
 
-  const name = data.get('name');
-  const email = data.get('email');
-  const service = data.get('service') || 'Nespecificat';
-  const message = data.get('message') || 'Fără mesaj suplimentar';
+ const body=encodeURIComponent(
+  'Nume: '+name+'\n'+
+  'E-mail: '+email+'\n'+
+  'Serviciu: '+service+'\n\n'+
+  'Mesaj:\n'+message
+ );
 
-  const subject = encodeURIComponent(
-    'Solicitare CARELYNTA - ' + service
-  );
+ document.getElementById('formStatus').textContent=
+  'Se deschide aplicația de e-mail...';
 
-  const body = encodeURIComponent(
-    'Nume: ' + name + '\n' +
-    'E-mail: ' + email + '\n' +
-    'Serviciu: ' + service + '\n\n' +
-    'Mesaj:\n' + message
-  );
-
-  document.getElementById('formStatus').textContent =
-    'Se deschide aplicația de e-mail...';
-
-  window.location.href =
-    'mailto:' + CONTACT_EMAIL +
-    '?subject=' + subject +
-    '&body=' + body;
+ window.location.href=
+  'mailto:marianapastean.studio@gmail.com?subject='+subject+'&body='+body;
 
 });
 
